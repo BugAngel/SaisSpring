@@ -1,0 +1,7 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /pro
+
+pageSize:20
+proName:BugAngel
