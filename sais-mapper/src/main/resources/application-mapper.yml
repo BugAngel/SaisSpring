@@ -1,0 +1,10 @@
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.sais.saisentity
+
+#showSql
+logging:
+  level:
+    com:
+      sais:
+        saismapper : debug

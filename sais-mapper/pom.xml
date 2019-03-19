@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--声明父项目-->
+    <parent>
+        <groupId>com.sais</groupId>
+        <artifactId>sais</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>sais-mapper</artifactId>
+    <version>0.0.1</version>
+    <name>sais-mapper</name>
+    <description>sais mapper</description>
+	<packaging>jar</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <com.sais.entity>0.0.1</com.sais.entity>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sais</groupId>
+            <artifactId>sais-entity</artifactId>
+            <version>${com.sais.entity}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

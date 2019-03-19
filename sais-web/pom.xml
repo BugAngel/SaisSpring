@@ -2,43 +2,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!--声明父项目-->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.sais</groupId>
+        <artifactId>sais</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.sais</groupId>
-    <artifactId>sais</artifactId>
+    <artifactId>sais-web</artifactId>
     <version>0.0.1</version>
-    <name>sais</name>
-    <description>Study abroad information management and analysis system</description>
-    <packaging>pom</packaging>
+    <name>sais-web</name>
+    <description>sais web</description>
+	<packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>
+        <com.sais.service>0.0.1</com.sais.service>
     </properties>
-
-    <!-- 声明子模块 -->
-    <modules>
-        <module>sais-base</module>
-		<module>sais-entity</module>
-		<module>sais-mapper</module>
-		<module>sais-service</module>
-		<module>sais-web</module>
-    </modules>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.sais</groupId>
+            <artifactId>sais-service</artifactId>
+            <version>${com.sais.service}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 

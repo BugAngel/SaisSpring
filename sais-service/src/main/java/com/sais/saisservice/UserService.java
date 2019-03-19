@@ -1,7 +1,7 @@
-package com.sais.service;
+package com.sais.saisservice;
 
-import com.sais.entity.User;
-import com.sais.mapper.UserMapper;
+import com.sais.saisentity.User;
+import com.sais.saismapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
