@@ -1,0 +1,65 @@
+{extend name="common/common" /}
+{block name="main"}
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        {include file="common/nav-header"/} <!--顶部-->
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>用户管理</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" class="form-horizontal m-t " method="post" action="{:url('edit')}">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">账号：</label>
+                            <div class="col-sm-3">
+                                <input  type="text" id="account" class="form-control" name="account"  value={$user.account} >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">昵称：</label>
+                            <div class="col-sm-3">
+                                <input  type="text" id="nickname" class="form-control" name="nickname"  value={$user.nickname} >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否为管理员：</label>
+                            <input type="radio"  value="0"  name="admin"   {if $user.admin=="0" }checked {/if}   />
+                            否
+                            <input type="radio"  value="1"  name="admin"  {if $user.admin=="1" }checked {/if}/>
+                            是
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否禁言：</label>
+                            <input type="radio"  value="1"  name="comment"  {if $user.comment=="1" }checked {/if}/>
+                            否
+                            <input type="radio"  value="0"  name="comment"  {if $user.comment=="0" }checked {/if} />
+                            是
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button class="btn btn-primary" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--尾部-->
+        {include file="common/footer"/}
+    </div>
+
+    <script>
+        $('form').submit(function(){
+            var account = $('#account').val();
+            var nickname = $('#nickname').val();
+            if(account === ''){
+                layer.msg('请填写账号',{time:1000});
+                return false;
+            }
+            if(nickname === ''){
+                layer.msg('请填写昵称',{time:1000});
+                return false;
+            }
+        });
+    </script>
+{/block}

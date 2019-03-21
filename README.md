@@ -24,4 +24,13 @@ SpringBoot实现留学信息管理与分析系统
 [Maven学习 (六) 搭建多模块企业级项目](http://www.cnblogs.com/quanyongan/archive/2013/05/28/3103243.html)  
 [Failed to configure a DataSource](https://blog.csdn.net/u010448530/article/details/80840828)  
 [spring boot多环境多文件配置profiles和no profiles are currently active错误问题。](https://blog.csdn.net/qq_36368721/article/details/83542882)  
+[Windows下安装Redis服务](https://www.cnblogs.com/jaign/articles/7920588.html)  
+[使用Jedis操作redis](https://www.cnblogs.com/relucent/p/4203190.html)  
+[22.Spring-Boot中Spring Session介绍](https://blog.csdn.net/niugang0920/article/details/79644842)  
+[SpringBoot跳转页面详解+thymeleaf](https://blog.csdn.net/jintingbo/article/details/81633615)  
+[Spring boot——logback 基础使用篇（一）](https://www.cnblogs.com/lixuwu/p/5804793.html)  
+[页面引用bootstrap报错Bootstrap's JavaScript requires jQuery](https://blog.csdn.net/liuchang__/article/details/71403194)  
+[SpringBoot2.x过后static下的静态资源无法访问](https://blog.csdn.net/wenxingchen/article/details/84139845)  
+[使用 SpringBoot + kaptcha 生成、校对 验证码](https://blog.csdn.net/larger5/article/details/79522105)  
+[使用@Autowired注解警告Field injection is not recommended](https://blog.csdn.net/zhangjingao/article/details/81094529)  
 
