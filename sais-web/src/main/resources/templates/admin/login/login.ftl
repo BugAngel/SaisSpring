@@ -5,12 +5,12 @@
     <title>后台管理界面 - 登录</title>
     <link rel="icon" href="/static/admin/images/icon.ico" type="images/x-ico" />
 
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="webjars/font-awesome/4.7.0/css/font-awesome.min.css" >
-    <link rel="stylesheet" type="text/css" href="webjars/animate.css/3.5.2/animate.min.css" >
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" href="/webjars/animate.css/3.5.2/animate.min.css" >
     <link rel="stylesheet" type="text/css" href="/static/admin/css/admin-style.css" >
-    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/static/common/layer/layer.js"></script>
 </head>
 <body class="gray-bg">
@@ -21,7 +21,7 @@
             <h1 class="logo-name">WR</h1>
         </div>
         <h3>后台管理登录界面</h3>
-        <form id="form" name="form" method="post" action="/checkLogin"  autocomplete="off">
+        <form id="form" name="form" method="post" action="/admin/login/checkLogin"  autocomplete="off">
             <div class="form-group">
                 <input name="account" type="text"  class="form-control" placeholder="账号"  autocomplete="off">
             </div>
@@ -31,7 +31,7 @@
             <div class="form-group login">
                 <span>验证码</span>
                 <input name="code" style="width:110px" type="text" id="code"/>
-                <a> <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" /></a>
+                <a> <img class="reloadverify" alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" /></a>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
         </form>
@@ -45,27 +45,32 @@
         var code = $("#code").val();
         if(!account){
             layer.msg('用户名不能为空！',{time:2000});
+            return false;
         }
         if(!password){
             layer.msg('密码不能为空！',{time:2000});
+            return false;
         }
         if(!code){
             layer.msg('验证码不能为空！',{time:2000});
+            return false;
         }
         var url  = $(this).attr('action');
+        var formData = $("#form").serialize();
         $.ajax({
-            type:"post",
-            url :url,
-            data:{account:account,password:password,code:code},
-            success: function(res){
-                if(res.status){
-                    layer.msg(res.message,{time:1000},function(){
-                        window.location.href = "{:url('admin/user_list/lists')}";
+            type: "post",
+            url: url,
+            dataType: "json",
+            data: formData,
+            success: function (res) {
+                if (res.status) {
+                    layer.msg(res.message, {time: 1000}, function () {
+                        window.location.href = "/admin/user_list/lists";
                     });
-                }else{
+                } else {
                     //刷新验证码
                     $(".reloadverify").click();
-                    layer.msg(res.message,{time:2000});
+                    layer.msg(res.message);
                 }
             }
         });

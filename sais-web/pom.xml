@@ -24,9 +24,14 @@
         <org.webjars.font-awesome>4.7.0</org.webjars.font-awesome>
         <org.webjars.Semantic-UI>2.1.7</org.webjars.Semantic-UI>
         <org.webjars.org.webjars.bower.animate.css>3.5.2</org.webjars.org.webjars.bower.animate.css>
-        <org.webjars.jquery>1.11.1</org.webjars.jquery>
+        <org.webjars.jquery>2.1.1</org.webjars.jquery>
         <org.webjars.npm.jquery.cookie>1.4.1</org.webjars.npm.jquery.cookie>
         <com.github.penggle.kaptcha>2.3.2</com.github.penggle.kaptcha>
+        <com.alibaba.fastjson>1.2.35</com.alibaba.fastjson>
+        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect>2.2.2</thymeleaf-layout-dialect>
+        <rapid-framework>4.0.5</rapid-framework>
+        <commons-lang>2.6</commons-lang>
     </properties>
 
     <dependencies>
@@ -75,10 +80,22 @@
             <artifactId>jquery.cookie</artifactId>
             <version>${org.webjars.npm.jquery.cookie}</version>
         </dependency>
-        <!--引入thymeleaf-->
+        <!--引入freemarker-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!--rapid-framework 模板继承框架-->
+        <dependency>
+            <groupId>com.googlecode.rapid-framework</groupId>
+            <artifactId>rapid-core</artifactId>
+            <version>${rapid-framework}</version>
+        </dependency>
+        <!-- lang包 缺少的话可能会报错  -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang}</version>
         </dependency>
         <!--引入nekohtml解除HTML严格语法-->
         <dependency>
@@ -90,6 +107,12 @@
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${com.github.penggle.kaptcha}</version>
+        </dependency>
+        <!-- 引入json处理包 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${com.alibaba.fastjson}</version>
         </dependency>
 
     </dependencies>

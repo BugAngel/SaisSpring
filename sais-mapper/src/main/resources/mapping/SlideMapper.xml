@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.SlideMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.Slide">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="college_e_name" jdbcType="VARCHAR" property="college_e_name" />
+        <result column="picture" jdbcType="VARCHAR" property="picture" />
+    </resultMap>
+
+    <select id="selectId" resultType="com.sais.saisentity.Slide">
+        select * from sais_slide where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.sais.saisentity.Slide">
+        select * from sais_slide
+    </select>
+
+    <delete id="delete">
+        delete from sais_slide where id = #{id}
+    </delete>
+
+    <delete id="delAll" parameterType="java.util.ArrayList">
+        delete from sais_slide where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="lists" resultType="com.sais.saisentity.Slide">
+        select * from sais_slide order by id asc
+    </select>
+
+    <select id="listsLike" resultType="com.sais.saisentity.Slide">
+        select *  from sais_slide where introduce like CONCAT('%',#{keyword},'%') order by id asc
+    </select>
+
+    <update id="updateIntrocuduce" >
+        update sais_slide set introduce = #{introduce} where college_e_name = #{college_e_name}
+    </update>
+
+    <update id="updateSlide" >
+        update sais_slide set introduce = #{introduce} where college_e_name = #{college_e_name}
+    </update>
+
+    <insert id="addSlide" >
+        insert into sais_slide (college_e_name, introduce, picture) values (#{college_e_name},#{introduce},#{picture})
+    </insert>
+</mapper>

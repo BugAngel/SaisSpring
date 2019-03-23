@@ -13,6 +13,7 @@ public class User {
     private String loginip;
     private Timestamp logintime;
     private Timestamp addtime;
+    private String comment;
 
     @Override
     public String toString() {

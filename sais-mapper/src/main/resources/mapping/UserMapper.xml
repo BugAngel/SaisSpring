@@ -10,10 +10,37 @@
         <result column="loginip" jdbcType="VARCHAR" property="loginip" />
         <result column="logintime" jdbcType="DATE" property="logintime" />
         <result column="addtime" jdbcType="DATE" property="addtime" />
+        <result column="comment" jdbcType="CHAR" property="comment" />
     </resultMap>
 
-    <select id="Sel" resultType="com.sais.saisentity.User">
+    <select id="selectId" resultType="com.sais.saisentity.User">
         select * from sais_user where id = #{id}
     </select>
 
+    <select id="selectAll" resultType="com.sais.saisentity.User">
+        select * from sais_user
+    </select>
+
+    <delete id="delete">
+        delete from sais_user where id = #{id}
+    </delete>
+
+    <delete id="delAll" parameterType="java.util.ArrayList">
+        delete from sais_user where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="lists" resultType="com.sais.saisentity.User">
+        select * from sais_user order by id asc
+    </select>
+
+    <select id="listsLike" resultType="com.sais.saisentity.User">
+        select *  from sais_user where account like CONCAT('%',#{keyword},'%') order by id asc
+    </select>
+
+    <update id="updateComment" >
+        update sais_user set comment = #{comment} where account = #{account}
+    </update>
 </mapper>

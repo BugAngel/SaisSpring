@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.ComplaintMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.Complaint">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="mail" jdbcType="VARCHAR" property="mail" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+    </resultMap>
+
+    <select id="selectAll" resultType="com.sais.saisentity.Complaint">
+        select * from sais_complaint
+    </select>
+
+    <delete id="delete">
+       delete from sais_complaint where id = #{id}
+    </delete>
+
+    <delete id="delAll" parameterType="java.util.ArrayList">
+        delete from sais_complaint where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="lists" resultType="com.sais.saisentity.Complaint">
+        select * from sais_complaint order by id asc
+    </select>
+
+    <select id="listsLike" resultType="com.sais.saisentity.Complaint">
+        select *  from sais_complaint where content like CONCAT('%',#{keyword},'%') order by id asc
+    </select>
+</mapper>

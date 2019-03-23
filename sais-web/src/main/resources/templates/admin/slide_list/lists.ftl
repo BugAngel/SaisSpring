@@ -1,7 +1,6 @@
-{extend name="common/common" /}
-{block name="main"}
+<@override name="body">
 <div id="page-wrapper" class="gray-bg dashbard-1">
-    {include file="common/nav-header"/} <!--顶部-->
+    <#include "../common/nav-header.ftl" >
     <div class="wrapper wrapper-content">
         <div class="row">
             <div class="col-lg-12">
@@ -13,20 +12,20 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="input-button">
-                                    <a href="{:url('add')}">
+                                    <a href="/admin/slide_list/add">
                                         <button class="btn btn-primary add" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
                                     </a>
-                                    <button class="btn btn-warning delete-all" type="button" url="{:url('delAll')}"><i
-                                            class="fa fa-minus "></i>&nbsp;删除
+                                    <button class="btn btn-warning delete-all" type="button" url="/admin/slide_list/delAll"><i
+                                                class="fa fa-minus "></i>&nbsp;删除
                                     </button>
                                 </div>
                             </div>
                             <!--搜索开始-->
-                            <form method="post" action="{:url('lists')}">
+                            <form method="post" action="/admin/slide_list/lists">
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        <input type="text" placeholder="请输入校名" class="input-sm form-control"
-                                               name="keyword" value="{$keyword}">
+                                        <input type="text" placeholder="请输入学校信息" class="input-sm form-control"
+                                               name="keyword" value="${keyword}">
                                         <span class="input-group-btn">
                                                 <button type="submit" class="btn btn-sm btn-primary"> 搜索</button>
                                             </span>
@@ -36,7 +35,7 @@
                             <!--搜索结束-->
                         </div>
                         <!--表格开始    -->
-                        <form action="{:url('lists')}" method="post" name="updateSort" id="updateSort">
+                        <form action="/admin/slide_list/lists" method="post" name="updateSort" id="updateSort">
                             <div class="table-responsive">
                                 <table class="table  table-bordered table-hover">
                                     <thead>
@@ -47,38 +46,32 @@
                                         </th>
                                         <th>图片</th>
                                         <th>ID</th>
-                                        <th>校名</th>
                                         <th>校英文名</th>
-                                        <th>QS</th>
                                         <th>学校简介</th>
-                                        <th>链接</th>
                                         <th style="width: 100px">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {foreach name="datalists" item="vo"}
+                                    <#list datalists as vo>
                                     <tr>
                                         <td>
-                                            <input class="ids regular-checkbox" type="checkbox" value="{$vo.id}"
+                                            <input class="ids regular-checkbox" type="checkbox" value="${vo.id}"
                                                    name="ids[]">
                                         </td>
-                                        <td><img height="80px" width="160px" src="__IMG__/uploads/{$vo.picture}" /></td>
-                                        <td> {$vo.id}</td>
-                                        <td> {$vo.college_name}</td>
-                                        <td> {$vo.college_e_name}</td>
-                                        <td> {$vo.qs}</td>
-                                        <td> {$vo.introduce}</td>
-                                        <td> {$vo.href}</td>
+                                        <td><img height="80px" width="160px" src="/college/images/uploads/${vo.picture}" /></td>
+                                        <td> ${vo.id}</td>
+                                        <td> ${vo.college_e_name}</td>
+                                        <td> ${vo.introduce}</td>
                                         <td>
-                                            <a href="{:url('edit',['id'=>$vo['id']])}">编辑</a>
-                                            <a class="confirm" href="{:url('delete',['id'=>$vo['id']])}">删除</a>
+                                            <a href="/admin/slide_list/edit?id=${vo.id}">编辑</a>
+                                            <a class="confirm" href="/admin/slide_list/delete?id=${vo.id}">删除</a>
                                         </td>
                                     </tr>
-                                    {/foreach}
+                                    </#list>
                                     </tbody>
                                 </table>
                                 <!--分页开始-->
-                                {$datalists|raw}
+                                <#--{$datalists|raw}-->
                                 <!--分页结束-->
                             </div>
                         </form>
@@ -88,8 +81,7 @@
             </div>
         </div>
     </div>
-
-    <!--尾部-->
-    {include file="common/footer"/}
+    <#include "../common/footer.ftl" >
 </div>
-{/block}
+</@override>
+<@extends name="../common/common.ftl"/>

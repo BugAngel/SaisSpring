@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -57,17 +58,4 @@ public class KaptchaController {
         responseOutputStream.flush();
         responseOutputStream.close();
     }
-
-    /**
-     * 3、校对验证码
-     * @param httpServletRequest Servlet请求
-     * @return boolean表示验证为真或假
-     */
-    @RequestMapping("/kaptchaCheck")
-    public boolean kaptchaCheck(HttpServletRequest httpServletRequest,String code) {
-        String rightCode = (String) httpServletRequest.getSession().getAttribute("rightCode");
-
-        return rightCode.equals(code);
-    }
-
 }

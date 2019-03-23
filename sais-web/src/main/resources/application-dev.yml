@@ -1,2 +1,8 @@
 server:
   port: 8083
+
+spring:
+  thymeleaf:
+    cache: false
+
+collegeImagePath: E:/Code/sais/sais-web/src/main/resources/static/college/images
