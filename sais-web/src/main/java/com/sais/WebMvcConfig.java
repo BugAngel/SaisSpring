@@ -2,6 +2,7 @@ package com.sais;
 
 import com.sais.saisweb.admin.AdminLoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -9,6 +10,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Component
 public class WebMvcConfig implements WebMvcConfigurer {
+    @Value("${file.staticAccessPath}")
+    private String staticAccessPath;
+    @Value("${file.collegeImageUploadPath}")
+    private String collegeImageUploadPath;
+
     private AdminLoginInterceptor adminLoginInterceptor;
 
     @Autowired
@@ -23,11 +29,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler(staticAccessPath).addResourceLocations("file:" + collegeImageUploadPath);
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/admin/login/**");
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/admin/login/**");
+    }
 }
 

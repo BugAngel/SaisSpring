@@ -19,6 +19,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <!--<skipTests>true</skipTests>-->
         <com.sais.service>0.0.1</com.sais.service>
         <org.webjars.bootstrap>3.3.6</org.webjars.bootstrap>
         <org.webjars.font-awesome>4.7.0</org.webjars.font-awesome>
@@ -122,6 +123,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.sais.SaisWebApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

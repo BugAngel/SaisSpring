@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" href="/static/admin/images/icon.ico" type="images/x-ico" />
+    <link rel="icon" href="/static/common/images/icon.ico" type="images/x-ico" />
     <meta charset="utf-8">
 
     <title>WFT后台</title>

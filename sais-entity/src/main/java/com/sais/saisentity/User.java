@@ -14,14 +14,4 @@ public class User {
     private Timestamp logintime;
     private Timestamp addtime;
     private String comment;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", account='" + account + '\'' +
-                ", passWord='" + password + '\'' +
-                ", logintime='" + logintime.toString() + '\'' +
-                '}';
-    }
 }

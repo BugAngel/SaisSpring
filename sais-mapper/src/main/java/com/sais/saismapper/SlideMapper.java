@@ -16,4 +16,6 @@ public interface SlideMapper {
     int updateIntrocuduce(String college_e_name,String introduce);
     int updateSlide(Slide slide);
     int addSlide(Slide slide);
+    Slide selectQs(int qs);
+    String selectSlideFromCollegeEName(String college_e_name);
 }

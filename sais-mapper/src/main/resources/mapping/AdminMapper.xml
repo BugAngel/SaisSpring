@@ -25,4 +25,8 @@
     <update id="updateIP" >
         update sais_admin set loginip = #{loginip} where account = #{account}
     </update>
+
+    <update id="login" >
+        update sais_admin set loginip = #{loginip}, logintime=#{logintime} where account = #{account}
+    </update>
 </mapper>

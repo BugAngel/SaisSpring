@@ -51,4 +51,12 @@ public class SlideService {
     public int addSlide(Slide slide){
         return slideMapper.addSlide(slide);
     }
+
+    public Slide selectQs(int qs){
+        return slideMapper.selectQs(qs);
+    }
+
+    public String selectSlideFromCollegeEName(String college_e_name){
+        return slideMapper.selectSlideFromCollegeEName(college_e_name);
+    }
 }

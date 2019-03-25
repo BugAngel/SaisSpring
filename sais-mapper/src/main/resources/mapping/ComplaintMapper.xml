@@ -31,4 +31,8 @@
     <select id="listsLike" resultType="com.sais.saisentity.Complaint">
         select *  from sais_complaint where content like CONCAT('%',#{keyword},'%') order by id asc
     </select>
+
+    <insert id="insert">
+        insert into sais_complaint (content, mail, phone) values (#{content},#{mail},#{phone})
+    </insert>
 </mapper>

@@ -5,6 +5,8 @@ import com.sais.saismapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @Service
 public class AdminService {
     private AdminMapper adminMapper;
@@ -28,5 +30,9 @@ public class AdminService {
 
     public int updateIP(String account,String loginip){
         return adminMapper.updateIP(account,loginip);
+    }
+
+    public int login(String account, String loginip, Timestamp logintime){
+        return adminMapper.login(account,loginip,logintime);
     }
 }

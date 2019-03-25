@@ -1,5 +1,8 @@
 # SaisSpring
 SpringBoot实现留学信息管理与分析系统
+程序在寒假时项目[SaisTP5](https://github.com/BugAngel/SaisTP5)的基础上，改用springboot框架而成。现在可以实现后台管理与前台展示功能。  
+[前台网址](39.105.77.133)  
+[后台网址](39.105.77.133/admin/login/login)  后台管理没有设置注册功能  现有账号HanLi 密码123456
 
 #
 ##参考网站
@@ -50,4 +53,15 @@ SpringBoot实现留学信息管理与分析系统
 [Spring Boot使用模板freemarker【从零开始学Spring Boot(转)](https://www.cnblogs.com/jpfss/p/8309996.html)  
 [SpringBoot 实现文件上传，图片上传并显示功能](https://blog.csdn.net/qq_38762237/article/details/81282444)  
 [FreeMarker 获取页面request、session](https://blog.csdn.net/feiyu8607/article/details/6557159)  
+[简单在线论坛](https://github.com/MQPearth/EasyBBS)  
+[ubuntu16.04下安装mysql详细步骤](https://blog.csdn.net/itxiaolong3/article/details/77905923)  
+[Java将数组用固定分隔符拼接成字符串](https://blog.csdn.net/huanghanqian/article/details/86361386)  
+[springboot 项目打包部署后设置上传文件访问的绝对路径](https://www.cnblogs.com/kingsonfu/p/9941101.html)  
+[Spring Boot Maven Plugin打包异常及三种解决方法：Unable to find main class](https://www.cnblogs.com/thinking-better/p/7827368.html)  
+[Springboot 打包跳过测试](https://blog.csdn.net/suoyasong/article/details/82978834)  
+[IDEA maven 多模块打包问题总结](https://www.jianshu.com/p/37c6688c4fcb)  
+[SpringBoot多Module打包无法找到类](https://segmentfault.com/q/1010000011151233)  
+[SpringBoot 多模块项目实践（附打包方法）](https://www.jianshu.com/p/59ceea4f029d)  
+
+
 

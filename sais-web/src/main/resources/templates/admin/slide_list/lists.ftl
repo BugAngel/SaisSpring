@@ -58,7 +58,7 @@
                                             <input class="ids regular-checkbox" type="checkbox" value="${vo.id}"
                                                    name="ids[]">
                                         </td>
-                                        <td><img height="80px" width="160px" src="/college/images/uploads/${vo.picture}" /></td>
+                                        <td><img height="80px" width="160px" src="/upload/${vo.picture}" /></td>
                                         <td> ${vo.id}</td>
                                         <td> ${vo.college_e_name}</td>
                                         <td> ${vo.introduce}</td>

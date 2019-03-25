@@ -60,6 +60,7 @@
             type:"post",
             url :url,
             data:{old_password:old_password,new_password:new_password},
+            dataType: "json",
             success: function(res){
                 if(res.status){
                     layer.msg(res.message,{time:1000},function(){

@@ -6,6 +6,7 @@
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="college_e_name" jdbcType="VARCHAR" property="college_e_name" />
         <result column="picture" jdbcType="VARCHAR" property="picture" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     </resultMap>
 
     <select id="selectId" resultType="com.sais.saisentity.Slide">
@@ -46,4 +47,12 @@
     <insert id="addSlide" >
         insert into sais_slide (college_e_name, introduce, picture) values (#{college_e_name},#{introduce},#{picture})
     </insert>
+
+    <select id="selectQs" resultType="com.sais.saisentity.Slide">
+        select a.college_name,b.picture,b.introduce FROM sais_college AS a,sais_slide AS b WHERE a.college_e_name=b.college_e_name and a.qs_rank = #{qs} limit 1
+    </select>
+
+    <select id="selectSlideFromCollegeEName" resultType="string">
+        select picture FROM sais_slide WHERE college_e_name = #{college_e_name}
+    </select>
 </mapper>

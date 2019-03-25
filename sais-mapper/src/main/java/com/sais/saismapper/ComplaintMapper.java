@@ -12,4 +12,5 @@ public interface ComplaintMapper {
     int delAll(ArrayList<String> list);
     ArrayList<Complaint> lists();
     ArrayList<Complaint> listsLike(String keyword);
+    int insert(Complaint complaint);
 }

@@ -35,4 +35,8 @@ public class ComplaintService {
     public ArrayList<Complaint> listsLike(String keyword){
         return complaintMapper.listsLike(keyword);
     }
+
+    public int insert(Complaint complaint){
+        return complaintMapper.insert(complaint);
+    }
 }

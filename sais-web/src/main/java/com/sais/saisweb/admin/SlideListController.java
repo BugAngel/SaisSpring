@@ -19,8 +19,8 @@ import java.util.*;
 @RequestMapping("/admin/slide_list")
 public class SlideListController {
     private SlideService slideService;
-    @Value("${collegeImagePath}")
-    private String collegeImagePath;
+    @Value("${file.collegeImageUploadPath}")
+    private String collegeImageUploadPath;
 
     @Autowired
     public SlideListController(SlideService slideService){
@@ -60,8 +60,8 @@ public class SlideListController {
         String fileName = picture.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-        String filePath = collegeImagePath+"/uploads/"+df.format(new Date())+"/";
-        fileName = UUID.randomUUID() + suffixName; // 新文件名
+        String filePath = collegeImageUploadPath+df.format(new Date())+"/";
+        fileName = DigestUtils.md5DigestAsHex(filePath.getBytes()) + suffixName; // 新文件名
         File dest = new File(filePath + fileName);
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();

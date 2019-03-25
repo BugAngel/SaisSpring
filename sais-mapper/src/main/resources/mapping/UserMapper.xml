@@ -17,6 +17,10 @@
         select * from sais_user where id = #{id}
     </select>
 
+    <select id="selectAccount" resultType="com.sais.saisentity.User">
+        select * from sais_user where account = #{account}
+    </select>
+
     <select id="selectAll" resultType="com.sais.saisentity.User">
         select * from sais_user
     </select>
@@ -43,4 +47,20 @@
     <update id="updateComment" >
         update sais_user set comment = #{comment} where account = #{account}
     </update>
+
+    <select id="getPassword" resultType="string">
+        select password from sais_user where account = #{account}
+    </select>
+
+    <update id="updateIP" >
+        update sais_user set loginip = #{loginip} where account = #{account}
+    </update>
+
+    <update id="login" >
+        update sais_user set loginip = #{loginip}, logintime=#{logintime} where account = #{account}
+    </update>
+
+    <insert id="register" >
+        insert into sais_user (account, password,nickname,addtime) values (#{account},#{password},#{nickname},#{addtime})
+    </insert>
 </mapper>

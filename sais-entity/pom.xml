@@ -19,10 +19,18 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
         <org.projectlombok>1.18.6</org.projectlombok>
+        <com.sais.base>0.0.1</com.sais.base>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.sais</groupId>
+            <artifactId>sais-base</artifactId>
+            <version>${com.sais.base}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -35,14 +43,5 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

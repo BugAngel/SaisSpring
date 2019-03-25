@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">图片：</label>
                         <div class="col-sm-9">
-                            <img width="160px" height="60px" src="/college/images/uploads/${slide.picture}" alt="图片">
+                            <img width="160px" height="60px" src="/upload/${slide.picture}" alt="图片">
                         </div>
                     </div>
                     <div class="form-group">

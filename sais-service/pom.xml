@@ -19,6 +19,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
         <com.sais.mapper>0.0.1</com.sais.mapper>
     </properties>
 
@@ -29,14 +30,5 @@
             <version>${com.sais.mapper}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -4,7 +4,7 @@
             <li class="nav-header" style="padding: 25px 20px;">
                 <div class="dropdown profile-element">
                     <span>
-                        <img alt="image" class="img-circle" height="60px" src="/static/admin/images/icon.ico" />
+                        <img alt="image" class="img-circle" height="60px" src="/static/common/images/icon.ico" />
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="/admin/user_list/lists">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${Request["admin_account"]!"登录出错"}</strong>

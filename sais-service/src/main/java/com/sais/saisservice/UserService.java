@@ -5,6 +5,7 @@ import com.sais.saismapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Service
@@ -42,5 +43,25 @@ public class UserService {
 
     public int updateComment(String account,String comment){
         return userMapper.updateComment(account,comment);
+    }
+
+    public boolean checkPassword(String account,String password){
+        return password.equals(userMapper.getPassword(account));
+    }
+
+    public User selectAccount(String account){
+        return userMapper.selectAccount(account);
+    }
+
+    public int updateIP(String account,String loginip){
+        return userMapper.updateIP(account,loginip);
+    }
+
+    public int login(String account, String loginip, Timestamp logintime){
+        return userMapper.login(account,loginip,logintime);
+    }
+
+    public int register(String account, String password, String nickname,Timestamp addtime){
+        return userMapper.register(account,password,nickname,addtime);
     }
 }

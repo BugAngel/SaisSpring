@@ -1,8 +1,10 @@
 server:
   port: 8083
 
-spring:
-  thymeleaf:
-    cache: false
+#静态资源对外暴露的访问路径
+file:
+  staticAccessPath: /upload/**
+  collegeImageUploadPath: /home/college/images/upload/   #文件上传目录（注意Linux和Windows上的目录结构不同）
 
-collegeImagePath: E:/Code/sais/sais-web/src/main/resources/static/college/images
+#collegeImageUploadPath: E:/college/images/upload/  #windows
+#collegeImageUploadPath: /home/college/images/upload/  #linux

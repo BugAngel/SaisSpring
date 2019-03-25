@@ -19,19 +19,17 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <guava>24.0-jre</guava>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
-
+        <!-- 谷歌工具guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava}</version>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
