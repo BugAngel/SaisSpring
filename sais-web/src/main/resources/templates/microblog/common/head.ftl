@@ -16,7 +16,7 @@
         <ol>
             <li>
                 <a href="setting.php">
-                    <?php echo $_SESSION['user']['username'] ?>
+                    用户名
                 </a>
             </li>
             <li class="li_message">&nbsp;

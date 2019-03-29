@@ -7,7 +7,7 @@
                         <img alt="image" class="img-circle" height="60px" src="/static/common/images/icon.ico" />
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="/admin/user_list/lists">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${Request["admin_account"]!"登录出错"}</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><#if Session["admin_account"]??>${Session["admin_account"]}</#if></strong>
                          </span>  <span class="text-muted text-xs block">后台管理员<b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">

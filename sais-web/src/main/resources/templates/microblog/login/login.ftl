@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/static/common/images/icon.ico" type="images/x-ico" />
-    <title>论坛</title>
+    <title>登录</title>
     <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.1.7/semantic.min.css" >
     <link rel="stylesheet" type="text/css" href="/static/microblog/css/login.css" />
     <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
     <script src="/static/common/layer/layer.js"></script>
     <script src="webjars/Semantic-UI/2.1.7/semantic.min.js"></script>
+    <script type="text/javascript" src="/static/microblog/js/common.js"></script>
 </head>
 <body>
 <div class="header">
@@ -57,24 +58,6 @@
 
             <!--ajax异步提交-->
             <script>
-                //检验用户名格式
-                function checkname(name) {
-                    if (name.length < 5 || name.length > 14) {
-                        layer.msg('用户名格式错误');
-                        return false;
-                    }
-                    return true;
-                }
-
-                //检查密码格式
-                function checkpassword(password) {
-                    if (password.length < 6 || password.length > 16) {
-                        layer.msg("格式错误，密码长度为6-16位");
-                        return false;
-                    }
-                    return true;
-                }
-
                 $('form').submit(function () {
                     var account = $("input[name='account']").val();
                     var password = $("input[name='password']").val();
@@ -82,10 +65,12 @@
 
                     if(!checkname(account))
                     {
+                        layer.msg("账号只含数字和英文字母，长度为5-14个字符");
                         return false;
                     }
                     if(!checkpassword(password))
                     {
+                        layer.msg( "密码长度应为6-16个字符");
                         return false;
                     }
                     if (!code) {

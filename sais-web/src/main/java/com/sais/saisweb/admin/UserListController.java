@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/admin/user_list")
+@RequestMapping({"/admin/user_list","/admin"})
 public class UserListController {
     private UserService userService;
 
@@ -24,7 +24,7 @@ public class UserListController {
     /**
      * 列表
      */
-    @RequestMapping(value = {"/index","/lists"})
+    @RequestMapping(value = {"/index","/lists","/",""})
     public String lists(@RequestParam(value = "keyword",required = false) String keyword, Map<String,Object> result){
         if(keyword!=null){
             keyword = keyword.trim();

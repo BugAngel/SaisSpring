@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/static/common/images/icon.ico" type="images/x-ico" />
-    <title>论坛</title>
+    <title>注册</title>
     <link rel="stylesheet" type="text/css" href="/webjars/Semantic-UI/2.1.7/semantic.min.css" >
     <link rel="stylesheet" type="text/css" href="/static/microblog/css/login.css" />
     <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
     <script src="/static/common/layer/layer.js"></script>
     <script src="webjars/Semantic-UI/2.1.7/semantic.min.js"></script>
+    <script type="text/javascript" src="/static/microblog/js/common.js"></script>
 </head>
 <body>
 <div class="header">
@@ -63,40 +64,6 @@
             </div>
 
             <script>
-                //检验账号格式
-                function checkname(name) {
-                    var reg = /^[A-Za-z0-9]+$/;
-                    if (!reg.test(name)) {
-                        layer.msg( "用户名应由数字和26个英文字母组成");
-                        return false;
-                    }
-                    if (name.length < 5 || name.length > 14) {
-                        layer.msg( "用户名长度应为5-14个字符");
-                        return false;
-                    }
-                    return true;
-                }
-
-                //检查密码格式
-                function checkpassword(password) {
-                    if (password.length < 6 || password.length > 16) {
-                        layer.msg( "密码长度应为6-16个字符");
-                        return false;
-                    }
-                    return true;
-                }
-
-                //检查密码是否一样
-                function checkSame(password,repassword) {
-                    if(password!==repassword){
-                        layer.msg("两次密码输入不同");
-                        return false;
-                    }
-                    return true;
-                }
-            </script>
-
-            <script>
                 //ajax异步提交
                 $('form').submit(function () {
                     var account = $("#account").val();
@@ -107,12 +74,15 @@
                     var data = {};
 
                     if (!checkname(account)) {
+                        layer.msg("账号只含数字和英文字母，长度为5-14个字符");
                         return false;
                     }
                     if (!checkpassword(password)) {
+                        layer.msg( "密码长度应为6-16个字符");
                         return false;
                     }
                     if (!checkSame(password,repassword)) {
+                        layer.msg("两次密码输入不同");
                         return false;
                     }
                     if (!code) {

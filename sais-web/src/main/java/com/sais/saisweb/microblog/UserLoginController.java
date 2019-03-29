@@ -28,7 +28,7 @@ public class UserLoginController {
         this.userService=userService;
     }
 
-    @GetMapping(value = {"/login","index"})
+    @GetMapping(value = {"/login","/index"})
     public String index(){
         return "microblog/login/login";
     }
@@ -57,8 +57,7 @@ public class UserLoginController {
             return JSON.toJSONString(res);
         } else {
             User user=userService.selectAccount(account);
-            request.getSession().setAttribute("user_nickname",user.getNickname());
-            request.getSession().setAttribute("user_account",user.getAccount());
+            request.getSession().setAttribute("user",user);//注意session里的user用的是上次登录IP和登录时间
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
             userService.login(user.getAccount(), IpUtil.getIpAddr(request),timestamp);
@@ -73,8 +72,7 @@ public class UserLoginController {
      */
     @GetMapping(value = "/logout")
     public String logout(HttpServletRequest request){
-        request.getSession().setAttribute("user_nickname",null);
-        request.getSession().setAttribute("user_account",null);
+        request.getSession().setAttribute("user",null);
         return "microblog/login/login";
     }
 }

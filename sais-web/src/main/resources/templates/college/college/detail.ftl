@@ -74,8 +74,8 @@
                         </thead>
                         <tbody>
                         <tr class="success">
-                            <td>${college_detail.undergraduate_gpa}</td>
-                            <td>${college_detail.undergraduate_sat}</td>
+                            <td><#if college_detail.undergraduate_gpa != 6>${college_detail.undergraduate_gpa}</#if></td>
+                            <td><#if college_detail.sat != 9999>${college_detail.sat}</#if></td>
                             <td>${college_detail.undergraduate_language}</td>
                         </tr>
                         </tbody>
@@ -94,14 +94,12 @@
                         <thead>
                         <tr>
                             <th>平均GPA分数</th>
-                            <th>SAT分数</th>
                             <th><#if college_detail.country =="美国"> TOEFL录取最低分： <#else> IELTS录取最低分： </#if></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="success">
-                            <td>${college_detail.graduate_gpa}</td>
-                            <td>${college_detail.graduate_sat} </td>
+                            <td><#if college_detail.graduate_gpa != 6>${college_detail.graduate_gpa}</#if></td>
                             <td>${college_detail.graduate_language}</td>
                         </tr>
                         </tbody>

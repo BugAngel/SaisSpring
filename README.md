@@ -1,5 +1,6 @@
 # SaisSpring
 SpringBoot实现留学信息管理与分析系统
+因大小限制仅打包java代码与模板文件，大多数静态文件未打包
 程序在寒假时项目[SaisTP5](https://github.com/BugAngel/SaisTP5)的基础上，改用springboot框架而成。现在可以实现后台管理与前台展示功能。  
 [前台网址](39.105.77.133)  
 [后台网址](39.105.77.133/admin/login/login)  后台管理没有设置注册功能  现有账号HanLi 密码123456
@@ -62,6 +63,9 @@ SpringBoot实现留学信息管理与分析系统
 [IDEA maven 多模块打包问题总结](https://www.jianshu.com/p/37c6688c4fcb)  
 [SpringBoot多Module打包无法找到类](https://segmentfault.com/q/1010000011151233)  
 [SpringBoot 多模块项目实践（附打包方法）](https://www.jianshu.com/p/59ceea4f029d)  
+[SpringBoot session超时的问题](https://www.cnblogs.com/ergexy/p/9684933.html)  
+[美图WEB开放平台](http://open.web.meitu.com/wiki/)  
+
 
 
 

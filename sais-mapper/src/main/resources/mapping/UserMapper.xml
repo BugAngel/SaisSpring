@@ -10,7 +10,18 @@
         <result column="loginip" jdbcType="VARCHAR" property="loginip" />
         <result column="logintime" jdbcType="DATE" property="logintime" />
         <result column="addtime" jdbcType="DATE" property="addtime" />
-        <result column="comment" jdbcType="CHAR" property="comment" />
+        <result column="comment" jdbcType="TINYINT" property="comment" />
+        <result column="sex" jdbcType="TINYINT" property="sex" />
+        <result column="qq" jdbcType="VARCHAR" property="qq" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="posts_num" jdbcType="INTEGER" property="posts_num" />
+        <result column="follows_num" jdbcType="INTEGER" property="follows_num" />
+        <result column="fans_num" jdbcType="INTEGER" property="fans_num" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="gpa" jdbcType="FLOAT" property="gpa" />
+        <result column="sat" jdbcType="INTEGER" property="sat" />
+        <result column="ielts" jdbcType="FLOAT" property="ielts" />
+        <result column="toefl" jdbcType="FLOAT" property="toefl" />
     </resultMap>
 
     <select id="selectId" resultType="com.sais.saisentity.User">
@@ -63,4 +74,14 @@
     <insert id="register" >
         insert into sais_user (account, password,nickname,addtime) values (#{account},#{password},#{nickname},#{addtime})
     </insert>
+
+    <update id="updateSetting" >
+        update sais_user set sex = #{sex}, qq=#{qq} , email=#{email}, posts_num=#{posts_num}, follows_num=#{follows_num},
+                             fans_num=#{fans_num}, phone=#{phone}, gpa=#{gpa}, sat=#{sat}, ielts=#{ielts}, toefl=#{toefl}
+        where account = #{account}
+    </update>
+
+    <update id="changePassword" >
+        update sais_user set password = #{password} where account = #{account}
+    </update>
 </mapper>

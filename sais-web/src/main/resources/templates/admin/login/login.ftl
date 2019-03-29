@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>后台管理界面 - 登录</title>
-    <link rel="icon" href="/static/admin/images/icon.ico" type="images/x-ico" />
+    <link rel="icon" href="/static/common/images/icon.ico" type="images/x-ico" />
 
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" >

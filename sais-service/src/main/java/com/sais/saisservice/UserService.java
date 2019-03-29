@@ -57,11 +57,19 @@ public class UserService {
         return userMapper.updateIP(account,loginip);
     }
 
-    public int login(String account, String loginip, Timestamp logintime){
+    public int login(String account, String loginip, Timestamp logintime){ //更新登录IP和登录时间
         return userMapper.login(account,loginip,logintime);
     }
 
     public int register(String account, String password, String nickname,Timestamp addtime){
         return userMapper.register(account,password,nickname,addtime);
+    }
+
+    public int updateSetting(User user){
+        return userMapper.updateSetting(user);
+    }
+
+    public int changePassword(String account,String password){
+        return userMapper.changePassword(account,password);
     }
 }

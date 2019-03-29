@@ -35,7 +35,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="/upload/${img1.picture}" style="width: 960px; height: 402px"/>
+                        <img alt="" src="/upload/college/images/${img1.picture}" style="width: 960px; height: 402px"/>
                         <div class="carousel-caption">
                             <h4>
                                 ${img1.college_name}
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="/upload/${img2.picture}" style="width: 960px; height: 402px"/>
+                        <img alt="" src="/upload/college/images/${img2.picture}" style="width: 960px; height: 402px"/>
                         <div class="carousel-caption">
                             <h4>
                                 ${img2.college_name}
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="/upload/${img3.picture}" style="width: 960px; height: 402px"/>
+                        <img alt="" src="/upload/college/images/${img3.picture}" style="width: 960px; height: 402px"/>
                         <div class="carousel-caption">
                             <h4>
                                 ${img3.college_name}

@@ -20,4 +20,6 @@ public interface UserMapper {
     int updateIP(String account,String loginip);
     int login(String account, String loginip, Timestamp logintime);
     int register(String account,String password,String nickname,Timestamp addtime);
+    int updateSetting(User user);
+    int changePassword(String account,String password);
 }

@@ -10,10 +10,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Component
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Value("${file.staticAccessPath}")
-    private String staticAccessPath;
-    @Value("${file.collegeImageUploadPath}")
-    private String collegeImageUploadPath;
+    @Value("${file.UploadAccessPath}")
+    private String UploadAccessPath;
+    @Value("${file.UploadPath}")
+    private String UploadPath;
+
 
     private AdminLoginInterceptor adminLoginInterceptor;
 
@@ -29,7 +30,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler(staticAccessPath).addResourceLocations("file:" + collegeImageUploadPath);
+        registry.addResourceHandler(UploadAccessPath).addResourceLocations("file:" + UploadPath);
     }
 
     @Override

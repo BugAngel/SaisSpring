@@ -64,7 +64,7 @@
             success: function(res){
                 if(res.status){
                     layer.msg(res.message,{time:1000},function(){
-                        window.location.href = "/admin/user_list/lists";
+                        window.location.href = "/admin/login/login";
                     });
                 }else{
                     layer.msg(res.message,{time:2000});

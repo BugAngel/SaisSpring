@@ -1,10 +1,13 @@
 server:
   port: 8083
-
+  servlet:
+    session:
+      timeout: 3000
 #静态资源对外暴露的访问路径
 file:
-  staticAccessPath: /upload/**
-  collegeImageUploadPath: /home/college/images/upload/   #文件上传目录（注意Linux和Windows上的目录结构不同）
-
+  UploadAccessPath: /upload/**
+  UploadPath: E:/sais/upload/
+  collegeImagesUploadPath: E:/sais/upload/college/images/  #文件上传目录（注意Linux和Windows上的目录结构不同）
+  microblogImagesUploadPath: E:/sais/upload/microblog/images/
 #collegeImageUploadPath: E:/college/images/upload/  #windows
 #collegeImageUploadPath: /home/college/images/upload/  #linux

@@ -10,7 +10,12 @@ public class CheckKaptchaUtil {
      */
     public static boolean kaptchaCheck(HttpServletRequest httpServletRequest, String code) {
         String rightCode = (String) httpServletRequest.getSession().getAttribute("rightCode");
-
-        return rightCode.equals(code);
+        boolean flag=false;
+        try {
+            flag=rightCode.equals(code);
+        }catch (Exception e){
+            return false;
+        }
+        return flag;
     }
 }

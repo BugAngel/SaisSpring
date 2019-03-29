@@ -5,17 +5,17 @@
                 <nav class="navbar navbar-inverse" role="navigation">
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <#if Session["user_account"]?? && Session["user_nickname"]??>
+                            <#if Session["user"]??>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-user" aria-hidden="true"></i>${Session["user_nickname"]} <b class="caret"></b>
+                                        <i class="fa fa-user" aria-hidden="true"></i>${Session["user"].nickname} <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" style="font-family: 楷体; font-size: 20px;text-align:center;">
-                                        <li><a href="../../../static/common/wait.html"><i class="fa fa-key" aria-hidden="true"></i>修改密码</a></li>
-                                        <li><a href="../../../static/common/wait.html"><i class="fa fa-id-card" aria-hidden="true"></i>个人资料</a></li>
+                                        <li><a href="/microblog/setting/setting"><i class="fa fa-key" aria-hidden="true"></i>修改密码</a></li>
+                                        <li><a href="/microblog/setting/setting"><i class="fa fa-id-card" aria-hidden="true"></i>个人资料</a></li>
                                         <li><a href="../../../static/common/wait.html"><i class="fa fa-street-view" aria-hidden="true"></i>查看论坛</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="/microblog/login/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a></li>
+                                        <li><a href="/microblog/login/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>退出</a></li>
                                     </ul>
                                 </li>
                             <#else>

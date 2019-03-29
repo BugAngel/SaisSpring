@@ -26,10 +26,9 @@ public class College {
     private String rd="";
     private String transfer="";
     private String undergraduate_gpa="";
-    private String undergraduate_sat="";
+    private String sat="";
     private String undergraduate_language="";
     private String graduate_gpa="";
-    private String graduate_sat="";
     private String graduate_language="";
     private Object undergraduate_document=null;
     private Object graduate_document=null;

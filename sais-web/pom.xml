@@ -33,6 +33,7 @@
         <thymeleaf-layout-dialect>2.2.2</thymeleaf-layout-dialect>
         <rapid-framework>4.0.5</rapid-framework>
         <commons-lang>2.6</commons-lang>
+        <org.webjars.highslide>4.1.13</org.webjars.highslide>
     </properties>
 
     <dependencies>
@@ -114,6 +115,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${com.alibaba.fastjson}</version>
+        </dependency>
+        <!-- 引入highslide -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>highslide</artifactId>
+            <version>${org.webjars.highslide}</version>
         </dependency>
 
     </dependencies>
