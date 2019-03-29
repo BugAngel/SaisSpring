@@ -4,20 +4,26 @@ import com.alibaba.fastjson.JSON;
 import com.sais.saisentity.User;
 import com.sais.saisservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 @Controller
 @RequestMapping("/microblog/setting")
 public class SettingController {
     private UserService userService;
+
+    @Value("${file.microblogImagesUploadPath}")
+    private String microblogImagesUploadPath;
 
     @Autowired
     public SettingController(UserService userService){
@@ -56,6 +62,7 @@ public class SettingController {
         }
         int res=userService.updateSetting(user);
         if(res>0){
+            request.getSession().setAttribute("user",user);
             return JSON.toJSONString("设置成功");
         }else {
             return JSON.toJSONString("服务器繁忙");
@@ -93,5 +100,40 @@ public class SettingController {
             result.put("message","账号密码不匹配");
             return JSON.toJSONString(result);
         }
+    }
+
+    /**
+     * 上传头像
+     */
+    @RequestMapping(value = {"/imageUpload"})
+    public String addAction(@RequestParam(value = "picture") MultipartFile picture,HttpServletRequest request){
+        String fileName = picture.getOriginalFilename();  // 文件名
+        if(fileName==null || fileName.equals("")){
+            return "redirect:/microblog/setting/index";
+        }
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+        if(!(suffixName.equals(".jpg")||suffixName.equals(".png"))){
+            return "redirect:/microblog/setting/index";
+        }
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+        String filePath = microblogImagesUploadPath+"/head_image/"+df.format(new Date())+"/";
+        fileName = DigestUtils.md5DigestAsHex(filePath.getBytes()) + suffixName; // 新文件名
+        File dest = new File(filePath + fileName);
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            picture.transferTo(dest);
+        } catch (IOException e) {
+            return "redirect:/microblog/setting/index";
+        }
+        String filename = df.format(new Date())+"/"+fileName;
+        User user=(User)request.getSession().getAttribute("user");
+        user.setAvatar(filename);
+        int result=userService.updateAvatar(user);
+        if(result>0){
+            request.getSession().setAttribute("user",user);
+        }
+        return "redirect:/microblog/setting/index";
     }
 }

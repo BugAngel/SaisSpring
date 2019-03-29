@@ -64,7 +64,6 @@ SpringBoot实现留学信息管理与分析系统
 [SpringBoot多Module打包无法找到类](https://segmentfault.com/q/1010000011151233)  
 [SpringBoot 多模块项目实践（附打包方法）](https://www.jianshu.com/p/59ceea4f029d)  
 [SpringBoot session超时的问题](https://www.cnblogs.com/ergexy/p/9684933.html)  
-[美图WEB开放平台](http://open.web.meitu.com/wiki/)  
 
 
 

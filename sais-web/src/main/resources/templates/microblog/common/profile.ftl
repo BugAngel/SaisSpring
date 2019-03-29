@@ -1,22 +1,28 @@
 <div class="profile">
     <!--    新增右侧个人部分-->
     <div class="my_info">
-        <#--<img class="my_info_head" height="90px" width="90px" src="<?php echo get_cover_path($user['avatar']) ?>">-->
-        <h4>昵称</h4>
+        <img class="my_info_head" height="90px" width="90px" src="/upload/microblog/images/head_image/${Session["user"].avatar}">
+        <h4>${Session["user"].nickname}</h4>
         <div class="my_info_list">
             <ul>
-                <li><span>关注数</span></li>
-                <li>${Session["user"].follows_num}</li>
+                <a href="friends.php">
+                    <li><span>${Session["user"].follows_num}</span></li>
+                    <li>关注</li>
+                </a>
             </ul>
             <ol></ol>
             <ul>
-                <li><span>粉丝数</span></li>
-                <li>${Session["user"].fans_num}</li>
+                <a href="friends.php">
+                    <li><span>${Session["user"].fans_num}</span></li>
+                    <li>粉丝</li>
+                </a>
             </ul>
             <ol></ol>
             <ul>
-                <li><span>已发微博数</span></li>
-                <li>${Session["user"].posts_num}</li>
+                <a href="friends.php">
+                    <li><span>${Session["user"].posts_num}</span></li>
+                    <li>微博</li>
+                </a>
             </ul>
         </div>
     </div>

@@ -1,7 +1,8 @@
 <@override name="body">
 <div class="my_head width_1000">
     <div class="my_head_img">
-        头像
+        <img src="/upload/microblog/images/head_image/${Session["user"].avatar}" alt="头像">
+
     </div>
     <h4>${Session["user"].nickname}</h4>
     <div class="my_head_message">
@@ -11,18 +12,18 @@
         <div class="my_info_list fr">
             <div class="fr">
                 <ul>
-                    <li><span>关注数</span></li>
-                    <li>${Session["user"].follows_num}</li>
+                    <li><span>${Session["user"].follows_num}</span></li>
+                    <li>关注</li>
                 </ul>
                 <ol></ol>
                 <ul>
-                    <li><span>粉丝数</span></li>
-                    <li>${Session["user"].fans_num}</li>
+                    <li><span>${Session["user"].fans_num}</span></li>
+                    <li>粉丝</li>
                 </ul>
                 <ol></ol>
                 <ul>
-                    <li><span>已发微博数</span></li>
-                    <li>${Session["user"].posts_num}</li>
+                    <li><span>${Session["user"].posts_num}</span></li>
+                    <li>微博</li>
                 </ul>
             </div>
         </div>
@@ -38,7 +39,20 @@
         </div>
         <div class="ui bottom attached tab segment segment_new active" data-tab="first">
             <div style="height: 400px">
-                <div id="altContent"></div>
+                <form class="ui form" id="avatar"  name="avatar" method="post" enctype="multipart/form-data"  action="/microblog/setting/imageUpload">
+                    <div class="field">
+                        <label>头像</label>
+                    </div>
+                    <div class="field">
+                        <img width="160px" height="160px" src="/upload/microblog/images/head_image/${user.avatar}" alt="图片">
+                    </div>
+                    <div class="field">
+                        <input type="file" class="file" id="picture" name="picture"/>
+                    </div>
+                    <div class="field">
+                        <input class="ui teal button" type="submit" value="提交">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="ui bottom attached tab segment segment_new" data-tab="second">

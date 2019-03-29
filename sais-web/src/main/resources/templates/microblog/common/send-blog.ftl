@@ -1,5 +1,5 @@
 <!--引入qq表情插件-->
-<script type="text/javascript" src="public/js/jquery.qqFace.js"></script>
+<script type="text/javascript" src="/static/microblog/js/jquery.qqFace.js"></script>
 <script>
     $(function(){
         $('.emotion').qqFace({
@@ -74,7 +74,7 @@
 </div>
 
 <!--多图上传-->
-<script type="text/javascript" src="public/static/plupload/plupload.full.min.js"></script>
+<script type="text/javascript" src="/webjars/plupload/2.1.9/src/plupload.js"></script>
 <script type="text/javascript">
     var upload_total = 9;//最多上传数量
     var uploader = new plupload.Uploader({//创建实例的构造方法
@@ -139,7 +139,7 @@
         $("#uploaded_length").text(uploaded_length);
         var other_length = (upload_total - uploaded_length) > 0 ? upload_total - uploaded_length : 0;
         $("#upload_other").text(other_length);
-        var uploaded_length = $(".img_common").length;
+        uploaded_length = $(".img_common").length;
         if (uploaded_length >= upload_total) {
             $("#local_upload").hide();
         } else {

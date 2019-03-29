@@ -84,4 +84,8 @@
     <update id="changePassword" >
         update sais_user set password = #{password} where account = #{account}
     </update>
+
+    <update id="updateAvatar" >
+        update sais_user set avatar = #{avatar} where account = #{account}
+    </update>
 </mapper>

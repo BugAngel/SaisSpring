@@ -22,4 +22,5 @@ public interface UserMapper {
     int register(String account,String password,String nickname,Timestamp addtime);
     int updateSetting(User user);
     int changePassword(String account,String password);
+    int updateAvatar(User user);
 }

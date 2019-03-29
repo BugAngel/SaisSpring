@@ -58,6 +58,9 @@ public class SlideListController {
     @PostMapping(value = {"/addAction"})
     public String addAction(@RequestParam(value = "picture") MultipartFile picture, @RequestParam(value = "college_e_name") String college_e_name,@RequestParam(value = "introduce") String introduce){
         String fileName = picture.getOriginalFilename();  // 文件名
+        if(fileName==null || fileName.equals("")){
+            return "redirect:/admin/slide_list/add";
+        }
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
         String filePath = collegeImagesUploadPath+df.format(new Date())+"/";
@@ -69,7 +72,7 @@ public class SlideListController {
         try {
             picture.transferTo(dest);
         } catch (IOException e) {
-            e.printStackTrace();
+            return "redirect:/admin/slide_list/add";
         }
         String filename = df.format(new Date())+"/"+fileName;
         Slide slide=new Slide(college_e_name,introduce,filename);

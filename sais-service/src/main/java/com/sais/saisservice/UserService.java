@@ -72,4 +72,8 @@ public class UserService {
     public int changePassword(String account,String password){
         return userMapper.changePassword(account,password);
     }
+
+    public int updateAvatar(User user){
+        return userMapper.updateAvatar(user);
+    }
 }

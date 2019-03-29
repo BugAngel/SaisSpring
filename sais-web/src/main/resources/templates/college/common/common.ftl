@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" >
 
     <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/static/college/js/jquery.cookie.js"></script>
+    <script src="/webjars/jquery.cookie/1.4.1/jquery.cookie.js"></script>
     <script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/static/common/layer/layer.js"></script>
     <title>SAIS</title>
