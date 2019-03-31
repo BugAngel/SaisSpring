@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.PraiseMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.Praise">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_id" jdbcType="INTEGER" property="user_id" />
+        <result column="post_id" jdbcType="INTEGER" property="post_id" />
+    </resultMap>
+
+    <select id="selectPraise" resultType="com.sais.saisentity.Praise">
+        select * from sais_praise where user_id=#{user_id} and post_id=#{post_id}
+    </select>
+
+    <insert id="insertPraise">
+        insert into sais_praise (user_id, post_id) values (#{user_id},#{post_id})
+    </insert>
+</mapper>

@@ -20,7 +20,7 @@
                                     <li><a href="/college/guide/gonggong"><i class="fa fa-comments" aria-hidden="true"></i>公共用语</a></li>
                                 </ul>
                             </li>
-                            <li style="width: 200px"><a href="../../../static/common/wait.html"><i class="fa fa-street-view" aria-hidden="true"></i>论坛交流</a></li>
+                            <li style="width: 200px"><a href="/microblog/"><i class="fa fa-street-view" aria-hidden="true"></i>论坛交流</a></li>
                             <li class="dropdown" >
                                 <a href="/college/help/method" class="dropdown-toggle"
                                    data-toggle="dropdown">

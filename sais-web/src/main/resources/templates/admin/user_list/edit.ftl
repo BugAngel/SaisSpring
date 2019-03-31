@@ -16,9 +16,9 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">是否禁言：</label>
-                        <input type="radio"  value="1"  name="comment"  <#if user.comment=="1">checked </#if>/>
+                        <input type="radio"  value="1"  name="comment"  <#if user.comment==1>checked </#if>/>
                         否
-                        <input type="radio"  value="0"  name="comment"  <#if user.comment=="0">checked </#if> />
+                        <input type="radio"  value="0"  name="comment"  <#if user.comment==0>checked </#if> />
                         是
                     </div>
                     <div class="form-group">

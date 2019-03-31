@@ -42,7 +42,7 @@ public class UserListController {
      * 编辑
      */
     @GetMapping(value = {"/edit"})
-    public String edit(@RequestParam(value = "id") String id,Map<String,Object> result){
+    public String edit(@RequestParam(value = "id") int id,Map<String,Object> result){
         User user=userService.selectId(id);
         result.put("user",user);
         return "/admin/user_list/edit";

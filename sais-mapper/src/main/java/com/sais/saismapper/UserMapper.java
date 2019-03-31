@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface UserMapper {
-    User selectId(String id);
+    User selectId(int id);
     User selectAccount(String account);
     ArrayList<User> selectAll();
     int delete(String id);
@@ -19,8 +19,11 @@ public interface UserMapper {
     String getPassword(String account);
     int updateIP(String account,String loginip);
     int login(String account, String loginip, Timestamp logintime);
-    int register(String account,String password,String nickname,Timestamp addtime);
+    int register(User user);
     int updateSetting(User user);
     int changePassword(String account,String password);
     int updateAvatar(User user);
+    int selectIdFromAccount(String account);
+    String selectAvatarFromId(int user_id);
+    String selectNicknameFromId(int user_id);
 }

@@ -17,7 +17,7 @@ public class UserService {
         this.userMapper=userMapper;
     }
 
-    public User selectId(String id){
+    public User selectId(int id){
         return userMapper.selectId(id);
     }
 
@@ -61,8 +61,8 @@ public class UserService {
         return userMapper.login(account,loginip,logintime);
     }
 
-    public int register(String account, String password, String nickname,Timestamp addtime){
-        return userMapper.register(account,password,nickname,addtime);
+    public int register(User user){
+        return userMapper.register(user);
     }
 
     public int updateSetting(User user){
@@ -76,4 +76,15 @@ public class UserService {
     public int updateAvatar(User user){
         return userMapper.updateAvatar(user);
     }
+
+    public int selectIdFromAccount(String account){ return  userMapper.selectIdFromAccount(account);}
+
+    public String selectAvatarFromId(int user_id){
+        return userMapper.selectAvatarFromId(user_id);
+    }
+
+    public String selectNicknameFromId(int user_id){
+        return userMapper.selectNicknameFromId(user_id);
+    }
+
 }

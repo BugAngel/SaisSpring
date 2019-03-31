@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.CollectMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.Collect">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_id" jdbcType="INTEGER" property="user_id" />
+        <result column="post_id" jdbcType="INTEGER" property="post_id" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+    </resultMap>
+
+    <select id="selectCollect" resultType="com.sais.saisentity.Collect">
+        select * from sais_collect where user_id=#{user_id} and post_id=#{post_id}
+    </select>
+
+    <insert id="insertCollect">
+        insert into sais_collect (user_id, post_id) values (#{user_id},#{post_id})
+    </insert>
+
+    <update id="updateCollect">
+        update sais_collect set status= #{status} where user_id=#{user_id} and post_id=#{post_id}
+    </update>
+</mapper>

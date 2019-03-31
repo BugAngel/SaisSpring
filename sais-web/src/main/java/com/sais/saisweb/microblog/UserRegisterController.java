@@ -57,7 +57,12 @@ public class UserRegisterController {
         } else {
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
-            userService.register(account, password,account,timestamp);
+            user=new User();
+            user.setAccount(account);
+            user.setPassword(password);
+            user.setNickname(account);
+            user.setAddtime(timestamp);
+            userService.register(user);
             res.put("status", 1);
             res.put("message", "注册成功!");
             return JSON.toJSONString(res);

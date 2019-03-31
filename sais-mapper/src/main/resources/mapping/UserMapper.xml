@@ -88,4 +88,16 @@
     <update id="updateAvatar" >
         update sais_user set avatar = #{avatar} where account = #{account}
     </update>
+
+    <select id="selectIdFromAccount" resultType="INTEGER">
+        select id from sais_user where account = #{account} limit 1
+    </select>
+
+    <select id="selectAvatarFromId" resultType="string">
+        select avatar from sais_user where id = #{user_id} limit 1
+    </select>
+
+    <select id="selectNicknameFromId" resultType="string">
+        select nickname from sais_user where id = #{user_id} limit 1
+    </select>
 </mapper>

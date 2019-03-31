@@ -13,7 +13,7 @@
                                     <ul class="dropdown-menu" style="font-family: 楷体; font-size: 20px;text-align:center;">
                                         <li><a href="/microblog/setting/setting"><i class="fa fa-key" aria-hidden="true"></i>修改密码</a></li>
                                         <li><a href="/microblog/setting/setting"><i class="fa fa-id-card" aria-hidden="true"></i>个人资料</a></li>
-                                        <li><a href="../../../static/common/wait.html"><i class="fa fa-street-view" aria-hidden="true"></i>查看论坛</a></li>
+                                        <li><a href="/microblog/index"><i class="fa fa-street-view" aria-hidden="true"></i>查看论坛</a></li>
                                         <li class="divider"></li>
                                         <li><a href="/microblog/login/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>退出</a></li>
                                     </ul>

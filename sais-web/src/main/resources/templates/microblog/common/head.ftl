@@ -2,7 +2,7 @@
 <div class="nav">
     <div class="width_1200">
         <ul>
-            <li><a href="index.php">论坛主页</a></li>
+            <li><a href="/microblog/">论坛主页</a></li>
             <li style="padding-left: 20px">
                 <form method="post" action="search.php" >
                     <input type="text" name="keyword" placeholder="三千世界来搜一搜吧...">
@@ -15,8 +15,8 @@
         </ul>
         <ol>
             <li>
-                <a href="setting.php">
-                    用户名
+                <a href="/microblog/setting/index">
+                    ${Session["user"].nickname}
                 </a>
             </li>
             <li class="li_message">&nbsp;
@@ -27,8 +27,8 @@
             </li>
             <li class="li_set">&nbsp;
                 <dl class="menu">
-                    <dd><a href="setting.php">个人中心</a></dd>
-                    <dd><a href="logout.php">退出</a></dd>
+                    <dd><a href="/microblog/setting/index">个人中心</a></dd>
+                    <dd><a href="/microblog/login/logout">退出</a></dd>
                 </dl>
             </li>
         </ol>

@@ -64,7 +64,7 @@
                                             <td> ${vo.loginip}</td>
                                             <td> ${vo.logintime}</td>
                                             <td> ${vo.addtime}</td>
-                                            <td> <#if vo.comment == "1">否<#else>是</#if></td>
+                                            <td> <#if vo.comment == 1>否<#else>是</#if></td>
                                             <td>
                                                 <a href="/admin/user_list/edit?id=${vo.id}">编辑</a>
                                                 <a class="confirm" href="/admin/user_list/delete?id=${vo.id}">删除</a>

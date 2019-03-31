@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.PostMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.Post">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="addtime" jdbcType="DATE" property="addtime" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="user_id" jdbcType="INTEGER" property="user_id" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="post_type" jdbcType="INTEGER" property="post_type" />
+        <result column="parent_user_id" jdbcType="INTEGER" property="parent_user_id" />
+        <result column="pictures" jdbcType="VARCHAR" property="pictures" />
+        <result column="forward_num" jdbcType="INTEGER" property="forward_num" />
+        <result column="comment_num" jdbcType="INTEGER" property="comment_num" />
+        <result column="praise_num" jdbcType="INTEGER" property="praise_num" />
+    </resultMap>
+
+    <select id="selectParentUserId" resultType="INTEGER">
+        select parent_user_id from sais_post where id = #{id} limit 1
+    </select>
+
+    <select id="getLastInsertId" resultType="INTEGER">
+        select last_insert_id() from sais_post limit 1
+    </select>
+
+    <insert id="insertBlog" >
+        insert into sais_post (account, content,addtime,user_id,pid,post_type,parent_user_id,pictures)
+        values (#{account},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id},#{pictures})
+    </insert>
+
+    <update id="postBlog" >
+        update sais_user set posts_num = posts_num + 1 where id = #{user_id}
+    </update>
+
+    <update id="commentBlog" >
+        update sais_post set comment_num = comment_num + 1 where id = #{pid}
+    </update>
+
+    <update id="forwardBlog" >
+        update sais_user set posts_num=posts_num+1 where id=#{user_id};
+        update sais_post set forward_num = forward_num+1 where id = #{pid}
+    </update>
+
+    <select id="selectAllBlog" resultType="com.sais.saisentity.Post">
+        select * from sais_post where post_type!=1 order by addtime desc
+    </select>
+
+    <update id="praiseAdd" >
+        update sais_post set praise_num = praise_num + 1 where id = #{post_id}
+    </update>
+
+    <select id="selectCommentInfo" resultType="com.sais.saisentity.Post">
+        select * from sais_post where post_type=1 and pid= #{pid} order by addtime desc limit 5
+    </select>
+</mapper>
