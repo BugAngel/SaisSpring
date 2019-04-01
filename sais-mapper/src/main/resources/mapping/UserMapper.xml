@@ -76,7 +76,7 @@
     </insert>
 
     <update id="updateSetting" >
-        update sais_user set sex = #{sex}, qq=#{qq} , email=#{email}, posts_num=#{posts_num}, follows_num=#{follows_num},
+        update sais_user set nickname = #{nickname} ,sex = #{sex}, qq=#{qq} , email=#{email}, posts_num=#{posts_num}, follows_num=#{follows_num},
                              fans_num=#{fans_num}, phone=#{phone}, gpa=#{gpa}, sat=#{sat}, ielts=#{ielts}, toefl=#{toefl}
         where account = #{account}
     </update>
@@ -94,10 +94,34 @@
     </select>
 
     <select id="selectAvatarFromId" resultType="string">
-        select avatar from sais_user where id = #{user_id} limit 1
+        select avatar from sais_user where id = #{id} limit 1
     </select>
 
     <select id="selectNicknameFromId" resultType="string">
-        select nickname from sais_user where id = #{user_id} limit 1
+        select nickname from sais_user where id = #{id} limit 1
     </select>
+
+    <update id="updatePostNum" >
+        update sais_user set posts_num = posts_num + 1 where id = #{id}
+    </update>
+
+    <select id="getLastInsertId" resultType="INTEGER">
+        select last_insert_id() from sais_post limit 1
+    </select>
+
+    <update id="addFollowsNum" >
+        update sais_user set follows_num = follows_num + 1 where id = #{id}
+    </update>
+
+    <update id="addFansNum" >
+        update sais_user set fans_num = fans_num + 1 where id = #{id}
+    </update>
+
+    <update id="subtractFollowsNum" >
+        update sais_user set follows_num = follows_num - 1 where id = #{id}
+    </update>
+
+    <update id="subtractFansNum" >
+        update sais_user set fans_num = fans_num - 1 where id = #{id}
+    </update>
 </mapper>

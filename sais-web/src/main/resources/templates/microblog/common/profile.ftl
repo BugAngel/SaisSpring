@@ -1,7 +1,9 @@
 <div class="profile">
     <!--    新增右侧个人部分-->
     <div class="my_info">
-        <img class="my_info_head" height="90px" width="90px" src="/upload/microblog/images/head_image/${Session["user"].avatar}">
+        <a href="/microblog/home/index">
+            <img class="my_info_head" height="90px" width="90px" src="/upload/microblog/images/head_image/${Session["user"].avatar}">
+        </a>
         <h4>${Session["user"].nickname}</h4>
         <div class="my_info_list">
             <ul>

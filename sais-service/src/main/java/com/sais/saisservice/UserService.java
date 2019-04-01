@@ -79,12 +79,35 @@ public class UserService {
 
     public int selectIdFromAccount(String account){ return  userMapper.selectIdFromAccount(account);}
 
-    public String selectAvatarFromId(int user_id){
-        return userMapper.selectAvatarFromId(user_id);
+    public String selectAvatarFromId(int id){
+        return userMapper.selectAvatarFromId(id);
     }
 
-    public String selectNicknameFromId(int user_id){
-        return userMapper.selectNicknameFromId(user_id);
+    public String selectNicknameFromId(int id){
+        return userMapper.selectNicknameFromId(id);
     }
 
+    public int updatePostNum(int id){
+        return userMapper.updatePostNum(id);
+    }
+
+    public int getLastInsertId(){
+        return userMapper.getLastInsertId();
+    }
+
+    public int addFollowsNum(int id){
+        return userMapper.addFollowsNum(id);
+    }
+
+    public int addFansNum(int id){
+        return userMapper.addFansNum(id);
+    }
+
+    public int subtractFollowsNum(int id){
+        return userMapper.subtractFollowsNum(id);
+    }
+
+    public int subtractFansNum(int id){
+        return userMapper.subtractFansNum(id);
+    }
 }

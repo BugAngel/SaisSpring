@@ -8,5 +8,9 @@ public class IndexBlog{
     private String avatar="";
     private String nickname="";
     private int collect=0;
-//    private int
+    private Post parent=null;
+    private String parent_content="";
+    private int forward_count=0;
+    private int comment_count=0;
+    private int praise_count=0;
 }

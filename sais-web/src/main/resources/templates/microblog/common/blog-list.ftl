@@ -2,7 +2,7 @@
 <div class="weibo_list">
     <div class="weibo_list_top">
         <div class="weibo_list_head">
-            <a href="#">
+            <a href="/microblog/friend/index?friend_id=${vo.post.user_id}">
                 <img class="avatar"   src="/upload/microblog/images/head_image/${vo.avatar}"  />
             </a>
         </div>
@@ -12,55 +12,29 @@
             <li><span>${vo.post.addtime}</span></li>
             <li>
                 <p>
-                    ${vo.post.content}
-                    <#--<?php-->
-                        <#--if($v['post_type'] == 2){-->
-                            <#--echo $v['content'].'//'.$v['sub']['content'];-->
-                        <#--}else{-->
-                            <#--echo ubbReplace($v['content']);-->
-                        <#--}-->
-                        <#--?>-->
+                    <#if vo.post.post_type==2>
+                        ${vo.post.content}//${vo.parent_content}
+                    <#else >
+                        ${vo.post.content}
+                    </#if>
                 </p>
             </li>
-            <!--微博图片开始-->
-            <#--<?php  if($v['pictures']){ ?>-->
-            <#--<li>-->
-                <#--<div class="highslide-gallery">-->
-                    <#--<?php foreach($v['pictures'] as $pic){ ?>-->
-                    <#--<a href="<?php echo $pic; ?>" class="highslide" onclick="return hs.expand(this)">-->
-                        <#--<img src="<?php echo $pic; ?>"  title="点击放大" />-->
-                    <#--</a>-->
-                    <#--<?php } ?>-->
-            <#--</li>-->
-            <#--<?php } ?>-->
-            <!--微博图片结束-->
         </ul>
     </div>
 
-    <#--<?php if($v['post_type'] == 2 ){ ?>-->
-    <#--<div class="weibo_list_top" style="background: #F2F2F5">-->
-        <#--<ul>-->
-            <#--<li><b><?php echo $v['sub']['parent']['username'] ?></b></li>-->
-            <#--<li><span><?php echo tranTime($v['sub']['parent']['addtime']) ?></span></li>-->
-            <#--<li>-->
-                <#--<p>-->
-                    <#--<?php echo ubbReplace($v['sub']['parent']['content']) ?>-->
-                <#--</p>-->
-            <#--</li>-->
-            <#--<!--转发微博图片开始&ndash;&gt;-->
-            <#--<?php  if($v['sub']['parent']['pictures']){ ?>-->
-            <#--<li>-->
-                <#--<div class="highslide-gallery">-->
-                    <#--<?php foreach($v['sub']['parent']['pictures'] as $pic){ ?>-->
-                    <#--<a href="<?php echo $pic; ?>" class="highslide" onclick="return hs.expand(this)">-->
-                        <#--<img src="<?php echo $pic; ?>"  title="点击放大" />-->
-                    <#--</a>-->
-                    <#--<?php } ?>-->
-            <#--</li>-->
-            <#--<?php } ?>-->
-        <#--</ul>-->
-    <#--</div>-->
-    <#--<?php } ?>-->
+    <#if vo.post.post_type==2>
+    <div class="weibo_list_top" style="background: #F2F2F5">
+        <ul>
+            <li><b>${vo.nickname}</b></li>
+            <li><span>${vo.parent.addtime}</span></li>
+            <li>
+                <p>
+                    ${vo.parent.content}
+                </p>
+            </li>
+        </ul>
+    </div>
+    </#if>
 
     <div class="weibo_list_bottom" style="overflow: auto" value=${vo.post.id} >
         <!--收藏-->
@@ -85,7 +59,6 @@
         </a>
     </div>
     <div class="weibo_comment">
-        <!-- 微博回复框开始 -->
         <div class="send-weibo">
             <div class="ui form" >
                 <div class="field">
@@ -104,7 +77,6 @@
                 </div>
             </div>
         </div>
-        <!-- 微博回复框结束-->
 
         <!--评论显示数据开始-->
         <div class="comment_list"></div>

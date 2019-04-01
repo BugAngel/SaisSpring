@@ -15,4 +15,8 @@
     <insert id="insertPraise">
         insert into sais_praise (user_id, post_id) values (#{user_id},#{post_id})
     </insert>
+
+    <select id="getUserPraiseNum" resultType="INTEGER">
+        select count(*) from sais_praise where post_id =  #{post_id} limit 1
+    </select>
 </mapper>

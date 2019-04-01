@@ -21,4 +21,8 @@ public class PraiseService {
     public int insertPraise(int user_id,int post_id){
         return praiseMapper.insertPraise(user_id,post_id);
     }
+
+    public int getUserPraiseNum(int post_id){
+        return praiseMapper.getUserPraiseNum(post_id);
+    }
 }

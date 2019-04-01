@@ -20,4 +20,8 @@
     <update id="updateCollect">
         update sais_collect set status= #{status} where user_id=#{user_id} and post_id=#{post_id}
     </update>
+
+    <select id="selectCollectStatus" resultType="INTEGER">
+        select status from sais_collect where user_id=#{user_id} and post_id=#{post_id}
+    </select>
 </mapper>

@@ -2,30 +2,33 @@ package com.sais.saisweb.microblog;
 
 import com.sais.saisentity.IndexBlog;
 import com.sais.saisentity.Post;
+import com.sais.saisentity.User;
 import com.sais.saisservice.PostService;
 import com.sais.saisservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
-@RequestMapping({"/microblog","/microblog/index"})
-public class MicroBlogIndexController {
+@RequestMapping({"/microblog/home"})
+public class HomeController {
     private UserService userService;
     private PostService postService;
 
     @Autowired
-    public MicroBlogIndexController(UserService userService,PostService postService){
+    public HomeController(UserService userService,PostService postService){
         this.userService=userService;
         this.postService=postService;
     }
 
     @RequestMapping({"/","/index"})
-    public String index(Map<String,Object> result){
-        ArrayList<Post> posts=postService.selectAllBlog();
+    public String index(HttpServletRequest request,Map<String, Object> result){
+        User user=(User) request.getSession().getAttribute("user");
+        ArrayList<Post> posts=postService.selectUserBlog(user.getId());
         ArrayList<IndexBlog> datalists=new ArrayList<>();
         for(Post post : posts){
             IndexBlog indexBlog=new IndexBlog();
@@ -59,6 +62,6 @@ public class MicroBlogIndexController {
             datalists.add(indexBlog);
         }
         result.put("datalists",datalists);
-        return "microblog/index/index";
+        return "microblog/home/index";
     }
 }

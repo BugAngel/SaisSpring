@@ -25,4 +25,8 @@ public class CollectService {
     public int updateCollect(int user_id,int post_id,int status){
         return collectMapper.updateCollect(user_id, post_id, status);
     }
+
+    public Integer selectCollectStatus(int user_id,int post_id){
+        return collectMapper.selectCollectStatus(user_id, post_id);
+    }
 }

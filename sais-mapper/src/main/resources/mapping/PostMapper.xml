@@ -30,17 +30,12 @@
         values (#{account},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id},#{pictures})
     </insert>
 
-    <update id="postBlog" >
-        update sais_user set posts_num = posts_num + 1 where id = #{user_id}
-    </update>
-
     <update id="commentBlog" >
         update sais_post set comment_num = comment_num + 1 where id = #{pid}
     </update>
 
     <update id="forwardBlog" >
-        update sais_user set posts_num=posts_num+1 where id=#{user_id};
-        update sais_post set forward_num = forward_num+1 where id = #{pid}
+        update sais_post set forward_num = forward_num + 1 where id = #{pid}
     </update>
 
     <select id="selectAllBlog" resultType="com.sais.saisentity.Post">
@@ -53,5 +48,41 @@
 
     <select id="selectCommentInfo" resultType="com.sais.saisentity.Post">
         select * from sais_post where post_type=1 and pid= #{pid} order by addtime desc limit 5
+    </select>
+
+    <select id="selectForwardInfo" resultType="com.sais.saisentity.Post">
+        select * from sais_post where post_type=2 and pid= #{pid} order by addtime desc limit 2
+    </select>
+
+    <select id="selectForward" resultType="com.sais.saisentity.Post">
+        select * from sais_post where post_type=2 and pid= #{pid} order by addtime desc
+    </select>
+
+    <select id="getTotalForwardNum" resultType="INTEGER">
+        select count(*) from sais_post where post_type=2 and pid= #{pid} limit 1
+    </select>
+
+    <select id="selectPostFromId" resultType="com.sais.saisentity.Post">
+        select * from sais_post where id=#{id} limit 1
+    </select>
+
+    <select id="getTotalBlogAndForwardNum" resultType="INTEGER">
+        select count(*) from sais_post where post_type!=1 and user_id= #{user_id} limit 1
+    </select>
+
+    <select id="selectBlogAndForward" resultType="com.sais.saisentity.Post">
+        select * from sais_post where post_type!=1 and user_id= #{user_id}
+    </select>
+
+    <select id="getUserForwardNum" resultType="INTEGER">
+        select count(*) from sais_post where post_type = 2 and pid = #{pid} limit 1
+    </select>
+
+    <select id="getUserCommentNum" resultType="INTEGER">
+        select count(*) from sais_post where post_type = 1 and pid = #{pid} limit 1
+    </select>
+
+    <select id="selectUserBlog" resultType="com.sais.saisentity.Post">
+        select * from sais_post where user_id= #{user_id}
     </select>
 </mapper>

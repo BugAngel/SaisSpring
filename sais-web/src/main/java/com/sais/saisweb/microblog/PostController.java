@@ -68,7 +68,7 @@ public class PostController {
         int post_id=postService.getLastInsertId();
         switch (type){
             case 0:
-                postService.postBlog(user.getId());
+                userService.updatePostNum(user.getId());
                 user.setPosts_num(user.getPosts_num()+1);
                 session.setAttribute("user",user);
             break;
@@ -76,7 +76,8 @@ public class PostController {
                 postService.commentBlog(pid);
                 break;
             case 2:
-                postService.forwardBlog(user.getId(),pid);
+                userService.updatePostNum(user.getId());
+                postService.forwardBlog(pid);
                 break;
         }
         String reg="/@([^@\\s]+)/";

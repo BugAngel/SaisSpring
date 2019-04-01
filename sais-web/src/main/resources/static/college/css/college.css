@@ -1,0 +1,48 @@
+.yuanxiao-table{ margin-top: 20px; border-top: solid 1px #e5e5e5;}
+.yuanxiao-table tr td{ border-bottom: solid 1px #e5e5e5; padding:8px 0 28px 0;}
+.yuanxiao-table tr td .school-img { display: block; margin-top: 20px;}
+.yuanxiao-table tr td .school-img i{ display: block; width:213px ; height: 54px; border: solid 1px #f1f1f1; float: left; background: #fff;}
+.yuanxiao-table tr td .school-img i img{ margin: 4px auto; display: block;}
+.yuanxiao-table tr td .school-img .txt{ float: left; margin-left: 10px;}
+.yuanxiao-table tr td .school-img .txt b{ font-size: 16px; color: #333; display: block; margin-top: 4px;}
+.yuanxiao-table tr td .school-img .txt span{ font-family: 'Arial'; margin-top: 12px; display: block;}
+.yuanxiao-table tr td span{ display: block; color: #666; margin-top: 20px;}
+.yuanxiao-table tr td span em{ color: #333;}
+.yuanxiao-table tr td:first-child .school-img{ margin-left: 10px;}
+span.region{ position: relative; cursor: pointer;}
+span.region img{ position: absolute; width: 200px; height: 270px; top: -275px; right: 6px; display: none;}
+span.region:hover img{ display: block;}
+.yuanxiao-table tr:hover td{ background: #f2f9ff}
+.yuanxiao-table tr td.no span{ display: none;}
+
+.schools-banner{ width: 1200px; height: 400px; margin:42px auto 0; position: relative;}
+.school-ab{ position: absolute; width:362px ; height: 380px; background: rgba(255,255,255,0.9); left: 40px;}
+.school-ab i{ display: block; width:100px ; height:100px ; background: #fff; border: solid 1px #e5e5e5; margin:20px auto 0;}
+.school-ab i img{ display: block; margin:8px auto;}
+.school-ab b{ display: block; font-size: 22px; color: #333; margin: 30px 0 0 40px;}
+.school-ab span{ display: block; font-size: 14px; font-family: 'Arial'; margin: 5px 0 0 40px;}
+.school-ab .list{ margin-top: 12px; margin-left: 40px;}
+.school-ab .list em{ display: block; margin-top: 22px; float: left; font-size: 14px; color: #333; width: 154px;}
+.school-con{ margin-top: 40px;}
+.school-con .school-l{ width: 1200px;}
+.school-tab{}
+.school-tab li{ width: 600px; height: 60px; text-align: center; line-height: 60px; float: left; background: #f9f9f9; font-size: 22px; color: #333; cursor: pointer;}
+.school-tab li.cur{ background: #252885; color: #fff;}
+.school-tab-con{ margin-top: 45px; display: none;}
+.school-gk{ margin-left: 24px; border-left: solid 1px #ff8c14; position: relative; padding-left: 65px;  padding-bottom: 45px;}
+.school-gk b{ display: inline-block; width:50px ; height: 50px; background: #ff8c14; border-radius: 50%; position: absolute; left: -24px;}
+.school-gk b img{ display: block; margin:11px auto;}
+.school-gk h3{ font-size: 18px; color: #ff8c14; line-height: 50px; margin-bottom: 20px;}
+.school-gk .nr > p{ line-height: 32px; font-size: 16px;}
+.school-gk .nr{ border-bottom: solid 1px #e5e5e5; padding-bottom: 48px;font-size: 16px;line-height: 30px;}
+.school-gk .nr > em{ display: block; width: 375px; float: left; font-size: 16px; line-height: 32px;}
+.school-gk .nr > em i{ font-style: normal; color: #999;}
+.school-gk .nr > img{ margin-top: 30px;}
+.school-gk:last-child{ border-left: none;}
+.school-gk:last-child .nr{ border-bottom: none;}
+
+.two-column ul { width: 1200px; }
+.two-column li { width: 550px; float: left; display: block; }
+
+.four-column ul { width: 1200px; }
+.four-column li { width: 250px; float: left; display: block; }

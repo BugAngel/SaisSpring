@@ -24,6 +24,12 @@ public interface UserMapper {
     int changePassword(String account,String password);
     int updateAvatar(User user);
     int selectIdFromAccount(String account);
-    String selectAvatarFromId(int user_id);
-    String selectNicknameFromId(int user_id);
+    String selectAvatarFromId(int id);
+    String selectNicknameFromId(int id);
+    int updatePostNum(int id);
+    int getLastInsertId();
+    int addFollowsNum(int id);
+    int addFansNum(int id);
+    int subtractFollowsNum(int id);
+    int subtractFansNum(int id);
 }

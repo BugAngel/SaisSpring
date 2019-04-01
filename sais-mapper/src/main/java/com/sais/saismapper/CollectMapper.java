@@ -10,4 +10,6 @@ public interface CollectMapper {
     int insertCollect(int user_id,int post_id);
 
     int updateCollect(int user_id,int post_id,int status);
+
+    Integer selectCollectStatus(int user_id,int post_id);
 }

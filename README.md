@@ -64,6 +64,9 @@ SpringBoot实现留学信息管理与分析系统
 [SpringBoot多Module打包无法找到类](https://segmentfault.com/q/1010000011151233)  
 [SpringBoot 多模块项目实践（附打包方法）](https://www.jianshu.com/p/59ceea4f029d)  
 [SpringBoot session超时的问题](https://www.cnblogs.com/ergexy/p/9684933.html)  
+[Freemarker 运算符](https://blog.csdn.net/u014656173/article/details/76577338)  
+[freemarker获取url中的参数](https://blog.csdn.net/shijiedemuguang/article/details/61935312)  
+[mybatis中能不能一个配置信息里面写多条sql语句](https://blog.csdn.net/Abracadabra__/article/details/84381545)  
 
 
 
