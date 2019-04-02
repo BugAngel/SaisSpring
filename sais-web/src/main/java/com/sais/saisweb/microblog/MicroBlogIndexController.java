@@ -2,13 +2,16 @@ package com.sais.saisweb.microblog;
 
 import com.sais.saisentity.IndexBlog;
 import com.sais.saisentity.Post;
+import com.sais.saisservice.BlogService;
 import com.sais.saisservice.PostService;
 import com.sais.saisservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -16,11 +19,13 @@ import java.util.Map;
 public class MicroBlogIndexController {
     private UserService userService;
     private PostService postService;
+    private BlogService blogService;
 
     @Autowired
-    public MicroBlogIndexController(UserService userService,PostService postService){
+    public MicroBlogIndexController(UserService userService, PostService postService, BlogService blogService){
         this.userService=userService;
         this.postService=postService;
+        this.blogService = blogService;
     }
 
     @RequestMapping({"/","/index"})
@@ -31,34 +36,27 @@ public class MicroBlogIndexController {
             IndexBlog indexBlog=new IndexBlog();
             indexBlog.setPost(post);
             indexBlog.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
-            indexBlog.setNickname(userService.selectNicknameFromId(post.getUser_id()));
-
-            if(post.getPost_type()==2){
-                Post parent=postService.selectPostFromId(post.getPid());
-                StringBuilder content=new StringBuilder();
-                boolean flag=true;
-                while (flag){
-                    if(parent!=null && parent.getPost_type()==2){
-                        content.append("@");
-                        content.append(userService.selectNicknameFromId(parent.getUser_id()));
-                        content.append(":");
-                        content.append(parent.getContent());
-                        content.append("//");
-                        content.append(content);
-                        //查找父级
-                        parent=postService.selectPostFromId(parent.getPid());
-                    }else {
-                        indexBlog.setParent(parent);
-                        flag=false;
-                    }
-                }
-                if(content.length()>2){
-                    indexBlog.setParent_content(content.delete(content.length()-2,content.length()-1).toString());
-                }
-            }
+            indexBlog= blogService.getForward(indexBlog,post);
             datalists.add(indexBlog);
         }
         result.put("datalists",datalists);
         return "microblog/index/index";
+    }
+
+    @RequestMapping({"/search"})
+    public String search(@RequestParam(value = "keyword",required = false,defaultValue = "")String keyword,Map<String,Object> result){
+        List<Post> posts = postService.selectLikes(keyword);
+        ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
+        for(Post post:posts){
+            IndexBlog indexBlog=new IndexBlog();
+            indexBlog.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
+            indexBlog=blogService.setCollect(indexBlog,post.getUser_id(),post.getId());
+            indexBlog= blogService.setAllCount(indexBlog,post.getId());
+            indexBlog=blogService.getForward(indexBlog,post);
+            indexBlogs.add(indexBlog);
+        }
+        result.put("keyword",keyword);
+        result.put("datalists",indexBlogs);
+        return  "microblog/index/search";
     }
 }

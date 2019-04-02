@@ -33,11 +33,11 @@
 <div class="main">
     <div class="left setting-head">
         <div class="ui top attached tabular menu new_menu">
-            <a class="item active" data-tab="first">头像设置</a>
-            <a class="item" data-tab="second">资料设置</a>
+            <a class="item" data-tab="first">头像设置</a>
+            <a class="item active" data-tab="second">资料设置</a>
             <a class="item" data-tab="third">更改密码</a>
         </div>
-        <div class="ui bottom attached tab segment segment_new active" data-tab="first">
+        <div class="ui bottom attached tab segment segment_new" data-tab="first">
             <div style="height: 400px">
                 <form class="ui form" id="avatar"  name="avatar" method="post" enctype="multipart/form-data"  action="/microblog/setting/imageUpload">
                     <div class="field">
@@ -55,7 +55,7 @@
                 </form>
             </div>
         </div>
-        <div class="ui bottom attached tab segment segment_new" data-tab="second">
+        <div class="ui bottom attached tab segment segment_new active" data-tab="second">
             <form class="ui form" id="setting"  name="setting" method="post" action="/microblog/setting/saveSetting">
                 <div class="field">
                     <label>昵称</label>

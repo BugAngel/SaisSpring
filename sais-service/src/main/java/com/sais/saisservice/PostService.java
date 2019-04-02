@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PostService {
@@ -25,8 +26,8 @@ public class PostService {
         return postMapper.getLastInsertId();
     }
 
-    public int insertBlog(String account, String content, Timestamp addtime, int user_id, int pid, int post_type, int parent_user_id, String pictures){
-        return postMapper.insertBlog(account, content, addtime, user_id, pid, post_type, parent_user_id, pictures);
+    public int insertBlog(String nickname, String content, Timestamp addtime, int user_id, int pid, int post_type, int parent_user_id, String pictures){
+        return postMapper.insertBlog(nickname, content, addtime, user_id, pid, post_type, parent_user_id, pictures);
     }
 
     public int commentBlog(int pid){
@@ -83,5 +84,17 @@ public class PostService {
 
     public ArrayList<Post> selectUserBlog(int id){
         return postMapper.selectUserBlog(id);
+    }
+
+    public List<Post> selectMyMessage(int parent_user_id){
+        return postMapper.selectMyMessage(parent_user_id);
+    }
+
+    public List<Post> selectLikes(String keyword){
+        return postMapper.selectLikes(keyword);
+    }
+
+    public List<Post> selectPostFromPid(int pid){
+        return postMapper.selectPostFromPid(pid);
     }
 }

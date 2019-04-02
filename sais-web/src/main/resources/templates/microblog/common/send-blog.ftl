@@ -16,3 +16,6 @@
         </div>
     </div>
 </div>
+<div class="little_banner">
+    <img src="../../../static/microblog/images/index_banner.jpg" alt="index_banner.jpg">
+</div>

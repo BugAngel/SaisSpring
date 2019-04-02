@@ -7,21 +7,21 @@
         <h4>${Session["user"].nickname}</h4>
         <div class="my_info_list">
             <ul>
-                <a href="friends.php">
+                <a href="/microblog/home/friend">
                     <li><span>${Session["user"].follows_num}</span></li>
                     <li>关注</li>
                 </a>
             </ul>
             <ol></ol>
             <ul>
-                <a href="friends.php">
+                <a href="/microblog/home/fan">
                     <li><span>${Session["user"].fans_num}</span></li>
                     <li>粉丝</li>
                 </a>
             </ul>
             <ol></ol>
             <ul>
-                <a href="friends.php">
+                <a href="/microblog/home/index">
                     <li><span>${Session["user"].posts_num}</span></li>
                     <li>微博</li>
                 </a>

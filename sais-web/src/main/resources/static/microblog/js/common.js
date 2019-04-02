@@ -26,7 +26,7 @@ $(function(){
                             str += '<div class="weibo_list weibo-comment" >';
                             str += '<div class="weibo_list_top">';
                             str += '<div class="weibo_list_head">';
-                            str += '<a><img class ="avatar" src="/upload/microblog/images/head_image/' + this.avatar + '"></a></div>';
+                            str += '<a><img class ="avatar" src="/upload/microblog/images/head_image/' + this.avatar + '" alt="头像"></a></div>';
                             str += '<ul class="weibo-comment-ul">';
                             str += '<li><b>' + this.nickname + '</b></li>';
                             str += '<li><span>' + this.post.addtime + '</span></li>';
@@ -35,12 +35,12 @@ $(function(){
                             comment_list.append(str);
                         });
 
-                        if(total > 5){
+                        // if(total > 5){
                             var str_total = '';
                             str_total += '<div class="weibo_comment_more">';
-                            str_total += '<a href="comment.php?post_id='+pid+'">后面还有'+ (total-5) +'条评论，点击查看全部></a></div>';
+                            str_total += '<a href="/microblog/comment/index?post_id='+pid+'">共有'+ total +'条评论，点击查看全部></a></div>';
                             comment_list.append(str_total);
-                        }
+                        // }
                         layer.close(index);//layer关闭加载样式
                     }
                 });
@@ -50,10 +50,6 @@ $(function(){
             comment_list.children().remove();
         }
         $(this).parent().siblings(".weibo_comment").slideToggle(200);
-    });
-
-    /** 展开与关闭 **/
-    $(".weibo_list_bottom .weibo_list_bottom_message").click(function(){
         $(this).toggleClass("weibo_list_bottom_message_cur");
     });
 
@@ -162,13 +158,6 @@ $(function(){
         });
     });
 
-    /** 搜索 **/
-    $(function(){
-        $('.search').click(function(){
-            $('form').submit();
-        });
-    });
-
     /**关注/取消关注**/
     $('#follow,#cancel-follow').click(function(){
         var friend_id = $(this).attr('value');
@@ -249,7 +238,7 @@ function chooseFriend(username){
 function checkWordsNumber(content){
     var len = content.length;
     var message = '';
-    if (len == 0) {
+    if (len === 0) {
         message = "发布内容不能为空！";
     }
     if (len > 140) {
@@ -277,9 +266,9 @@ function saysub(pid,type) {
     }
 
     /**微博类型**/
-    if(type == 'comment'){
+    if(type === 'comment'){
         type = 1;
-    }else if(type == 'forward'){
+    }else if(type === 'forward'){
         type = 2;
     }else{
         type = 0;
@@ -316,26 +305,17 @@ function checkname(name) {
     if (!reg.test(name)) {
         return false;
     }
-    if (name.length < 5 || name.length > 14) {
-        return false;
-    }
-    return true;
+    return !(name.length < 5 || name.length > 14);
 }
 
 //检查密码格式
 function checkpassword(password) {
-    if (password.length < 6 || password.length > 16) {
-        return false;
-    }
-    return true;
+    return !(password.length < 6 || password.length > 16);
 }
 
 //检查密码是否一样
 function checkSame(password,repassword) {
-    if(password!==repassword){
-        return false;
-    }
-    return true;
+    return password===repassword;
 }
 
 //检查电话格式

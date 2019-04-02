@@ -47,7 +47,6 @@
                                         <th>图片</th>
                                         <th>ID</th>
                                         <th>校英文名</th>
-                                        <th>学校简介</th>
                                         <th style="width: 100px">操作</th>
                                     </tr>
                                     </thead>
@@ -61,7 +60,6 @@
                                         <td><img height="80px" width="160px" src="/upload/college/images/${vo.picture}" /></td>
                                         <td> ${vo.id}</td>
                                         <td> ${vo.college_e_name}</td>
-                                        <td> ${vo.introduce}</td>
                                         <td>
                                             <a href="/admin/slide_list/edit?id=${vo.id}">编辑</a>
                                             <a class="confirm" href="/admin/slide_list/delete?id=${vo.id}">删除</a>

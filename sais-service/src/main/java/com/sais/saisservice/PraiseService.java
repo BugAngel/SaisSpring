@@ -5,6 +5,8 @@ import com.sais.saismapper.PraiseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PraiseService {
     private PraiseMapper praiseMapper;
@@ -24,5 +26,13 @@ public class PraiseService {
 
     public int getUserPraiseNum(int post_id){
         return praiseMapper.getUserPraiseNum(post_id);
+    }
+
+    public int getMyPraiseNum(int user_id){
+        return praiseMapper.getMyPraiseNum(user_id);
+    }
+
+    public List<Praise> getMyPraises(int user_id){
+        return praiseMapper.getMyPraises(user_id);
     }
 }

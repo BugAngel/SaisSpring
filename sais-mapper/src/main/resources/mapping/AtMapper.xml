@@ -11,4 +11,8 @@
     <insert id="insertAt">
         insert into sais_at (user_id, post_id) values (#{user_id},#{post_id})
     </insert>
+
+    <select id="getMyAts" resultType="com.sais.saisentity.At">
+        select * from sais_at where user_id = #{user_id} order by id desc
+    </select>
 </mapper>

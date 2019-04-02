@@ -6,7 +6,7 @@
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="content" jdbcType="VARCHAR" property="content" />
         <result column="addtime" jdbcType="DATE" property="addtime" />
-        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
         <result column="user_id" jdbcType="INTEGER" property="user_id" />
         <result column="pid" jdbcType="INTEGER" property="pid" />
         <result column="post_type" jdbcType="INTEGER" property="post_type" />
@@ -26,8 +26,8 @@
     </select>
 
     <insert id="insertBlog" >
-        insert into sais_post (account, content,addtime,user_id,pid,post_type,parent_user_id,pictures)
-        values (#{account},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id},#{pictures})
+        insert into sais_post (nickname, content,addtime,user_id,pid,post_type,parent_user_id,pictures)
+        values (#{nickname},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id},#{pictures})
     </insert>
 
     <update id="commentBlog" >
@@ -71,7 +71,7 @@
     </select>
 
     <select id="selectBlogAndForward" resultType="com.sais.saisentity.Post">
-        select * from sais_post where post_type!=1 and user_id= #{user_id}
+        select * from sais_post where post_type!=1 and user_id= #{user_id} ORDER BY addtime DESC
     </select>
 
     <select id="getUserForwardNum" resultType="INTEGER">
@@ -83,6 +83,18 @@
     </select>
 
     <select id="selectUserBlog" resultType="com.sais.saisentity.Post">
-        select * from sais_post where user_id= #{user_id}
+        select * from sais_post where user_id= #{user_id} ORDER BY addtime DESC
+    </select>
+
+    <select id="selectMyMessage" resultType="com.sais.saisentity.Post">
+        SELECT * FROM sais_post where parent_user_id = #{parent_user_id} ORDER BY addtime DESC
+    </select>
+
+    <select id="selectLikes" resultType="com.sais.saisentity.Post">
+        SELECT * FROM sais_post where content like CONCAT('%',#{keyword},'%') ORDER BY addtime DESC
+    </select>
+
+    <select id="selectPostFromPid" resultType="com.sais.saisentity.Post">
+        select * from sais_post where pid=#{pid} ORDER BY addtime DESC
     </select>
 </mapper>

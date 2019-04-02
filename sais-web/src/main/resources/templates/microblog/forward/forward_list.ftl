@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <ul>
-                    <li><b>${vo.nickname}</b></li>
+                    <li><b>${vo.post.nickname}</b></li>
                     <li><span>${vo.post.addtime}</span></li>
                     <li><p>${vo.post.content}</p></li>
                 </ul>

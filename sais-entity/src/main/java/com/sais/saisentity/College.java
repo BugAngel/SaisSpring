@@ -25,11 +25,11 @@ public class College {
     private String ea="";
     private String rd="";
     private String transfer="";
-    private String undergraduate_gpa="";
-    private String sat="";
-    private String undergraduate_language="";
-    private String graduate_gpa="";
-    private String graduate_language="";
+    private float undergraduate_gpa=6;
+    private int sat=9999;
+    private float undergraduate_language=100;
+    private float graduate_gpa=6;
+    private float graduate_language=100;
     private Object undergraduate_document=null;
     private Object graduate_document=null;
     private Object profession=null;

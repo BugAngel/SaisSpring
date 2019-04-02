@@ -19,4 +19,12 @@
     <select id="getUserPraiseNum" resultType="INTEGER">
         select count(*) from sais_praise where post_id =  #{post_id} limit 1
     </select>
+
+    <select id="getMyPraiseNum" resultType="INTEGER">
+        select count(*) from sais_praise where user_id = #{user_id} limit 1
+    </select>
+
+    <select id="getMyPraises" resultType="com.sais.saisentity.Praise">
+        select * from sais_praise where user_id = #{user_id} order by id desc
+    </select>
 </mapper>

@@ -25,4 +25,20 @@
     <select id="selectFriendStatus" resultType="INTEGER">
         select status from sais_friends where user_id=#{user_id} and friend_id=#{friend_id}
     </select>
+
+    <select id="selectMyFriends" resultType="com.sais.saisentity.Friend">
+        select * from sais_friends where user_id=#{user_id} and status = 1 order by addtime desc
+    </select>
+
+    <select id="selectMyFriendsNum" resultType="INTEGER">
+        select count(*) from sais_friends where user_id=#{user_id} and status = 1
+    </select>
+
+    <select id="selectMyFans" resultType="com.sais.saisentity.Friend">
+        select * from sais_friends where friend_id = #{friend_id} and status = 1 order by addtime desc
+    </select>
+
+    <select id="selectMyFansNum" resultType="INTEGER">
+        select count(*) from sais_friends where friend_id=#{friend_id} and status = 1
+    </select>
 </mapper>

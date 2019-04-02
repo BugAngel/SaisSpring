@@ -5,6 +5,9 @@ import com.sais.saismapper.CollectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CollectService {
     private CollectMapper collectMapper;
@@ -28,5 +31,9 @@ public class CollectService {
 
     public Integer selectCollectStatus(int user_id,int post_id){
         return collectMapper.selectCollectStatus(user_id, post_id);
+    }
+
+    public List<Collect> selectMyCollects(int user_id){
+        return collectMapper.selectMyCollects(user_id);
     }
 }

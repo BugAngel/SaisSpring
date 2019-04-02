@@ -9,7 +9,7 @@ public class Post {
     private Integer id;
     String content="";
     Timestamp addtime;
-    String account;
+    String nickname;
     int user_id;
     int pid=0;
     int post_type=0;

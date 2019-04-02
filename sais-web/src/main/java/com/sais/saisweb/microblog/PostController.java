@@ -4,10 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.sais.saisentity.*;
 import com.sais.saisservice.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +15,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Controller
+@RestController
 @RequestMapping({"/microblog/post"})
 public class PostController {
     private PostService postService;
@@ -34,7 +33,6 @@ public class PostController {
         this.collectService=collectService;
     }
 
-    @ResponseBody
     @RequestMapping("/post")
     public String post(HttpServletRequest request,
                        @RequestParam(value = "pid",required = false,defaultValue = "0") String pidString,
@@ -61,7 +59,7 @@ public class PostController {
         }
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());
-        int insert=postService.insertBlog(user.getAccount(), content, timestamp, user.getId(), pid, type, parent_user_id, pictures);
+        int insert=postService.insertBlog(user.getNickname(), content, timestamp, user.getId(), pid, type, parent_user_id, pictures);
         if(insert<=0){
             return JSON.toJSONString(0);
         }
@@ -98,7 +96,6 @@ public class PostController {
         return JSON.toJSONString(1);
     }
 
-    @ResponseBody
     @RequestMapping("/praise")
     public String praise(HttpServletRequest request,@RequestParam(value = "post_id") String post_id_string){
         HttpSession session=request.getSession();
@@ -115,7 +112,6 @@ public class PostController {
         }
     }
 
-    @ResponseBody
     @RequestMapping("/collect")
     public String collect(HttpServletRequest request,@RequestParam(value = "post_id") String post_id_string){
         HttpSession session=request.getSession();
@@ -137,7 +133,6 @@ public class PostController {
         }
     }
 
-    @ResponseBody
     @RequestMapping("/getComment")
     public String getComment(HttpServletRequest request,@RequestParam(value = "pid") String pid_string){
         int pid=Integer.parseInt(pid_string);
@@ -148,7 +143,6 @@ public class PostController {
             indexBlog.setPost(post);
             User user=userService.selectId(post.getUser_id());
             indexBlog.setAvatar(user.getAvatar());
-            indexBlog.setNickname(user.getNickname());
             indexBlogs.add(indexBlog);
         }
         return JSON.toJSONString(indexBlogs);

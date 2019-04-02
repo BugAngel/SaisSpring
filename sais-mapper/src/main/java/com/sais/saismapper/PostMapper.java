@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface PostMapper {
@@ -12,7 +13,7 @@ public interface PostMapper {
 
     int getLastInsertId();
 
-    int insertBlog(String account,String content, Timestamp addtime,int user_id,int pid,int post_type,int parent_user_id,String pictures);
+    int insertBlog(String nickname,String content, Timestamp addtime,int user_id,int pid,int post_type,int parent_user_id,String pictures);
 
     int commentBlog(int pid);
 
@@ -41,4 +42,10 @@ public interface PostMapper {
     int getUserCommentNum(int pid);
 
     ArrayList<Post> selectUserBlog(int id);
+
+    List<Post> selectMyMessage(int parent_user_id);
+
+    List<Post> selectLikes(String keyword);
+
+    List<Post> selectPostFromPid(int pid);
 }

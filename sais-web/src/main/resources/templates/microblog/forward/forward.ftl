@@ -34,12 +34,12 @@
                     <div class="weibo_list">
                         <div class="weibo_list_top">
                             <div class="weibo_list_head">
-                                <a href="<?php echo "homepage.php?friend_id=".$v['user_id'] ?>">
+                                <a href="/microblog/friend/friend_home?friend_id=${vo.post.user_id}">
                                     <img class="avatar"   src="/upload/microblog/images/head_image/${vo.avatar}"  />
                                 </a>
                             </div>
                             <ul>
-                                <li><b>${vo.nickname}</b></li>
+                                <li><b>${vo.post.nickname}</b></li>
                                 <li><span>${vo.post.addtime}</span></li>
                                 <li><p>${vo.post.content}</p></li>
                             </ul>

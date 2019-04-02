@@ -49,7 +49,7 @@
     </insert>
 
     <select id="selectQs" resultType="com.sais.saisentity.Slide">
-        select a.college_name,b.picture,b.introduce FROM sais_college AS a,sais_slide AS b WHERE a.college_e_name=b.college_e_name and a.qs_rank = #{qs} limit 1
+        select a.college_name,b.picture,a.introduce FROM sais_college AS a,sais_slide AS b WHERE a.college_e_name=b.college_e_name and a.qs_rank = #{qs} limit 1
     </select>
 
     <select id="selectSlideFromCollegeEName" resultType="string">

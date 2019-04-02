@@ -22,17 +22,15 @@ import java.util.Map;
 public class FriendController {
     private PostService postService;
     private UserService userService;
-    private CollectService collectService;
-    private PraiseService praiseService;
     private FriendService friendService;
+    private BlogService blogService;
 
     @Autowired
-    public FriendController(PostService postService, UserService userService,CollectService collectService,PraiseService praiseService,FriendService friendService){
+    public FriendController(PostService postService, UserService userService, FriendService friendService, BlogService blogService){
         this.postService=postService;
         this.userService=userService;
-        this.collectService=collectService;
-        this.praiseService=praiseService;
         this.friendService=friendService;
+        this.blogService = blogService;
     }
 
     @RequestMapping({"/friend_home","/","/index"})
@@ -53,42 +51,9 @@ public class FriendController {
             IndexBlog indexBlog=new IndexBlog();
             indexBlog.setPost(post);
             indexBlog.setAvatar(friend_info.getAvatar());//头像赋值
-            //收藏
-            Integer integer=collectService.selectCollectStatus(friend_id,post.getId());
-            if(integer==null){
-                indexBlog.setCollect(0);
-            }else {
-                indexBlog.setCollect(integer);
-            }
-
-            indexBlog.setForward_count(postService.getUserForwardNum(post.getId()));
-            indexBlog.setComment_count(postService.getUserCommentNum(post.getId()));
-            indexBlog.setPraise_count(praiseService.getUserPraiseNum(post.getId()));
-
-            if(post.getPost_type()==2){
-                Post parent=postService.selectPostFromId(post.getPid());
-                StringBuilder content=new StringBuilder();
-                boolean flag=true;
-                while (flag){
-                    if(parent!=null && parent.getPost_type()==2){
-                        content.append("@");
-                        content.append(userService.selectNicknameFromId(parent.getUser_id()));
-                        content.append(":");
-                        content.append(parent.getContent());
-                        content.append("//");
-                        content.append(content);
-                        //查找父级
-                        parent=postService.selectPostFromId(parent.getPid());
-                    }else {
-                        indexBlog.setParent(parent);
-                        flag=false;
-                    }
-                }
-                if(content.length()>2){
-                    indexBlog.setParent_content(content.delete(content.length()-2,content.length()-1).toString());
-                }
-            }
-
+            indexBlog=blogService.setCollect(indexBlog,friend_id,post.getId());
+            indexBlog=blogService.setAllCount(indexBlog,post.getId());
+            indexBlog=blogService.getForward(indexBlog,post);
             indexBlogs.add(indexBlog);
         }
         result.put("datalists",indexBlogs);
@@ -132,4 +97,5 @@ public class FriendController {
             }
         }
     }
+
 }

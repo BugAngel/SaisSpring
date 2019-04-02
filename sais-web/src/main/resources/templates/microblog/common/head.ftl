@@ -2,27 +2,28 @@
 <div class="nav">
     <div class="width_1200">
         <ul>
+            <li><a href="/college/">系统主页</a></li>
             <li><a href="/microblog/">论坛主页</a></li>
             <li style="padding-left: 20px">
-                <form method="post" action="search.php" >
+                <form method="post" action="/microblog/index/search" >
                     <input type="text" name="keyword" placeholder="三千世界来搜一搜吧...">
-                    <button type="button" class="search"></button>
+                    <button type="submit" class="search"></button>
                 </form>
             </li>
-            <li style="padding-left: 10px"><a href="myCollect.php">我的收藏</a></li>
-            <li><a href="myPraise.php">我的赞</a></li>
+            <li style="padding-left: 10px"><a href="/microblog/home/collect">我的收藏</a></li>
+            <li><a href="/microblog/home/praise">我的赞</a></li>
 
         </ul>
         <ol>
             <li>
-                <a href="/microblog/setting/index">
+                <a href="/microblog/home/index">
                     ${Session["user"].nickname}
                 </a>
             </li>
             <li class="li_message">&nbsp;
                 <dl class="menu">
-                    <dd><a href="atMe.php">@我的</a></dd>
-                    <dd><a href="message.php">我的消息</a></dd>
+                    <dd><a href="/microblog/home/atme">@我的</a></dd>
+                    <dd><a href="/microblog/home/message">我的消息</a></dd>
                 </dl>
             </li>
             <li class="li_set">&nbsp;

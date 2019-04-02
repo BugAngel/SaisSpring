@@ -6,9 +6,6 @@
                 <a href="/college/college/index?country=all&qsLow=1&qsHigh=10&majorLow=1&majorHigh=10" class="list-group-item" style="height: 67px">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>学霸院校
                 </a>
-                <a href="../../../static/common/wait.html" class="list-group-item"  style="height: 67px">
-                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>方案评估
-                </a>
                 <a href="/college/college/index?country=US&qsLow=1&qsHigh=140&majorLow=1&majorHigh=140" class="list-group-item" style="height: 67px">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>美国院校
                 </a>
@@ -18,7 +15,10 @@
                 <a href="/college/guide/xingqian" class="list-group-item" style="height: 67px">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>出国指南
                 </a>
-                <a href="../../../static/common/wait.html" class="list-group-item" style="height: 67px">
+                <a href="/microblog/setting/setting" class="list-group-item"  style="height: 67px">
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>个人资料
+                </a>
+                <a href="/microblog/index/index" class="list-group-item" style="height: 67px">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>论坛交流
                 </a>
             </div>

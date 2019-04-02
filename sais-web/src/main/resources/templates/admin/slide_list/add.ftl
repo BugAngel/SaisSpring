@@ -15,12 +15,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">学校简介：</label>
-                        <div class="col-sm-3">
-                            <textarea name="introduce" id="introduce" class="form-control" rows="7" ></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-3 control-label">图片：</label>
                         <div class="col-sm-9">
                             <input type="file" class="file" id="picture" name="picture"/>
@@ -41,15 +35,10 @@
 <script>
     $('form').submit(function(){
         var college_e_name = $('#college_e_name').val();
-        var introduce = $('#introduce').val();
         var img = $('#picture').val();
 
         if(college_e_name === ''){
             layer.msg('请填写校英文名',{time:1000});
-            return false;
-        }
-        if(introduce === ''){
-            layer.msg('请填写学校简介',{time:1000});
             return false;
         }
         if(img === null){

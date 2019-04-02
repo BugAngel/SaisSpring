@@ -6,7 +6,6 @@ import lombok.Data;
 public class IndexBlog{
     private Post post=null;
     private String avatar="";
-    private String nickname="";
     private int collect=0;
     private Post parent=null;
     private String parent_content="";

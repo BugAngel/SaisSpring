@@ -27,10 +27,10 @@ public class CollegeController {
 
     @RequestMapping(value = {"/index"})
     public String index(@RequestParam(value = "country",required = false,defaultValue = "all")String country,
-                        @RequestParam(value = "qsLow",required = false,defaultValue = "1")String qsLow,
-                        @RequestParam(value = "qsHigh",required = false,defaultValue = "150")String qsHigh,
-                        @RequestParam(value = "majorLow",required = false,defaultValue = "1")String localLow,
-                        @RequestParam(value = "majorHigh",required = false,defaultValue = "150")String localHigh,
+                        @RequestParam(value = "qsLow",required = false,defaultValue = "1")int qsLow,
+                        @RequestParam(value = "qsHigh",required = false,defaultValue = "150")int qsHigh,
+                        @RequestParam(value = "majorLow",required = false,defaultValue = "1")int localLow,
+                        @RequestParam(value = "majorHigh",required = false,defaultValue = "150")int localHigh,
                         Map<String,Object> result){
         ArrayList<College> datalists;
         if(country.equals("all")){

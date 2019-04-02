@@ -24,4 +24,8 @@
     <select id="selectCollectStatus" resultType="INTEGER">
         select status from sais_collect where user_id=#{user_id} and post_id=#{post_id}
     </select>
+
+    <select id="selectMyCollects" resultType="com.sais.saisentity.Collect">
+        select * from sais_collect where status = 1 and  user_id = #{user_id} order by id desc
+    </select>
 </mapper>

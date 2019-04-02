@@ -1,6 +1,7 @@
 package com.sais;
 
 import com.sais.saisweb.admin.AdminLoginInterceptor;
+import com.sais.saisweb.microblog.MicroBlogInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,12 +16,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Value("${file.UploadPath}")
     private String UploadPath;
 
-
     private AdminLoginInterceptor adminLoginInterceptor;
+    private MicroBlogInterceptor microBlogInterceptor;
 
     @Autowired
-    public WebMvcConfig(AdminLoginInterceptor adminLoginInterceptor){
+    public WebMvcConfig(AdminLoginInterceptor adminLoginInterceptor,MicroBlogInterceptor microBlogInterceptor){
         this.adminLoginInterceptor=adminLoginInterceptor;
+        this.microBlogInterceptor=microBlogInterceptor;
     }
     /**
      * 添加静态资源文件，外部可以直接访问地址
@@ -35,7 +37,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/admin/login/**");
+        registry.addInterceptor(adminLoginInterceptor)
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login/**");
+
+        registry.addInterceptor(microBlogInterceptor)
+                .addPathPatterns("/microblog/**")
+                .addPathPatterns("/college/college/detail/**")
+                .excludePathPatterns("/microblog/login/**")
+                .excludePathPatterns("/microblog/register/**");
     }
 }
 

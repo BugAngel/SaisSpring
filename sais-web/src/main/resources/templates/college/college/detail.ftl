@@ -1,7 +1,7 @@
 <@override name="body">
 <link rel="stylesheet" type="text/css" href="../../../static/college/css/college.css">
 <style>
-    .schools-banner{ width: 960px; height: 400px; background: url(/upload/${banner})  center center no-repeat; background-size: 100% 100%; margin:0px auto 0; position: relative;}
+    .schools-banner{ width: 960px; height: 400px; background: url(/upload/college/images/${banner})  center center no-repeat; background-size: 100% 100%; margin:0px auto 0; position: relative;}
 </style>
 
 <div class="container" style="margin-bottom: 20px">

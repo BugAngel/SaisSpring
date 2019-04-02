@@ -24,11 +24,11 @@ public class CollegeService {
         return collegeMapper.selectDetail(id);
     }
 
-    public ArrayList<College> selectRankInfo(String qsLow,String qsHigh,String localLow,String localHigh){
+    public ArrayList<College> selectRankInfo(int qsLow,int qsHigh,int localLow,int localHigh){
         return collegeMapper.selectRankInfo(qsLow,qsHigh,localLow,localHigh);
     }
 
-    public ArrayList<College> selectCountryAndRankInfo(String country,String qsLow,String qsHigh,String localLow,String localHigh){
+    public ArrayList<College> selectCountryAndRankInfo(String country,int qsLow,int qsHigh,int localLow,int localHigh){
         return collegeMapper.selectCountryAndRankInfo(country,qsLow,qsHigh,localLow,localHigh);
     }
 
