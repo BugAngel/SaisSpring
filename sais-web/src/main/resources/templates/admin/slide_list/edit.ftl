@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">图片：</label>
                         <div class="col-sm-9">
-                            <img width="160px" height="60px" src="/upload/college/images/${slide.picture}" alt="图片">
+                            <input type="file" class="file" id="picture" name="picture"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -34,15 +34,10 @@
 
 <script>
     $('form').submit(function(){
-        var college_e_name = $('#college_e_name').val();
-        var introduce = $('#introduce').val();
+        var img = $('#picture').val();
 
-        if(college_e_name === ''){
-            layer.msg('请填写校英文名',{time:1000});
-            return false;
-        }
-        if(introduce === ''){
-            layer.msg('请填写学校简介',{time:1000});
+        if(img === null){
+            layer.msg('请上传图片文件',{time:1000});
             return false;
         }
     });

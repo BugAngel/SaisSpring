@@ -6,15 +6,10 @@
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="college_e_name" jdbcType="VARCHAR" property="college_e_name" />
         <result column="picture" jdbcType="VARCHAR" property="picture" />
-        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
     </resultMap>
 
     <select id="selectId" resultType="com.sais.saisentity.Slide">
         select * from sais_slide where id = #{id}
-    </select>
-
-    <select id="selectAll" resultType="com.sais.saisentity.Slide">
-        select * from sais_slide
     </select>
 
     <delete id="delete">
@@ -33,23 +28,21 @@
     </select>
 
     <select id="listsLike" resultType="com.sais.saisentity.Slide">
-        select *  from sais_slide where introduce like CONCAT('%',#{keyword},'%') order by id asc
+        select id,college_e_name,picture from sais_slide where college_e_name like CONCAT('%',#{keyword},'%') order by id asc
     </select>
 
-    <update id="updateIntrocuduce" >
-        update sais_slide set introduce = #{introduce} where college_e_name = #{college_e_name}
-    </update>
-
-    <update id="updateSlide" >
-        update sais_slide set introduce = #{introduce} where college_e_name = #{college_e_name}
+    <update id="updatePicture" >
+        update sais_slide set picture = #{picture} where college_e_name = #{college_e_name}
     </update>
 
     <insert id="addSlide" >
-        insert into sais_slide (college_e_name, introduce, picture) values (#{college_e_name},#{introduce},#{picture})
+        insert into sais_slide (college_e_name, picture) values (#{college_e_name},#{picture})
     </insert>
 
     <select id="selectQs" resultType="com.sais.saisentity.Slide">
-        select a.college_name,b.picture,a.introduce FROM sais_college AS a,sais_slide AS b WHERE a.college_e_name=b.college_e_name and a.qs_rank = #{qs} limit 1
+        select college.college_name,college.introduce,slide.picture
+        FROM sais_college AS college,sais_slide AS slide
+        WHERE slide.college_e_name=college.college_e_name and college.qs_rank = #{qs} limit 1
     </select>
 
     <select id="selectSlideFromCollegeEName" resultType="string">

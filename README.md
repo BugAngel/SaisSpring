@@ -67,7 +67,5 @@ SpringBoot实现留学信息管理与分析系统
 [Freemarker 运算符](https://blog.csdn.net/u014656173/article/details/76577338)  
 [freemarker获取url中的参数](https://blog.csdn.net/shijiedemuguang/article/details/61935312)  
 [mybatis中能不能一个配置信息里面写多条sql语句](https://blog.csdn.net/Abracadabra__/article/details/84381545)  
-
-
-
+[如何使用分页插件](https://pagehelper.github.io/docs/howtouse/)  
 

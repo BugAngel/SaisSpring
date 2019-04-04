@@ -10,7 +10,6 @@ logging:
         saismapper : debug
 
 pagehelper:
-  helper-dialect: mysql
-  reasonable: true
+  helper-dialect: mysql   #配置数据库
+  reasonable: true  #pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。
   support-methods-arguments: true
-  params: count=countSql

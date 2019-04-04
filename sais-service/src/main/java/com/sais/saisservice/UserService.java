@@ -1,5 +1,7 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.User;
 import com.sais.saismapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -37,8 +40,10 @@ public class UserService {
         return userMapper.lists();
     }
 
-    public ArrayList<User> listsLike(String keyword){
-        return userMapper.listsLike(keyword);
+    public PageInfo listsLike(String keyword, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> list =  userMapper.listsLike(keyword);
+        return new PageInfo<>(list);
     }
 
     public int updateComment(String account,String comment){

@@ -74,7 +74,7 @@
                                     </tbody>
                                 </table>
                                 <!--分页开始-->
-                                <#--{$datalists|raw}-->
+                                <#include "../common/page.ftl">
                                 <!--分页结束-->
                             </div>
                         </form>

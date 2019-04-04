@@ -10,11 +10,9 @@ public class Slide {
     private String picture;
     private String college_name;
 
-    public Slide(){
-        college_e_name="";
-        introduce="";
-        picture="";
-        college_name="";
+    public Slide(String college_e_name,String picture){
+        this.college_e_name=college_e_name;
+        this.picture=picture;
     }
 
     public Slide(String college_e_name,String introduce,String picture){

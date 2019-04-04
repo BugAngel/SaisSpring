@@ -1,11 +1,20 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.Slide;
 import com.sais.saismapper.SlideMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class SlideService {
@@ -16,15 +25,11 @@ public class SlideService {
         this.slideMapper=slideMapper;
     }
 
-    public Slide selectId(String id){
+    public Slide selectId(int id){
         return slideMapper.selectId(id);
     }
 
-    public ArrayList<Slide> selectAll(){
-        return slideMapper.selectAll();
-    }
-
-    public int delete(String id){
+    public int delete(int id){
         return slideMapper.delete(id);
     }
 
@@ -32,28 +37,31 @@ public class SlideService {
         return slideMapper.delAll(list);
     }
 
-    public ArrayList<Slide> lists(){
+    public ArrayList<Slide> lists(Integer pageNum,Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
         return slideMapper.lists();
     }
 
-    public ArrayList<Slide> listsLike(String keyword){
-        return slideMapper.listsLike(keyword);
+    public PageInfo listsLike(String keyword, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Slide> list =  slideMapper.listsLike(keyword);
+        return new PageInfo<>(list);
     }
 
-    public int updateIntrocuduce(String college_e_name,String introduce){
-        return slideMapper.updateIntrocuduce(college_e_name,introduce);
-    }
-
-    public int updateSlide(Slide slide){
-        return slideMapper.updateSlide(slide);
+    public int updatePicture(String college_e_name,String picture){
+        return slideMapper.updatePicture(college_e_name, picture);
     }
 
     public int addSlide(Slide slide){
         return slideMapper.addSlide(slide);
     }
 
-    public Slide selectQs(int qs){
-        return slideMapper.selectQs(qs);
+    public Slide selectSlide(int qs){
+        Slide slide=slideMapper.selectQs(qs);
+        if(slide.getIntroduce().length()>110){
+            slide.setIntroduce(slide.getIntroduce().substring(0,110)+"...");
+        }
+        return slide;
     }
 
     public String selectSlideFromCollegeEName(String college_e_name){

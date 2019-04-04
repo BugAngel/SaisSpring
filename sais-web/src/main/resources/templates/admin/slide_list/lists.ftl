@@ -24,7 +24,7 @@
                             <form method="post" action="/admin/slide_list/lists">
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        <input type="text" placeholder="请输入学校信息" class="input-sm form-control"
+                                        <input type="text" placeholder="请输入学校英文信息" class="input-sm form-control"
                                                name="keyword" value="${keyword}">
                                         <span class="input-group-btn">
                                                 <button type="submit" class="btn btn-sm btn-primary"> 搜索</button>
@@ -69,7 +69,7 @@
                                     </tbody>
                                 </table>
                                 <!--分页开始-->
-                                <#--{$datalists|raw}-->
+                                    <#include "../common/page.ftl">
                                 <!--分页结束-->
                             </div>
                         </form>

@@ -22,6 +22,7 @@
         <result column="sat" jdbcType="INTEGER" property="sat" />
         <result column="ielts" jdbcType="FLOAT" property="ielts" />
         <result column="toefl" jdbcType="FLOAT" property="toefl" />
+        <result column="recommend" jdbcType="VARCHAR" property="recommend" />
     </resultMap>
 
     <select id="selectId" resultType="com.sais.saisentity.User">

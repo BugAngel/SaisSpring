@@ -7,14 +7,13 @@ import java.util.ArrayList;
 
 @Repository
 public interface SlideMapper {
-    Slide selectId(String id);
+    Slide selectId(int id);
     ArrayList<Slide> selectAll();
-    int delete(String id);
+    int delete(int id);
     int delAll(ArrayList<String> list);
     ArrayList<Slide> lists();
     ArrayList<Slide> listsLike(String keyword);
-    int updateIntrocuduce(String college_e_name,String introduce);
-    int updateSlide(Slide slide);
+    int updatePicture(String college_e_name,String picture);
     int addSlide(Slide slide);
     Slide selectQs(int qs);
     String selectSlideFromCollegeEName(String college_e_name);

@@ -3,6 +3,7 @@ package com.sais.saisweb.college;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;
 import com.sais.saisentity.College;
+import com.sais.saisentity.User;
 import com.sais.saisservice.CollegeService;
 import com.sais.saisservice.SlideService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -48,9 +50,12 @@ public class CollegeController {
     }
 
     @RequestMapping(value = {"/detail"})
-    public String detail(@RequestParam(value = "id",required = false,defaultValue = "")int id,Map<String,Object> result){
+    public String detail(HttpServletRequest request,int id, Map<String,Object> result){
+        User user=(User)request.getSession().getAttribute("user");
         College college=collegeService.selectDetail(id);
         String banner=slideService.selectSlideFromCollegeEName(college.getCollege_e_name());
+
+        int rank=college.getQs_rank();
 
         college.setHot_major(Joiner.on('、').useForNull("").join(JSON.parseArray((String)college.getHot_major(),String.class)));
         college.setUndergraduate_document(JSON.parseArray((String)college.getUndergraduate_document(),String.class));

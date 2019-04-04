@@ -1,11 +1,14 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.Complaint;
 import com.sais.saismapper.ComplaintMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ComplaintService {
@@ -32,8 +35,10 @@ public class ComplaintService {
         return complaintMapper.lists();
     }
 
-    public ArrayList<Complaint> listsLike(String keyword){
-        return complaintMapper.listsLike(keyword);
+    public PageInfo listsLike(String keyword, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Complaint> list =  complaintMapper.listsLike(keyword);
+        return new PageInfo<>(list);
     }
 
     public int insert(Complaint complaint){

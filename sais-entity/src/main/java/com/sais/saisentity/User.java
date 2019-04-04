@@ -27,6 +27,5 @@ public class User implements Serializable {
     private int sat=0;
     private float ielts=0;
     private float toefl=0;
-
-
+    private String recommend;
 }

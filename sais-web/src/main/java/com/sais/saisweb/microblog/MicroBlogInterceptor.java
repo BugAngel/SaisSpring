@@ -1,5 +1,6 @@
 package com.sais.saisweb.microblog;
 
+import com.sais.saisentity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -13,7 +14,8 @@ public class MicroBlogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);
-        if(session.getAttribute("user")==null){
+        User user=(User)session.getAttribute("user");
+        if(user==null || user.getComment()==0){
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/microblog/login/login");
             return false;
         }else{
