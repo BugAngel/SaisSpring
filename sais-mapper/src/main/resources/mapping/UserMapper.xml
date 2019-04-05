@@ -73,7 +73,8 @@
     </update>
 
     <insert id="register" >
-        insert into sais_user (account, password,nickname,addtime) values (#{account},#{password},#{nickname},#{addtime})
+        insert into sais_user (account, password,nickname,addtime,recommend)
+        values (#{account},#{password},#{nickname},#{addtime},#{recommend})
     </insert>
 
     <update id="updateSetting" >
@@ -107,7 +108,7 @@
     </update>
 
     <select id="getLastInsertId" resultType="INTEGER">
-        select last_insert_id() from sais_post limit 1
+        select last_insert_id() from sais_user limit 1
     </select>
 
     <update id="addFollowsNum" >
@@ -124,5 +125,9 @@
 
     <update id="subtractFansNum" >
         update sais_user set fans_num = fans_num - 1 where id = #{id}
+    </update>
+
+    <update id="updateRecommend" >
+        update sais_user set recommend = #{recommend} where id = #{id}
     </update>
 </mapper>

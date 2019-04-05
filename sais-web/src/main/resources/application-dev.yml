@@ -9,5 +9,6 @@ file:
   UploadPath: E:/sais/upload/
   collegeImagesUploadPath: E:/sais/upload/college/images/  #文件上传目录（注意Linux和Windows上的目录结构不同）
   microblogImagesUploadPath: E:/sais/upload/microblog/images/
+  microblogHeadImagesPath: E:/sais/upload/microblog/images/head_image/
 #collegeImageUploadPath: E:/college/images/upload/  #windows
 #collegeImageUploadPath: /home/college/images/upload/  #linux

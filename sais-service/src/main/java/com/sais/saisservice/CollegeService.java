@@ -1,11 +1,14 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.College;
 import com.sais.saismapper.CollegeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CollegeService {
@@ -24,15 +27,21 @@ public class CollegeService {
         return collegeMapper.selectDetail(id);
     }
 
-    public ArrayList<College> selectRankInfo(int qsLow,int qsHigh,int localLow,int localHigh){
-        return collegeMapper.selectRankInfo(qsLow,qsHigh,localLow,localHigh);
+    public PageInfo selectRankInfo(int qsLow,int qsHigh,int localLow,int localHigh,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<College> list =  collegeMapper.selectRankInfo(qsLow,qsHigh,localLow,localHigh);
+        return new PageInfo<>(list);
     }
 
-    public ArrayList<College> selectCountryAndRankInfo(String country,int qsLow,int qsHigh,int localLow,int localHigh){
-        return collegeMapper.selectCountryAndRankInfo(country,qsLow,qsHigh,localLow,localHigh);
+    public PageInfo selectCountryAndRankInfo(String country,int qsLow,int qsHigh,int localLow,int localHigh,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<College> list =  collegeMapper.selectCountryAndRankInfo(country,qsLow,qsHigh,localLow,localHigh);
+        return new PageInfo<>(list);
     }
 
-    public ArrayList<College> selectLike(String like){
-        return collegeMapper.selectLike(like);
+    public PageInfo selectLike(String like,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<College> list =  collegeMapper.selectLike(like);
+        return new PageInfo<>(list);
     }
 }

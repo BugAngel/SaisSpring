@@ -33,7 +33,7 @@ public class SlideListController {
      */
     @RequestMapping(value = {"/index","/lists"})
     public String lists(@RequestParam(value = "keyword",defaultValue = "") String keyword,
-                        @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                        @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                         Map<String,Object> result){
         keyword = keyword.trim();
         PageInfo page = slideService.listsLike(keyword,pageNum,10);
@@ -152,9 +152,9 @@ public class SlideListController {
      */
     @ResponseBody
     @RequestMapping(value = {"/delAll"})
-    public String delAll(@RequestParam(value = "ids[]") ArrayList<String> ids){
+    public String delAll(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
         String message;
-        if(slideService.delAll(ids)>0){
+        if(slideService.delAll(ids)){
             message = "删除成功";
         }else {
             message = "删除失败";

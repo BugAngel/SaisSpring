@@ -18,8 +18,8 @@
                     </a>
                     </td>
                     <td width="150">
-                    <span>QS世界排名：${value.world_rank}</span>
-                    <span>${value.major_rank_name}：${value.major_rank}</span>
+                    <span>QS世界排名：${value.qs_rank}</span>
+                    <span>${value.local_rank_name}：${value.local_rank}</span>
                     </td>
                     <td width="150">
                     <span>录取率：<#if value.rate != 0> ${value.rate}  <#else> 暂无 </#if></span>
@@ -34,6 +34,7 @@
                     </tr>
                 </#list>
             </table>
+            <#include "../common/page.ftl">
         </div>
     </div>
 </div>

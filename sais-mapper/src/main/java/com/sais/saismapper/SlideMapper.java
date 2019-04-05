@@ -10,7 +10,7 @@ public interface SlideMapper {
     Slide selectId(int id);
     ArrayList<Slide> selectAll();
     int delete(int id);
-    int delAll(ArrayList<String> list);
+    int delAll(ArrayList<Integer> list);
     ArrayList<Slide> lists();
     ArrayList<Slide> listsLike(String keyword);
     int updatePicture(String college_e_name,String picture);

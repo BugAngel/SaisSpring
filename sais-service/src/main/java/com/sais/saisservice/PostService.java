@@ -1,5 +1,7 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.Post;
 import com.sais.saismapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,10 @@ public class PostService {
         return postMapper.forwardBlog(pid);
     }
 
-    public ArrayList<Post> selectAllBlog(){
-        return postMapper.selectAllBlog();
+    public PageInfo selectAllBlog(Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectAllBlog();
+        return new PageInfo<>(list);
     }
 
     public int praiseAdd(int post_id){

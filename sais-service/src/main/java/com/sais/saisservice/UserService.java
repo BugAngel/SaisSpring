@@ -1,23 +1,26 @@
 package com.sais.saisservice;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.User;
+import com.sais.saismapper.CollegeMapper;
 import com.sais.saismapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
     private UserMapper userMapper;
+    private CollegeMapper collegeMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper){
+    public UserService(UserMapper userMapper,CollegeMapper collegeMapper){
         this.userMapper=userMapper;
+        this.collegeMapper=collegeMapper;
     }
 
     public User selectId(int id){
@@ -114,5 +117,22 @@ public class UserService {
 
     public int subtractFansNum(int id){
         return userMapper.subtractFansNum(id);
+    }
+
+    public String initializeRecommend(){
+        Set<Integer> ranks=collegeMapper.selectQsRanks();
+        Map<String,Double> recommend=new HashMap<>();
+        for(Integer rank : ranks){
+            if(rank==1 || rank==2 || rank==3){
+                recommend.put(rank.toString(),33.3);
+            }else {
+                recommend.put(rank.toString(),0.0);
+            }
+        }
+        return JSON.toJSONString(recommend);
+    }
+
+    public Integer updateRecommend(User user){
+        return userMapper.updateRecommend(user);
     }
 }

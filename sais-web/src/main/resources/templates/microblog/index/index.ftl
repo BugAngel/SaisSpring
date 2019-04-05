@@ -4,6 +4,7 @@
             <#include "../common/send-blog.ftl">
             <h4 class="weibo_list_title">全部发帖</h4>
                 <#include "../common/blog-list.ftl">
+                <#include "../common/page.ftl">
         </div>
         <#include "../common/profile.ftl">
     </div>

@@ -5,6 +5,7 @@ import com.sais.saisentity.User;
 import com.sais.saisservice.UserService;
 import com.sais.saisweb.common.utils.CheckKaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/microblog/register")
 public class UserRegisterController {
     private UserService userService;
+    @Value("${file.microblogHeadImagesPath}")
+    private String microblogHeadImagesPath;
 
     @Autowired
     public UserRegisterController(UserService userService){
@@ -62,6 +67,8 @@ public class UserRegisterController {
             user.setPassword(password);
             user.setNickname(account);
             user.setAddtime(timestamp);
+            user.setAvatar("avatar.jpg");
+            user.setRecommend(userService.initializeRecommend());
             userService.register(user);
             res.put("status", 1);
             res.put("message", "注册成功!");

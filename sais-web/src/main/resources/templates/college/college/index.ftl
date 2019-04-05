@@ -81,6 +81,7 @@
                 </tr>
                 </#list>
             </table>
+            <#include "../common/page.ftl">
         </div>
     </div>
 </div>

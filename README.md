@@ -68,4 +68,6 @@ SpringBoot实现留学信息管理与分析系统
 [freemarker获取url中的参数](https://blog.csdn.net/shijiedemuguang/article/details/61935312)  
 [mybatis中能不能一个配置信息里面写多条sql语句](https://blog.csdn.net/Abracadabra__/article/details/84381545)  
 [如何使用分页插件](https://pagehelper.github.io/docs/howtouse/)  
+[FastJson对于JSON格式字符串、JSON对象及JavaBean之间的相互转换](https://www.cnblogs.com/cdf-opensource-007/p/7106018.html)  
+[对map集合进行排序](https://www.cnblogs.com/liujinhong/p/6113183.html)  
 

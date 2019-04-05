@@ -19,6 +19,8 @@ import java.util.List;
 @Service
 public class SlideService {
     private SlideMapper slideMapper;
+    @Value("${file.collegeImagesUploadPath}")
+    private String collegeImagesUploadPath;
 
     @Autowired
     public SlideService(SlideMapper slideMapper){
@@ -30,15 +32,26 @@ public class SlideService {
     }
 
     public int delete(int id){
-        return slideMapper.delete(id);
+        Slide slide=slideMapper.selectId(id);
+        File file = new File(collegeImagesUploadPath+slide.getPicture());
+        if (file.isFile() && file.exists()) {
+            if(file.delete()){
+                return slideMapper.delete(id);
+            }
+        }
+        return 0;
     }
 
-    public int delAll(ArrayList<String> list){
-        return slideMapper.delAll(list);
+    public boolean delAll(ArrayList<Integer> list){
+        for(Integer id : list){
+            if(delete(id)==0){
+                return false;
+            }
+        }
+        return true;
     }
 
-    public ArrayList<Slide> lists(Integer pageNum,Integer pageSize){
-        PageHelper.startPage(pageNum, pageSize);
+    public ArrayList<Slide> lists(){
         return slideMapper.lists();
     }
 

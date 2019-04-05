@@ -46,16 +46,16 @@ public class SettingController {
             user.setEmail(email);
             user.setPhone(phone);
             if(!gpa.equals("")){
-                user.setGpa(Float.parseFloat(gpa));
+                user.setGpa(Double.parseDouble(gpa));
             }
             if(!sat.equals("")){
                 user.setSat(Integer.parseInt(sat));
             }
             if(!ielts.equals("")){
-                user.setIelts(Float.parseFloat(ielts));
+                user.setIelts(Double.parseDouble(ielts));
             }
             if(!toefl.equals("")){
-                user.setToefl(Float.parseFloat(toefl));
+                user.setToefl(Double.parseDouble(toefl));
             }
         }catch (Exception e){
             return JSON.toJSONString("输入错误");

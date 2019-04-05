@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Set;
 
 @Repository
 public interface UserMapper {
@@ -32,4 +33,5 @@ public interface UserMapper {
     int addFansNum(int id);
     int subtractFollowsNum(int id);
     int subtractFansNum(int id);
+    Integer updateRecommend(User user);
 }

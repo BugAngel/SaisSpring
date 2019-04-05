@@ -162,6 +162,7 @@
             data: formData,
             success: function (message) {
                 layer.msg(message);
+                window.location.reload();
             }
         });
         return false;

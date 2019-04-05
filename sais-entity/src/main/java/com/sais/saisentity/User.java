@@ -23,9 +23,9 @@ public class User implements Serializable {
     private int follows_num=0;
     private int fans_num=0;
     private String phone="";
-    private float gpa=0;
+    private Double gpa=0.0;
     private int sat=0;
-    private float ielts=0;
-    private float toefl=0;
+    private Double ielts=0.0;
+    private Double toefl=0.0;
     private String recommend;
 }

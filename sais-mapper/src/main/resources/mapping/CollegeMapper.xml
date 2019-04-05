@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sais.saismapper.CollegeMapper">
+
+    <resultMap id="BaseResultMap" type="com.sais.saisentity.College">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="college_name" jdbcType="VARCHAR" property="college_name" />
+        <result column="college_e_name" jdbcType="VARCHAR" property="college_e_name" />
+        <result column="country" jdbcType="VARCHAR" property="country" />
+        <result column="area" jdbcType="VARCHAR" property="area" />
+        <result column="qs_rank" jdbcType="INTEGER" property="qs_rank" />
+        <result column="rate" jdbcType="DOUBLE" property="rate" />
+        <result column="local_rank_name" jdbcType="VARCHAR" property="local_rank_name" />
+        <result column="local_rank" jdbcType="INTEGER" property="local_rank" />
+        <result column="hot_major" jdbcType="VARCHAR" property="hot_major" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="sum" jdbcType="INTEGER" property="sum" />
+        <result column="undergraduate" jdbcType="INTEGER" property="undergraduate" />
+        <result column="graduate" jdbcType="INTEGER" property="graduate" />
+        <result column="student_staff_ratio" jdbcType="DOUBLE" property="student_staff_ratio" />
+        <result column="undergraduate_international_proportion" jdbcType="DOUBLE" property="undergraduate_international_proportion" />
+        <result column="graduate_international_proportion" jdbcType="DOUBLE" property="graduate_international_proportion" />
+        <result column="ea" jdbcType="VARCHAR" property="ea" />
+        <result column="rd" jdbcType="VARCHAR" property="rd" />
+        <result column="transfer" jdbcType="VARCHAR" property="transfer" />
+        <result column="undergraduate_gpa" jdbcType="DOUBLE" property="undergraduate_gpa" />
+        <result column="sat" jdbcType="INTEGER" property="sat" />
+        <result column="undergraduate_language" jdbcType="DOUBLE" property="undergraduate_language" />
+        <result column="graduate_gpa" jdbcType="DOUBLE" property="graduate_gpa" />
+        <result column="graduate_language" jdbcType="DOUBLE" property="graduate_language" />
+        <result column="undergraduate_document" jdbcType="VARCHAR" property="undergraduate_document" />
+        <result column="graduate_document" jdbcType="VARCHAR" property="graduate_document" />
+        <result column="profession" jdbcType="VARCHAR" property="profession" />
+        <result column="tuition_fee" jdbcType="VARCHAR" property="tuition_fee" />
+        <result column="living_fee" jdbcType="VARCHAR" property="living_fee" />
+    </resultMap>
+
+    <select id="selectAllInfo" resultType="com.sais.saisentity.College">
+        select id,college_name,college_e_name,country,area,qs_rank,rate,local_rank_name,local_rank,hot_major,icon from sais_college order by qs_rank asc
+    </select>
+
+    <select id="selectRankInfo" resultType="com.sais.saisentity.College">
+        select id,college_name,college_e_name,country,area,qs_rank,rate,local_rank_name,local_rank,hot_major,icon from sais_college where (qs_rank between #{qsLow} and #{qsHigh} ) and  (local_rank between #{localLow} and #{localHigh} ) order by qs_rank asc
+    </select>
+
+    <select id="selectCountryAndRankInfo" resultType="com.sais.saisentity.College">
+        select id,college_name,college_e_name,country,area,qs_rank,rate,local_rank_name,local_rank,hot_major,icon from sais_college where (country = #{country} ) and (qs_rank between #{qsLow} and #{qsHigh} ) and  (local_rank between #{localLow} and #{localHigh} ) order by qs_rank asc
+    </select>
+
+    <select id="selectDetail" resultType="com.sais.saisentity.College">
+        select * from sais_college where id=#{id} limit 1
+    </select>
+
+    <select id="selectLike" resultType="com.sais.saisentity.College">
+        select * from sais_college where college_name like CONCAT('%',#{like},'%') order by qs_rank asc
+    </select>
+
+     <select id="selectQsRanks" resultType="Integer">
+         select qs_rank from sais_college limit 1
+     </select>
+</mapper>

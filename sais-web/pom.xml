@@ -27,7 +27,6 @@
         <org.webjars.jquery>2.1.1</org.webjars.jquery>
         <org.webjars.npm.jquery.cookie>1.4.1</org.webjars.npm.jquery.cookie>
         <com.github.penggle.kaptcha>2.3.2</com.github.penggle.kaptcha>
-        <com.alibaba.fastjson>1.2.35</com.alibaba.fastjson>
         <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect>2.2.2</thymeleaf-layout-dialect>
         <rapid-framework>4.0.5</rapid-framework>
@@ -109,12 +108,6 @@
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${com.github.penggle.kaptcha}</version>
-        </dependency>
-        <!-- 引入json处理包 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${com.alibaba.fastjson}</version>
         </dependency>
         <!-- 引入highslide -->
         <dependency>
