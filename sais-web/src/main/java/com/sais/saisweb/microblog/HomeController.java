@@ -1,10 +1,13 @@
 package com.sais.saisweb.microblog;
 
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.*;
 import com.sais.saisservice.*;
+import com.sais.saisweb.common.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -34,9 +37,11 @@ public class HomeController {
     }
 
     @RequestMapping({"/","/index"})
-    public String index(HttpServletRequest request,Map<String, Object> result){
+    public String index(HttpServletRequest request, Map<String, Object> result,
+                        @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
         User user=(User) request.getSession().getAttribute("user");
-        ArrayList<Post> posts=postService.selectUserBlog(user.getId());
+        PageInfo page=postService.selectUserBlog(user.getId(),pageNum,5);
+        List<Post> posts=page.getList();
         ArrayList<IndexBlog> datalists=new ArrayList<>();
         for(Post post : posts){
             IndexBlog indexBlog=new IndexBlog();
@@ -45,8 +50,10 @@ public class HomeController {
             indexBlog=blogService.getForward(indexBlog,post);
             datalists.add(indexBlog);
         }
+        result.putAll(PageUtil.setPageInfo(page,result));
         result.put("datalists",datalists);
-        return "microblog/home/index";
+        result.put("url","/microblog/home/index");
+        return "/microblog/home/index";
     }
 
     @RequestMapping({"/friend"})
@@ -64,7 +71,7 @@ public class HomeController {
         }
         result.put("total",total);
         result.put("datalists",datalists);
-        return "microblog/home/friend";
+        return "/microblog/home/friend";
     }
 
     @RequestMapping({"/fan"})
@@ -82,7 +89,7 @@ public class HomeController {
         }
         result.put("total",total);
         result.put("datalists",datalists);
-        return "microblog/home/fan";
+        return "/microblog/home/fan";
     }
 
     @RequestMapping({"/collect"})
@@ -105,7 +112,7 @@ public class HomeController {
 
         }
         result.put("datalists",indexBlogs);
-        return "microblog/home/collect";
+        return "/microblog/home/collect";
     }
 
     @RequestMapping({"/praise"})
@@ -128,7 +135,7 @@ public class HomeController {
             }
         }
         result.put("datalists",indexBlogs);
-        return "microblog/home/praise";
+        return "/microblog/home/praise";
     }
 
     @RequestMapping({"/atme"})
@@ -149,15 +156,17 @@ public class HomeController {
             }
         }
         result.put("datalists",indexBlogs);
-        return "microblog/home/atme";
+        return "/microblog/home/atme";
     }
 
     @RequestMapping({"/message"})
-    public String message(HttpServletRequest request,Map<String,Object> result) {
+    public String message(HttpServletRequest request,Map<String,Object> result,
+                          @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum) {
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
-        List<Post> message=postService.selectMyMessage(user_id);
+        PageInfo page=postService.selectMyMessage(user_id,pageNum,5);
+        List<Post> message=page.getList();
         for(Post post:message){
             IndexBlog indexBlog=new IndexBlog();
             indexBlog.setParent(post);
@@ -166,6 +175,8 @@ public class HomeController {
             indexBlogs.add(indexBlog);
         }
         result.put("datalists",indexBlogs);
-        return "microblog/home/message";
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/home/message");
+        return "/microblog/home/message";
     }
 }

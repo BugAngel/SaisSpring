@@ -24,9 +24,7 @@
         还没有粉丝哦！
     </#if>
             <!--分页开始-->
-            <div class="showPage">
-                <div class="cl"></div>
-            </div>
+    <#include "../common/page.ftl">
             <!--分页结束-->
         </div>
     </div>

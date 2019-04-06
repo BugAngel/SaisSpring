@@ -7,7 +7,7 @@
                     <div class="weibo_list">
                         <div class="weibo_list_top">
                             <div class="weibo_list_head">
-                                <a href="/microblog/friend/friend_home?friend_id=${vo.post.user_id}">
+                                <a href="/microblog/friend/home?friend_id=${vo.post.user_id}">
                                     <img class="avatar"   src="/upload/microblog/images/head_image/${vo.avatar}"  />
                                 </a>
                             </div>
@@ -89,6 +89,7 @@
                     <p>还没有收藏哦！</p>
                 </div>
             </#if>
+            <#include "../common/page.ftl">
     </div>
     <#include "../common/profile.ftl">
 </div>

@@ -16,7 +16,7 @@ $(function(){
                 /**ajax获取评论5条以内数据数据**/
                 myajax=$.ajax({
                     type: "post",
-                    url: "/microblog/post/getComment",
+                    url: "/microblog/comment/getComment",
                     dataType: "json",
                     data: {pid: pid},
                     success: function (jsdata) {

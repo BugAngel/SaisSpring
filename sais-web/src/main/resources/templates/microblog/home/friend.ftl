@@ -19,9 +19,7 @@
             <#else >
                 还没有关注哦！
             </#if>
-            <div class="showPage" style="float:right">
-                <div class="cl"></div>
-            </div>
+    <#include "../common/page.ftl">
         </div>
     </div>
     <#include "../common/profile.ftl">

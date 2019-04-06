@@ -50,11 +50,11 @@ public class PostService {
         return postMapper.praiseAdd(post_id);
     }
 
-    public ArrayList<Post> selectCommentInfo(int pid){
+    public List<Post> selectCommentInfo(int pid){
         return postMapper.selectCommentInfo(pid);
     }
 
-    public ArrayList<Post> selectForwardInfo(int pid){
+    public List<Post> selectForwardInfo(int pid){
         return postMapper.selectForwardInfo(pid);
     }
 
@@ -66,16 +66,20 @@ public class PostService {
         return postMapper.selectPostFromId(id);
     }
 
-    public ArrayList<Post> selectForward(int pid){
-        return postMapper.selectForward(pid);
+    public PageInfo selectForward(int pid,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectForward(pid);
+        return new PageInfo<>(list);
     }
 
     public int getTotalBlogAndForwardNum(int user_id){
         return postMapper.getTotalBlogAndForwardNum(user_id);
     }
 
-    public ArrayList<Post> selectBlogAndForward(int user_id){
-        return postMapper.selectBlogAndForward(user_id);
+    public PageInfo selectBlogAndForward(int user_id,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectBlogAndForward(user_id);
+        return new PageInfo<>(list);
     }
 
     public int getUserForwardNum(int pid){
@@ -86,19 +90,27 @@ public class PostService {
         return postMapper.getUserCommentNum(pid);
     }
 
-    public ArrayList<Post> selectUserBlog(int id){
-        return postMapper.selectUserBlog(id);
+    public PageInfo selectUserBlog(int id,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectUserBlog(id);
+        return new PageInfo<>(list);
     }
 
-    public List<Post> selectMyMessage(int parent_user_id){
-        return postMapper.selectMyMessage(parent_user_id);
+    public PageInfo selectMyMessage(int parent_user_id,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list =  postMapper.selectMyMessage(parent_user_id);
+        return new PageInfo<>(list);
     }
 
-    public List<Post> selectLikes(String keyword){
-        return postMapper.selectLikes(keyword);
+    public PageInfo selectLikes(String keyword,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectLikes(keyword);
+        return new PageInfo<>(list);
     }
 
-    public List<Post> selectPostFromPid(int pid){
-        return postMapper.selectPostFromPid(pid);
+    public PageInfo selectPostFromPid(int pid,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list =  postMapper.selectPostFromPid(pid);
+        return new PageInfo<>(list);
     }
 }

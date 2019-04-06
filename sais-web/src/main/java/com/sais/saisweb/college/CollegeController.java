@@ -9,6 +9,7 @@ import com.sais.saisentity.User;
 import com.sais.saisservice.CollegeService;
 import com.sais.saisservice.SlideService;
 import com.sais.saisservice.UserService;
+import com.sais.saisweb.common.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,10 +56,7 @@ public class CollegeController {
             datalists.set(i,college);
         }
 
-        result.put("pageNum",page.getPageNum());//当前页数
-        result.put("firstPage",page.getNavigateFirstPage());//第一页
-        result.put("lastPage",page.getNavigateLastPage());//最后一页
-        result.put("pages",page.getPages());//总页数
+        result.putAll(PageUtil.setPageInfo(page,result));
         result.put("url","/college/college/index");//url
         result.put("datalists",datalists);
         return "college/college/index";
@@ -111,11 +109,6 @@ public class CollegeController {
             datalists.set(i,college);
         }
 
-        result.put("pageNum",page.getPageNum());//当前页数
-        result.put("firstPage",page.getNavigateFirstPage());//第一页
-        result.put("lastPage",page.getNavigateLastPage());//最后一页
-        result.put("pages",page.getPages());//总页数
-        result.put("url","/college/college/search");//url
         result.put("datalists",datalists);
         return "college/college/search";
     }

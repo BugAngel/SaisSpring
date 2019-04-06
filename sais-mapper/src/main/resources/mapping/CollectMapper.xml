@@ -14,7 +14,7 @@
     </select>
 
     <insert id="insertCollect">
-        insert into sais_collect (user_id, post_id) values (#{user_id},#{post_id})
+        insert into sais_collect (user_id, post_id,status) values (#{user_id},#{post_id},1)
     </insert>
 
     <update id="updateCollect">

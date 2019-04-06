@@ -34,7 +34,7 @@
                     <div class="weibo_list">
                         <div class="weibo_list_top">
                             <div class="weibo_list_head">
-                                <a href="/microblog/friend/friend_home?friend_id=${vo.post.user_id}">
+                                <a href="/microblog/friend/home?friend_id=${vo.post.user_id}">
                                     <img class="avatar"   src="/upload/microblog/images/head_image/${vo.avatar}"  />
                                 </a>
                             </div>

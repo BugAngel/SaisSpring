@@ -1,5 +1,6 @@
 package com.sais.saisweb.microblog;
 
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.IndexBlog;
 import com.sais.saisentity.Post;
 import com.sais.saisentity.User;
@@ -8,11 +9,14 @@ import com.sais.saisservice.CollectService;
 import com.sais.saisservice.BlogService;
 import com.sais.saisservice.PostService;
 import com.sais.saisservice.UserService;
+import com.sais.saisweb.common.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping({"/microblog/forward"})
@@ -32,7 +36,8 @@ public class ForwardController {
     }
 
     @RequestMapping({"/list"})
-    public String forward(int post_id, Map<String,Object> result){
+    public String forward(int post_id, Map<String,Object> result,
+                          @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
         IndexBlog indexBlog=new IndexBlog();
         Post post = postService.selectPostFromId(post_id);//查找post_id的微博内容
         indexBlog.setPost(post);
@@ -50,7 +55,8 @@ public class ForwardController {
         indexBlog= blogService.getForward(indexBlog,post);
         result.put("post_info",indexBlog);
         //获取所有回复数据
-        ArrayList<Post> arrayList=postService.selectForward(post_id);
+        PageInfo page=postService.selectForward(post_id,pageNum,5);
+        List<Post> arrayList=page.getList();
         ArrayList<IndexBlog> arrayList1=new ArrayList<>();
         for(Post post1 : arrayList){
             IndexBlog indexBlog1=new IndexBlog();
@@ -58,13 +64,15 @@ public class ForwardController {
             indexBlog1.setAvatar(userService.selectAvatarFromId(post1.getUser_id()));
             arrayList1.add(indexBlog1);
         }
+        result.putAll(PageUtil.setPageInfo(page,result));
         result.put("datalists",arrayList1);
-        return "/microblog/forward/forward_list";
+        result.put("url","/microblog/forward/list");
+        return "/microblog/forward/list";
     }
 
     @RequestMapping({"/getForward"})
     public String getForward(int pid, Map<String,Object> result){
-        ArrayList<Post> posts=postService.selectForwardInfo(pid);
+        List<Post> posts=postService.selectForwardInfo(pid);
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         for(Post post : posts){
             IndexBlog indexBlog=new IndexBlog();

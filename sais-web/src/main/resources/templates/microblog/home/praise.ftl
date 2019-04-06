@@ -2,7 +2,8 @@
 <div class="main">
     <div class="left">
         <h4 class="weibo_list_title">点赞的帖子</h4>
-        <#include "../common/blog-list.ftl">
+        <#include "../common/bloglist.ftl">
+        <#include "../common/page.ftl">
     </div>
     <#include "../common/profile.ftl">
 </div>

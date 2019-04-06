@@ -6,6 +6,7 @@ import com.sais.saisentity.Post;
 import com.sais.saisservice.BlogService;
 import com.sais.saisservice.PostService;
 import com.sais.saisservice.UserService;
+import com.sais.saisweb.common.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,8 @@ public class MicroBlogIndexController {
     }
 
     @RequestMapping({"/","/index"})
-    public String index(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,Map<String,Object> result){
+    public String index(Map<String,Object> result,
+                        @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
         PageInfo page=postService.selectAllBlog(pageNum,5);
         List<Post> posts=page.getList();
         ArrayList<IndexBlog> datalists=new ArrayList<>();
@@ -42,20 +44,19 @@ public class MicroBlogIndexController {
             datalists.add(indexBlog);
         }
 
-        result.put("pageNum",page.getPageNum());//当前页数
-        result.put("firstPage",page.getNavigateFirstPage());//第一页
-        result.put("lastPage",page.getNavigateLastPage());//最后一页
-        result.put("pages",page.getPages());//总页数
-        result.put("total",page.getTotal());//记录总数
-        result.put("url","microblog/index/index");//url
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/index/index");//url
         result.put("datalists",datalists);
 
-        return "microblog/index/index";
+        return "/microblog/index/index";
     }
 
     @RequestMapping({"/search"})
-    public String search(@RequestParam(value = "keyword",required = false,defaultValue = "")String keyword,Map<String,Object> result){
-        List<Post> posts = postService.selectLikes(keyword);
+    public String search(@RequestParam(value = "keyword",defaultValue = "")String keyword,
+                         @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                         Map<String,Object> result){
+        PageInfo page= postService.selectLikes(keyword,pageNum,5);
+        List<Post> posts=page.getList();
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         for(Post post:posts){
             IndexBlog indexBlog=new IndexBlog();
@@ -65,8 +66,12 @@ public class MicroBlogIndexController {
             indexBlog=blogService.getForward(indexBlog,post);
             indexBlogs.add(indexBlog);
         }
+
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/index/search");//url
+
         result.put("keyword",keyword);
         result.put("datalists",indexBlogs);
-        return  "microblog/index/search";
+        return  "/microblog/index/search";
     }
 }

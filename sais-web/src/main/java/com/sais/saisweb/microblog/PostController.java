@@ -78,21 +78,26 @@ public class PostController {
                 postService.forwardBlog(pid);
                 break;
         }
-        String reg="/@([^@\\s]+)/";
-        // 创建 Pattern 对象
-        Pattern r = Pattern.compile(reg);
-        // 现在创建 matcher 对象
-        Matcher m = r.matcher(content);
-        Set<String> set=new HashSet<String>();
-        while (m.find()){
-            set.add(m.group());
-        }
-        for (String account : set) {
-            int user_id=userService.selectIdFromAccount(account);
-            if(user_id>0){
-                atService.insertAt(user_id,post_id);
+
+        //判断是否有@好友
+        if(content.contains("@")){
+            String reg="/@([^@\\s]+)/";
+            // 创建 Pattern 对象
+            Pattern r = Pattern.compile(reg);
+            // 现在创建 matcher 对象
+            Matcher m = r.matcher(content);
+            Set<String> set=new HashSet<String>();
+            while (m.find()){
+                set.add(m.group());
+            }
+            for (String account : set) {
+                int user_id=userService.selectIdFromAccount(account);
+                if(user_id>0){
+                    atService.insertAt(user_id,post_id);
+                }
             }
         }
+
         return JSON.toJSONString(1);
     }
 
@@ -131,20 +136,5 @@ public class PostController {
                 return JSON.toJSONString(0);
             }
         }
-    }
-
-    @RequestMapping("/getComment")
-    public String getComment(HttpServletRequest request,@RequestParam(value = "pid") String pid_string){
-        int pid=Integer.parseInt(pid_string);
-        ArrayList<Post> posts=postService.selectCommentInfo(pid);
-        ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
-        for(Post post : posts){
-            IndexBlog indexBlog=new IndexBlog();
-            indexBlog.setPost(post);
-            User user=userService.selectId(post.getUser_id());
-            indexBlog.setAvatar(user.getAvatar());
-            indexBlogs.add(indexBlog);
-        }
-        return JSON.toJSONString(indexBlogs);
     }
 }

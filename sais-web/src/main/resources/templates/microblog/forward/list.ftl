@@ -37,6 +37,7 @@
             </div>
         </div>
         </#list>
+    <#include "../common/page.ftl">
     </div>
     <#include "../common/profile.ftl">
 </div>

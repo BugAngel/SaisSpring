@@ -34,7 +34,7 @@ public class ComplainController {
     {
         HashMap<String,Object> res=new HashMap<String, Object>();
         HttpSession session = httpServletRequest.getSession(true);
-        if((session.getAttribute("user_nickname")==null) || (session.getAttribute("user_account")==null)){
+        if(session.getAttribute("user")==null){
             res.put("status",2);
             res.put("message","您尚未登录，请先登录！");
             return JSON.toJSONString(res);
