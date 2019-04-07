@@ -12,6 +12,7 @@ import com.sais.saisweb.common.utils.PageUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +39,14 @@ public class CommentController {
         indexBlog.setAvatar(userService.selectAvatarFromId(post_info.getUser_id()));
         indexBlog=blogService.setCollect(indexBlog,post_info.getUser_id(),post_info.getId());
         indexBlog=blogService.getForward(indexBlog,post_info);
+        indexBlog.setPost(post_info);
         result.put("post_info",indexBlog);
-        PageInfo page=postService.selectPostFromPid(post_id,pageNum,5);
+        PageInfo page=postService.selectComment(post_id,pageNum,5);
         List<Post> comment=page.getList();
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         for(Post post : comment){
             IndexBlog vo=new IndexBlog();
+            vo.setPost(post);
             vo.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
             vo=blogService.setCollect(vo,post.getUser_id(),post.getId());
             indexBlogs.add(vo);
@@ -54,9 +57,9 @@ public class CommentController {
         return "/microblog/comment/comment";
     }
 
+    @ResponseBody
     @RequestMapping("/getComment")
-    public String getComment(@RequestParam(value = "pid") String pid_string){
-        int pid=Integer.parseInt(pid_string);
+    public String getComment(@RequestParam(value = "pid") Integer pid){
         List<Post> posts=postService.selectCommentInfo(pid);
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         for(Post post : posts){

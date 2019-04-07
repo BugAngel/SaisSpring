@@ -23,7 +23,7 @@
             <ul>
                 <a href="/microblog/home/index">
                     <li><span>${Session["user"].posts_num}</span></li>
-                    <li>微博</li>
+                    <li>发帖</li>
                 </a>
             </ul>
         </div>

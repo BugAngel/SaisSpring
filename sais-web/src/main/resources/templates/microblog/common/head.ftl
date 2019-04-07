@@ -22,7 +22,6 @@
             </li>
             <li class="li_message">&nbsp;
                 <dl class="menu">
-                    <dd><a href="/microblog/home/atme">@我的</a></dd>
                     <dd><a href="/microblog/home/message">我的消息</a></dd>
                 </dl>
             </li>

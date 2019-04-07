@@ -6,7 +6,7 @@
                     <div>
                         <ul class="nav navbar-nav">
                             <li style="width: 200px"><a href="/college/index/index"><i class="fa fa-home" aria-hidden="true"></i>首页</a></li>
-                            <li style="width: 200px"><a href="/microblog/setting/setting"><i class="fa fa-id-card" aria-hidden="true"></i>个人资料</a></li>
+                            <li style="width: 200px"><a href="/microblog/home/index"><i class="fa fa-id-card" aria-hidden="true"></i>个人空间</a></li>
                             <li style="width: 200px"><a href="/college/college/index"><i class="fa fa-building" aria-hidden="true"></i>院校自选</a></li>
                             <li class="dropdown" style="width: 200px">
                                 <a href="/college/guide/xingqian" class="dropdown-toggle"

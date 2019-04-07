@@ -12,7 +12,7 @@ $(function(){
         if(comment_list.is(":hidden")){
             if(total > 0 ){
                 var index = layer.msg('数据加载中', {icon: 16});//layer加载数据样式
-                var pid = $(this).parent().attr('value');//获取微博id
+                var pid = $(this).parent().attr('value');//获取需要展示帖子ID
                 /**ajax获取评论5条以内数据数据**/
                 myajax=$.ajax({
                     type: "post",
@@ -28,8 +28,8 @@ $(function(){
                             str += '<div class="weibo_list_head">';
                             str += '<a><img class ="avatar" src="/upload/microblog/images/head_image/' + this.avatar + '" alt="头像"></a></div>';
                             str += '<ul class="weibo-comment-ul">';
-                            str += '<li><b>' + this.nickname + '</b></li>';
-                            str += '<li><span>' + this.post.addtime + '</span></li>';
+                            str += '<li><b>' + this.post.nickname + '</b></li>';
+                            str += '<li><span>' + timestampToTime(this.post.addtime) + '</span></li>';
                             str += '<li><p>' + this.post.content + '</p></li>';
                             str += '</ul></div></div>';
                             comment_list.append(str);
@@ -328,4 +328,15 @@ function checkPhone(phone) {
 function checkEMail(email) {
     var re = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     return re.test(email);
+}
+
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y+M+D;
 }

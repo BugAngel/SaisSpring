@@ -11,14 +11,13 @@
         <result column="pid" jdbcType="INTEGER" property="pid" />
         <result column="post_type" jdbcType="INTEGER" property="post_type" />
         <result column="parent_user_id" jdbcType="INTEGER" property="parent_user_id" />
-        <result column="pictures" jdbcType="VARCHAR" property="pictures" />
         <result column="forward_num" jdbcType="INTEGER" property="forward_num" />
         <result column="comment_num" jdbcType="INTEGER" property="comment_num" />
         <result column="praise_num" jdbcType="INTEGER" property="praise_num" />
     </resultMap>
 
-    <select id="selectParentUserId" resultType="INTEGER">
-        select parent_user_id from sais_post where id = #{id} limit 1
+    <select id="selectUserIdFromId" resultType="INTEGER">
+        select user_id from sais_post where id = #{id} limit 1
     </select>
 
     <select id="getLastInsertId" resultType="INTEGER">
@@ -26,8 +25,8 @@
     </select>
 
     <insert id="insertBlog" >
-        insert into sais_post (nickname, content,addtime,user_id,pid,post_type,parent_user_id,pictures)
-        values (#{nickname},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id},#{pictures})
+        insert into sais_post (nickname, content,addtime,user_id,pid,post_type,parent_user_id)
+        values (#{nickname},#{content},#{addtime},#{user_id},#{pid},#{post_type},#{parent_user_id})
     </insert>
 
     <update id="commentBlog" >
@@ -83,10 +82,10 @@
     </select>
 
     <select id="selectUserBlog" resultType="com.sais.saisentity.Post">
-        select * from sais_post where user_id= #{user_id} ORDER BY addtime DESC
+        select * from sais_post where user_id= #{user_id} and post_type!=1 ORDER BY addtime DESC
     </select>
 
-    <select id="selectMyMessage" resultType="com.sais.saisentity.Post">
+    <select id="selectPostFromParentUserId" resultType="com.sais.saisentity.Post">
         SELECT * FROM sais_post where parent_user_id = #{parent_user_id} ORDER BY addtime DESC
     </select>
 
@@ -96,5 +95,9 @@
 
     <select id="selectPostFromPid" resultType="com.sais.saisentity.Post">
         select * from sais_post where pid=#{pid} ORDER BY addtime DESC
+    </select>
+
+    <select id="selectPostFromPidAndPostType" resultType="com.sais.saisentity.Post">
+        select * from sais_post where pid=#{pid} and post_type =#{post_type} ORDER BY addtime DESC
     </select>
 </mapper>

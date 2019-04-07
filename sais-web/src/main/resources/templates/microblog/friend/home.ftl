@@ -3,7 +3,7 @@
     <div class="my_head_img">
     <img src="/upload/microblog/images/head_image/${friend_info.avatar}" alt="头像">
     </div>
-    <h4>${friend_info.account}</h4>
+    <h4>${friend_info.nickname}</h4>
     <div class="my_head_message">
         <ul class="fl">
             <li>注册于：${friend_info.addtime}</li>
@@ -13,7 +13,7 @@
 
     <#if Session["user"].id == friend_info.id>
         <button  class="show_btn">
-            <a href="/microblog/setting/setting">
+            <a href="/microblog/home/index" style="color:white;">
                 个人主页
             </a>
         </button>

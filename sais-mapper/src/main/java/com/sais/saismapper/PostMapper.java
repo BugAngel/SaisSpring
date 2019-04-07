@@ -9,11 +9,11 @@ import java.util.List;
 
 @Repository
 public interface PostMapper {
-    int selectParentUserId(int id);
+    int selectUserIdFromId(int id);
 
     int getLastInsertId();
 
-    int insertBlog(String nickname,String content, Timestamp addtime,int user_id,int pid,int post_type,int parent_user_id,String pictures);
+    int insertBlog(String nickname,String content, Timestamp addtime,int user_id,int pid,int post_type,int parent_user_id);
 
     int commentBlog(int pid);
 
@@ -43,9 +43,11 @@ public interface PostMapper {
 
     ArrayList<Post> selectUserBlog(int id);
 
-    List<Post> selectMyMessage(int parent_user_id);
+    List<Post> selectPostFromParentUserId(int parent_user_id);
 
     List<Post> selectLikes(String keyword);
 
     List<Post> selectPostFromPid(int pid);
+
+    List<Post> selectPostFromPidAndPostType(int pid,int post_type);
 }

@@ -10,9 +10,9 @@
                     </a>
                 </div>
                 <ul>
-                    <li><b>${post_info.nickname}</b></li>
-                    <li><span>${post_info.addtime}</span></li>
-                    <li><p>${post_info.content}</p></li>
+                    <li><b>${post_info.post.nickname}</b></li>
+                    <li><span>${post_info.post.addtime}</span></li>
+                    <li><p>${post_info.post.content}</p></li>
                 </ul>
             </div>
         </div>
@@ -48,9 +48,9 @@
                     </a>
                 </div>
                 <ul>
-                    <li><b>${vo.nickname}</b></li>
-                    <li><span>${vo.addtime}</span></li>
-                    <li><p>${vo.content}</p></li>
+                    <li><b>${vo.post.nickname}</b></li>
+                    <li><span>${vo.post.addtime}</span></li>
+                    <li><p>${vo.post.content}</p></li>
                 </ul>
             </div>
         </div>

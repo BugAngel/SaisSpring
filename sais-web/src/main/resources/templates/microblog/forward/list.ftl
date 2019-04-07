@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <ul>
-                    <li><b>${post_info.nickname}</b></li>
+                    <li><b>${post_info.post.nickname}</b></li>
                     <li><span>${post_info.post.addtime}</span></li>
                     <li><p>${post_info.post.content}</p></li>
                 </ul>

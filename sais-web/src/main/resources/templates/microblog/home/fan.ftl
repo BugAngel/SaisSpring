@@ -12,7 +12,7 @@
                     <li>
                         <span>关注</span><span style="color:#fe862c;">${vo.follows_num}</span><span>|</span>
                         <span>粉丝</span><span style="color:#fe862c;">${vo.fans_num}</span><span>|</span>
-                        <span>微博</span><span style="color:#fe862c;">${vo.posts_num}</span>
+                        <span>发帖</span><span style="color:#fe862c;">${vo.posts_num}</span>
                     </li>
                     <li><span>注册于：${vo.addtime}</span>
                         <span>QQ:${vo.qq}</span>

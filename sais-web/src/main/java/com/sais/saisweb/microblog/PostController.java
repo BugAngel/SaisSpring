@@ -20,34 +20,22 @@ import java.util.regex.Pattern;
 public class PostController {
     private PostService postService;
     private UserService userService;
-    private AtService atService;
     private PraiseService praiseService;
     private CollectService collectService;
 
     @Autowired
-    public PostController(PostService postService,UserService userService,AtService atService,PraiseService praiseService,CollectService collectService){
+    public PostController(PostService postService,UserService userService,PraiseService praiseService,CollectService collectService){
         this.postService=postService;
         this.userService=userService;
-        this.atService=atService;
         this.praiseService=praiseService;
         this.collectService=collectService;
     }
 
     @RequestMapping("/post")
     public String post(HttpServletRequest request,
-                       @RequestParam(value = "pid",required = false,defaultValue = "0") String pidString,
+                       @RequestParam(value = "pid",required = false,defaultValue = "0") Integer pid,
                        @RequestParam(value = "content",required = false,defaultValue = "") String content,
-                       @RequestParam(value = "pictures",required = false,defaultValue = "") String pictures,
-                       @RequestParam(value = "type",required = false,defaultValue = "0") String typeString){
-
-        int pid;
-        int type;
-        try{
-            pid=Integer.parseInt(pidString);
-            type=Integer.parseInt(typeString);
-        }catch (Exception e){
-            return JSON.toJSONString(0);
-        }
+                       @RequestParam(value = "type",required = false,defaultValue = "0") Integer type){
         HttpSession session=request.getSession();
         User user=(User)session.getAttribute("user");
         int parent_user_id=0;
@@ -55,15 +43,14 @@ public class PostController {
             return JSON.toJSONString(-1);
         }
         if(type==1){
-            parent_user_id=postService.selectParentUserId(pid);
+            parent_user_id=postService.selectUserIdFromId(pid);
         }
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());
-        int insert=postService.insertBlog(user.getNickname(), content, timestamp, user.getId(), pid, type, parent_user_id, pictures);
+        int insert=postService.insertBlog(user.getNickname(), content, timestamp, user.getId(), pid, type, parent_user_id);
         if(insert<=0){
             return JSON.toJSONString(0);
         }
-        int post_id=postService.getLastInsertId();
         switch (type){
             case 0:
                 userService.updatePostNum(user.getId());
@@ -79,33 +66,13 @@ public class PostController {
                 break;
         }
 
-        //判断是否有@好友
-        if(content.contains("@")){
-            String reg="/@([^@\\s]+)/";
-            // 创建 Pattern 对象
-            Pattern r = Pattern.compile(reg);
-            // 现在创建 matcher 对象
-            Matcher m = r.matcher(content);
-            Set<String> set=new HashSet<String>();
-            while (m.find()){
-                set.add(m.group());
-            }
-            for (String account : set) {
-                int user_id=userService.selectIdFromAccount(account);
-                if(user_id>0){
-                    atService.insertAt(user_id,post_id);
-                }
-            }
-        }
-
         return JSON.toJSONString(1);
     }
 
     @RequestMapping("/praise")
-    public String praise(HttpServletRequest request,@RequestParam(value = "post_id") String post_id_string){
+    public String praise(HttpServletRequest request,@RequestParam(value = "post_id") Integer post_id){
         HttpSession session=request.getSession();
         User user=(User)session.getAttribute("user");
-        int post_id=Integer.parseInt(post_id_string);
         int user_id=user.getId();
         Praise praise=praiseService.selectPraise(user_id,post_id);
         if(praise==null){
@@ -118,11 +85,10 @@ public class PostController {
     }
 
     @RequestMapping("/collect")
-    public String collect(HttpServletRequest request,@RequestParam(value = "post_id") String post_id_string){
+    public String collect(HttpServletRequest request,@RequestParam(value = "post_id") Integer post_id){
         HttpSession session=request.getSession();
         User user=(User)session.getAttribute("user");
         int user_id=user.getId();
-        int post_id=Integer.parseInt(post_id_string);
         Collect collect=collectService.selectCollect(user_id,post_id);
         if(collect==null){//未被收藏
             collectService.insertCollect(user_id,post_id);

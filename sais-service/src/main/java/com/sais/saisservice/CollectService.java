@@ -1,5 +1,7 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.Collect;
 import com.sais.saismapper.CollectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,9 @@ public class CollectService {
         return collectMapper.selectCollectStatus(user_id, post_id);
     }
 
-    public List<Collect> selectMyCollects(int user_id){
-        return collectMapper.selectMyCollects(user_id);
+    public PageInfo selectMyCollects(int user_id,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Collect> list = collectMapper.selectMyCollects(user_id);
+        return new PageInfo<>(list);
     }
 }

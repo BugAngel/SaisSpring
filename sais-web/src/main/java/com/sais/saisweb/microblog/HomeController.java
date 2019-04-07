@@ -23,17 +23,15 @@ public class HomeController {
     private CollectService collectService;
     private PraiseService praiseService;
     private BlogService blogService;
-    private AtService atService;
 
     @Autowired
-    public HomeController(UserService userService, PostService postService, FriendService friendService, CollectService collectService, PraiseService praiseService, BlogService blogService,AtService atService){
+    public HomeController(UserService userService, PostService postService, FriendService friendService, CollectService collectService, PraiseService praiseService, BlogService blogService){
         this.userService=userService;
         this.postService=postService;
         this.friendService=friendService;
         this.collectService=collectService;
         this.praiseService=praiseService;
         this.blogService = blogService;
-        this.atService=atService;
     }
 
     @RequestMapping({"/","/index"})
@@ -57,11 +55,12 @@ public class HomeController {
     }
 
     @RequestMapping({"/friend"})
-    public String friend(HttpServletRequest request,Map<String,Object> result){
+    public String friend(HttpServletRequest request,Map<String,Object> result,
+                         @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
-        int total = friendService.selectMyFriendsNum(user_id);
-        ArrayList<Friend> friends=friendService.selectMyFriends(user_id);
+        PageInfo page=friendService.selectMyFriends(user_id,pageNum,5);
+        List<Friend> friends=page.getList();
         ArrayList<User> datalists=new ArrayList<>();
         if(friends!=null){
             for(Friend vo : friends){
@@ -69,17 +68,19 @@ public class HomeController {
                 datalists.add(data);
             }
         }
-        result.put("total",total);
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/home/friend");
         result.put("datalists",datalists);
         return "/microblog/home/friend";
     }
 
     @RequestMapping({"/fan"})
-    public String fan(HttpServletRequest request,Map<String,Object> result){
+    public String fan(HttpServletRequest request,Map<String,Object> result,
+                      @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
-        int total=friendService.selectMyFansNum(user_id);
-        ArrayList<Friend> fans=friendService.selectMyFans(user_id);
+        PageInfo page=friendService.selectMyFans(user_id,pageNum,5);
+        List<Friend> fans=page.getList();
         ArrayList<User> datalists=new ArrayList<>();
         if(fans!=null){
             for(Friend vo : fans){
@@ -87,76 +88,64 @@ public class HomeController {
                 datalists.add(data);
             }
         }
-        result.put("total",total);
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/home/fan");
         result.put("datalists",datalists);
         return "/microblog/home/fan";
     }
 
     @RequestMapping({"/collect"})
-    public String collect(HttpServletRequest request,Map<String,Object> result) {
+    public String collect(HttpServletRequest request,Map<String,Object> result,
+                          @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum) {
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
-        List<Collect> collects=collectService.selectMyCollects(user_id);
-        ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
+        PageInfo page=collectService.selectMyCollects(user_id,pageNum,5);
+        List<Collect> collects=page.getList();
+        ArrayList<IndexBlog> datalists=new ArrayList<>();
         if(collects!=null){
             //获取数据
             for(Collect collect : collects){
                 IndexBlog indexBlog=new IndexBlog();
                 Post post=postService.selectPostFromId(collect.getPost_id());
-                indexBlog.setAvatar(userService.selectAvatarFromId(user_id));
+                indexBlog.setPost(post);
+                indexBlog.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
                 indexBlog.setCollect(1);
                 indexBlog= blogService.setAllCount(indexBlog,post.getId());
                 indexBlog= blogService.getForward(indexBlog,post);
-                indexBlogs.add(indexBlog);
+                datalists.add(indexBlog);
             }
 
         }
-        result.put("datalists",indexBlogs);
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/home/collect");
+        result.put("datalists",datalists);
         return "/microblog/home/collect";
     }
 
     @RequestMapping({"/praise"})
-    public String praise(HttpServletRequest request,Map<String,Object> result) {
+    public String praise(HttpServletRequest request,Map<String,Object> result,
+                         @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum) {
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
-        int total=praiseService.getMyPraiseNum(user_id);
-        List<Praise> praise_lists = praiseService.getMyPraises(user_id);
+        PageInfo page=praiseService.getMyPraises(user_id,pageNum,5);
+        List<Praise> praise_lists = page.getList();
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         if(praise_lists!=null){
             for(Praise praise : praise_lists){
                 IndexBlog indexBlog=new IndexBlog();
                 Post post=postService.selectPostFromId(praise.getPost_id());
                 indexBlog.setPost(post);
-                indexBlog.setAvatar(userService.selectAvatarFromId(user_id));
+                indexBlog.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
                 indexBlog=blogService.setCollect(indexBlog,user_id,post.getId());
                 indexBlog= blogService.setAllCount(indexBlog,post.getId());
                 indexBlog= blogService.getForward(indexBlog,post);
                 indexBlogs.add(indexBlog);
             }
         }
+        result.putAll(PageUtil.setPageInfo(page,result));
+        result.put("url","/microblog/home/praise");
         result.put("datalists",indexBlogs);
         return "/microblog/home/praise";
-    }
-
-    @RequestMapping({"/atme"})
-    public String atme(HttpServletRequest request,Map<String,Object> result) {
-        User user=(User) request.getSession().getAttribute("user");
-        int user_id = user.getId();
-        List<At> at_lists=atService.getMyAts(user_id);
-        ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
-        if(at_lists!=null){
-            //获取数据
-            for(At at:at_lists){
-                IndexBlog indexBlog=new IndexBlog();
-                Post post=postService.selectPostFromId(at.getPost_id());
-                indexBlog.setAvatar(userService.selectAvatarFromId(user_id));
-                indexBlog=blogService.setCollect(indexBlog,user_id,post.getId());
-                indexBlog= blogService.setAllCount(indexBlog,post.getId());
-                indexBlogs.add(indexBlog);
-            }
-        }
-        result.put("datalists",indexBlogs);
-        return "/microblog/home/atme";
     }
 
     @RequestMapping({"/message"})
@@ -165,7 +154,7 @@ public class HomeController {
         User user=(User) request.getSession().getAttribute("user");
         int user_id = user.getId();
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
-        PageInfo page=postService.selectMyMessage(user_id,pageNum,5);
+        PageInfo page=postService.selectPostFromParentUserId(user_id,pageNum,5);
         List<Post> message=page.getList();
         for(Post post:message){
             IndexBlog indexBlog=new IndexBlog();

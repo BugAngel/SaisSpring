@@ -60,6 +60,7 @@ public class MicroBlogIndexController {
         ArrayList<IndexBlog> indexBlogs=new ArrayList<>();
         for(Post post:posts){
             IndexBlog indexBlog=new IndexBlog();
+            indexBlog.setPost(post);
             indexBlog.setAvatar(userService.selectAvatarFromId(post.getUser_id()));
             indexBlog=blogService.setCollect(indexBlog,post.getUser_id(),post.getId());
             indexBlog= blogService.setAllCount(indexBlog,post.getId());

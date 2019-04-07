@@ -20,16 +20,16 @@ public class PostService {
         this.postMapper=postMapper;
     }
 
-    public int selectParentUserId(int id){
-        return postMapper.selectParentUserId(id);
+    public int selectUserIdFromId(int id){
+        return postMapper.selectUserIdFromId(id);
     }
 
     public int getLastInsertId(){
         return postMapper.getLastInsertId();
     }
 
-    public int insertBlog(String nickname, String content, Timestamp addtime, int user_id, int pid, int post_type, int parent_user_id, String pictures){
-        return postMapper.insertBlog(nickname, content, addtime, user_id, pid, post_type, parent_user_id, pictures);
+    public int insertBlog(String nickname, String content, Timestamp addtime, int user_id, int pid, int post_type, int parent_user_id){
+        return postMapper.insertBlog(nickname, content, addtime, user_id, pid, post_type, parent_user_id);
     }
 
     public int commentBlog(int pid){
@@ -96,9 +96,9 @@ public class PostService {
         return new PageInfo<>(list);
     }
 
-    public PageInfo selectMyMessage(int parent_user_id,Integer pageNum, Integer pageSize){
+    public PageInfo selectPostFromParentUserId(int parent_user_id,Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        List<Post> list =  postMapper.selectMyMessage(parent_user_id);
+        List<Post> list =  postMapper.selectPostFromParentUserId(parent_user_id);
         return new PageInfo<>(list);
     }
 
@@ -110,7 +110,13 @@ public class PostService {
 
     public PageInfo selectPostFromPid(int pid,Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        List<Post> list =  postMapper.selectPostFromPid(pid);
+        List<Post> list = postMapper.selectPostFromPid(pid);
+        return new PageInfo<>(list);
+    }
+
+    public PageInfo selectComment(int pid,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Post> list = postMapper.selectPostFromPidAndPostType(pid,1);
         return new PageInfo<>(list);
     }
 }

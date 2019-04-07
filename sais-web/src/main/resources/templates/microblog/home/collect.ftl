@@ -15,10 +15,10 @@
                                 <li><b>${vo.post.nickname}</b>
                                     <button class="cancel-collect fr weibo_list_head_collect" value=${vo.post.id}>取消收藏</button>
                                 </li>
-                                <li><span>${vo.post.nickname}</span></li>
+                                <li><span>${vo.post.addtime}</span></li>
                                 <li>
                                     <p>
-                                        <#if vo.post.post_type==2>
+                                        <#if vo.post.post_type==2 && vo.parent_content!="">
                                             ${vo.post.content}//${vo.parent_content}
                                         <#else >
                                             ${vo.post.content}
@@ -31,7 +31,7 @@
                     <#if vo.post.post_type==2>
                         <div class="weibo_list_top" style="background: #F2F2F5">
                         <ul>
-                        <li><b>${vo.nickname}</b></li>
+                        <li><b>${vo.post.nickname}</b></li>
                         <li><span>${vo.parent.addtime}</span></li>
                         <li>
                         <p>

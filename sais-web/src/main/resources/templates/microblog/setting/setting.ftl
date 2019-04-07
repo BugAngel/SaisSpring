@@ -174,7 +174,7 @@
         var old_password  = $("input[name='old_password']").val();
         var new_password  = $("input[name='new_password']").val();
         var new_password2 = $("input[name='new_password2']").val();
-        if(checkpassword(new_password)){
+        if(!checkpassword(new_password)){
             layer.msg('密码长度应为6-16个字符');
             return false;
         }

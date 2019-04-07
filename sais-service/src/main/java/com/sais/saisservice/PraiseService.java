@@ -1,5 +1,7 @@
 package com.sais.saisservice;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sais.saisentity.Praise;
 import com.sais.saismapper.PraiseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,9 @@ public class PraiseService {
         return praiseMapper.getMyPraiseNum(user_id);
     }
 
-    public List<Praise> getMyPraises(int user_id){
-        return praiseMapper.getMyPraises(user_id);
+    public PageInfo getMyPraises(int user_id,Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<Praise> list = praiseMapper.getMyPraises(user_id);
+        return new PageInfo<>(list);
     }
 }

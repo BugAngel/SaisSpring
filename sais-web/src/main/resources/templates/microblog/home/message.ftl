@@ -7,17 +7,17 @@
         <div class="weibo_list">
             <div class="weibo_list_top">
                 <div class="weibo_list_head">
-                    <a href="/microblog/home/index?friend_id=${vo.post.user_id}">
-                        <img class="avatar" src="/upload/microblog/images/head_image/${vo.post.avatar}"/>
+                    <a href="/microblog/home/index?friend_id=${vo.parent.user_id}">
+                        <img class="avatar" src="/upload/microblog/images/head_image/${vo.avatar}"/>
                     </a>
                 </div>
 
                 <ul>
-                    <li><b>${vo.post.nickname}</b></li>
-                    <li><span>${vo.post.addtime}</span></li>
+                    <li><b>${vo.parent.nickname}</b></li>
+                    <li><span>${vo.parent.addtime}</span></li>
                     <li>
                         <p>
-                            ${vo.post.content}
+                            ${vo.parent.content}
                         </p>
                     </li>
                 </ul>
@@ -25,11 +25,11 @@
 
             <div class="weibo_list_top" style="background: #F2F2F5">
                 <ul>
-                    <li><b>${vo.parent.nickname}</b></li>
-                    <li><span>${vo.parent.addtime}</span></li>
+                    <li><b>${vo.post.nickname}</b></li>
+                    <li><span>${vo.post.addtime}</span></li>
                     <li>
                         <p>
-                            ${vo.parent.content}
+                            ${vo.post.content}
                         </p>
                     </li>
                 </ul>
