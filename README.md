@@ -1,14 +1,14 @@
 # SaisSpring
 SpringBoot实现留学信息管理与分析系统。 项目基础为本人寒假时项目[SaisTP5](https://github.com/BugAngel/SaisTP5)，本项目中改用springboot框架并添加论坛功能。  
-sais.sql文件为数据库文件  
+sais.sql为数据库文件，要求mysql版本最低为5.7  
 
-##展示地址：  
-[前台地址](39.105.77.133:8083)  
-[后台地址](39.105.77.133:8083/admin/login/login)   
+## 展示地址：  
+[前台地址](http://39.105.77.133:8083)  
+[后台地址](http://39.105.77.133:8083/admin/login/login)   
 测试账号HanLi 密码123456  
   
-##实现功能： 
-#####系统：
+## 实现功能： 
+##### 系统：
 1、提供用户的登录注册与退出功能  
 2、提供智能推荐功能，可由访问院校详情次数改变学校权重，进而更改系统首页幻灯片介绍的学校   
 3、提供学校简略信息列表和详细信息界面   
@@ -16,7 +16,7 @@ sais.sql文件为数据库文件
 5、提供头像上传，修改个人信息，修改密码功能     
 6、提供介绍与帮助界面   
 
-#####论坛：
+##### 论坛：
 1、可以进行发帖，转发，评论操作  
 2、可以对帖子进行收藏点赞   
 3、可以多重转发  
@@ -24,7 +24,7 @@ sais.sql文件为数据库文件
 5、提供好友主页，可以查看发帖人的信息与历史发帖   
 6、提供个人主页，可以查看自己的发帖、评论、点赞、收藏、关注等信息  
 
-#####后台：
+##### 后台：
 1、提供管理员的登录与退出功能  
 2、提供修改密码功能  
 3、可对投诉信息进行查看删除操作  
@@ -33,7 +33,7 @@ sais.sql文件为数据库文件
 6、使用拦截器，未登录只能访问登录界面
 
   
-###模块介绍  
+### 模块介绍  
 sais:父模块  
 sais-base:基础模块，用于提供底层工具与依赖  
 sais-entity:实体模块，用于提供数据库对应实体与web操作需要的实体  
@@ -42,7 +42,7 @@ sais-service:服务模块，提供服务
 sais-web:web服务模块，admin对应后台模块，college对应系统展示部分，microblog对应论坛部分，common为公共部分  
  
 #
-####参考网站
+#### 参考网站
 
 [SpringBoot入门（IDEA篇）（三）](https://www.cnblogs.com/zmfx/p/9020514.html)  
 [springboot配置文件 application.yml注意事项（Failed to load property source from location 'classpath:/applica）](https://blog.csdn.net/linjy520/article/details/79455842)  
