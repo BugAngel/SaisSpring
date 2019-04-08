@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
+/**
+ * 主界面控制器
+ */
 @Controller
 @RequestMapping(value = {"/","/college/index","/college"})
 public class IndexController {
@@ -40,6 +43,7 @@ public class IndexController {
                     return o2.getValue().compareTo(o1.getValue());
                 }
             });
+            //将权重最高的三个幻灯片及介绍显示在主界面
             slide1=slideService.selectSlide(Integer.parseInt(list.get(0).getKey()));
             slide2=slideService.selectSlide(Integer.parseInt(list.get(1).getKey()));
             slide3=slideService.selectSlide(Integer.parseInt(list.get(2).getKey()));

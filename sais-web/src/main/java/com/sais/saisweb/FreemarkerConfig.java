@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * freemarker设置
+ */
 @Configuration
 public class FreemarkerConfig {
     private freemarker.template.Configuration configuration;
@@ -17,6 +20,9 @@ public class FreemarkerConfig {
         this.configuration=configuration;
     }
 
+    /**
+     * 设置模板继承功能
+     */
     @PostConstruct
     public void setSharedVariable(){
         configuration.setSharedVariable("block", new BlockDirective());

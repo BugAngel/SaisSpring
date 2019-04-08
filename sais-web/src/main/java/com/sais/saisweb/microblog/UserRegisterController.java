@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Map;
 
+/**
+ * 用户注册控制器
+ */
 @Controller
 @RequestMapping("/microblog/register")
 public class UserRegisterController {

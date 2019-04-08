@@ -3,7 +3,7 @@ package com.sais.saisentity;
 import lombok.Data;
 
 /**
- * 学校类
+ * 学校实体类
  */
 @Data
 public class College {

@@ -15,6 +15,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * 管理员登录控制器
+ */
 @Controller
 @RequestMapping("/admin/login")
 public class AdminLoginController {

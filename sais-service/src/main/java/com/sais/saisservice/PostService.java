@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 发帖操作服务
+ */
 @Service
 public class PostService {
     private PostMapper postMapper;

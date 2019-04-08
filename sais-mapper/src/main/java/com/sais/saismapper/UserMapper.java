@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * sais_user表操作接口
+ */
 @Repository
 public interface UserMapper {
     User selectId(int id);

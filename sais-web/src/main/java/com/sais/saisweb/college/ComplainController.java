@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 投诉控制器
+ */
 @Controller
 @RequestMapping("/college/complain")
 public class ComplainController {

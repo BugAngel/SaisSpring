@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * 更改密码控制器
+ */
 @Controller
 @RequestMapping("/admin/change_password")
 public class ChangePasswordController {

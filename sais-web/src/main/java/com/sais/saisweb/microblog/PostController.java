@@ -15,6 +15,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 发贴操作rest控制器
+ */
 @RestController
 @RequestMapping({"/microblog/post"})
 public class PostController {
@@ -43,7 +46,7 @@ public class PostController {
             return JSON.toJSONString(-1);
         }
         if(type==1){
-            parent_user_id=postService.selectUserIdFromId(pid);
+            parent_user_id=postService.selectUserIdFromId(pid);//记录父级用户ID
         }
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());

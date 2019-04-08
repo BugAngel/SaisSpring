@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 个人主页界面控制器
+ */
 @Controller
 @RequestMapping({"/microblog/home"})
 public class HomeController {

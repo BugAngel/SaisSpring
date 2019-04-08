@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.sais</groupId>
         <artifactId>sais</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>sais-mapper</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>sais-mapper</name>
     <description>sais mapper</description>
 	<packaging>jar</packaging>
@@ -20,7 +20,7 @@
     <properties>
         <skipTests>true</skipTests>
         <java.version>1.8</java.version>
-        <com.sais.entity>0.0.1</com.sais.entity>
+        <com.sais.entity>0.0.2</com.sais.entity>
         <org.mybatis.spring.boot>1.3.2</org.mybatis.spring.boot>
         <com.github.pagehelper>1.2.5</com.github.pagehelper>
         <druid>1.1.10</druid>

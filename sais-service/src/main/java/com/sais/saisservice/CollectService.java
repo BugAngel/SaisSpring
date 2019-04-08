@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 点赞过程操作服务
+ */
 @Service
 public class CollectService {
     private CollectMapper collectMapper;

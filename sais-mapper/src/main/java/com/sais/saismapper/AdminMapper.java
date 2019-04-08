@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 
+/**
+ * sais_admin表操作接口
+ */
 @Repository
 public interface AdminMapper {
     Admin sel(String account);

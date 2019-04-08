@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * 设置控制器
+ */
 @Controller
 @RequestMapping("/microblog/setting")
 public class SettingController {
@@ -47,15 +50,24 @@ public class SettingController {
             user.setPhone(phone);
             if(!gpa.equals("")){
                 user.setGpa(Double.parseDouble(gpa));
+            }else{
+                user.setGpa(0.0);
             }
             if(!sat.equals("")){
+                sat=sat.replace(",","");
                 user.setSat(Integer.parseInt(sat));
+            }else {
+                user.setSat(0);
             }
             if(!ielts.equals("")){
                 user.setIelts(Double.parseDouble(ielts));
+            }else {
+                user.setIelts(0.0);
             }
             if(!toefl.equals("")){
                 user.setToefl(Double.parseDouble(toefl));
+            }else {
+                user.setToefl(0.0);
             }
         }catch (Exception e){
             return JSON.toJSONString("输入错误");

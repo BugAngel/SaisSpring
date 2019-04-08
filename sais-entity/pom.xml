@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.sais</groupId>
         <artifactId>sais</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>sais-entity</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>sais-entity</name>
     <description>sais entity</description>
 	<packaging>jar</packaging>
@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
         <org.projectlombok>1.18.6</org.projectlombok>
-        <com.sais.base>0.0.1</com.sais.base>
+        <com.sais.base>0.0.2</com.sais.base>
     </properties>
 
     <dependencies>

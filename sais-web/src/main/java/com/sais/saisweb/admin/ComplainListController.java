@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * 投诉列表控制器
+ */
 @Controller
 @RequestMapping("/admin/complain_list")
 public class ComplainListController {

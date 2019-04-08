@@ -9,12 +9,15 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
+/**
+ * web设置
+ */
 @Component
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Value("${file.UploadAccessPath}")
-    private String UploadAccessPath;
-    @Value("${file.UploadPath}")
-    private String UploadPath;
+    @Value("${file.uploadAccessPath}")
+    private String uploadAccessPath;
+    @Value("${file.uploadPath}")
+    private String uploadPath;
 
     private AdminLoginInterceptor adminLoginInterceptor;
     private MicroBlogInterceptor microBlogInterceptor;
@@ -32,15 +35,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler(UploadAccessPath).addResourceLocations("file:" + UploadPath);
+        registry.addResourceHandler(uploadAccessPath).addResourceLocations("file:" + uploadPath);
     }
 
+    /**
+     * 添加拦截器
+     * @param registry 拦截器注册表
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //登录后台，如果被拦截则只能访问登录界面
         registry.addInterceptor(adminLoginInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/login/**");
 
+        //登录论坛或查看学校详情，被拦截只能登录或注册
         registry.addInterceptor(microBlogInterceptor)
                 .addPathPatterns("/microblog/**")
                 .addPathPatterns("/college/college/detail/**")

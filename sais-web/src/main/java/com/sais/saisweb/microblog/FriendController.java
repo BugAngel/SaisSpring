@@ -21,6 +21,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 好友界面与操作控制器
+ */
 @Controller
 @RequestMapping("/microblog/friend")
 public class FriendController {

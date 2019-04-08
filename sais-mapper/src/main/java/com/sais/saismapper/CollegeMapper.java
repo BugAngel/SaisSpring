@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * sais_college表操作接口
+ */
 @Repository
 public interface CollegeMapper {
     ArrayList<College> selectAllInfo();

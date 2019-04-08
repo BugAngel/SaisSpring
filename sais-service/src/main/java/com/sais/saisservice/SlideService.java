@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 幻灯片操作服务
+ */
 @Service
 public class SlideService {
     private SlideMapper slideMapper;

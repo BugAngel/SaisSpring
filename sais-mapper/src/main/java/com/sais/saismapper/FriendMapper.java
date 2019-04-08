@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * sais_friend表操作接口
+ */
 @Repository
 public interface FriendMapper {
     Friend selectFriend(int user_id, int friend_id);

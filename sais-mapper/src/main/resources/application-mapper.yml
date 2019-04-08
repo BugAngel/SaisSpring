@@ -3,11 +3,11 @@ mybatis:
   type-aliases-package: com.sais.saisentity
 
 #showSql
-logging:
-  level:
-    com:
-      sais:
-        saismapper : debug
+#logging:
+#  level:
+#    com:
+#      sais:
+#        saismapper : debug
 
 pagehelper:
   helper-dialect: mysql   #配置数据库

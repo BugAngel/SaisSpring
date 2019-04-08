@@ -18,6 +18,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * 用户登录控制器
+ */
 @Controller
 @RequestMapping("/microblog/login")
 public class UserLoginController {

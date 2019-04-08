@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * 幻灯片列表控制器
+ */
 @Controller
 @RequestMapping("/admin/slide_list")
 public class SlideListController {

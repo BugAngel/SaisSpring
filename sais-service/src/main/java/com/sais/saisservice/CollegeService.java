@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 学校信息操作服务
+ */
 @Service
 public class CollegeService {
     private CollegeMapper collegeMapper;

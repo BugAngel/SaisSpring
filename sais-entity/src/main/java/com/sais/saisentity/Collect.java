@@ -3,7 +3,7 @@ package com.sais.saisentity;
 import lombok.Data;
 
 /**
- * 论坛收藏类
+ * 论坛收藏实体类
  */
 @Data
 public class Collect {

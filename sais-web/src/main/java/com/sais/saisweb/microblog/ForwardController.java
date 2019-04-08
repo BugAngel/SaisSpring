@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 转发界面与操作控制器
+ */
 @RequestMapping({"/microblog/forward"})
 @Controller
 public class ForwardController {

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 点赞操作服务
+ */
 @Service
 public class PraiseService {
     private PraiseMapper praiseMapper;

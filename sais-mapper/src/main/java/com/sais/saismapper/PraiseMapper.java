@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * sais_praise表操作接口
+ */
 @Repository
 public interface PraiseMapper {
     Praise selectPraise(int user_id, int post_id);

@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 
+/**
+ * 验证码控制器
+ */
 @Controller
 public class KaptchaController {
     private DefaultKaptcha defaultKaptcha;

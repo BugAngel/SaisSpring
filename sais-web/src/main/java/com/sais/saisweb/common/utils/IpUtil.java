@@ -4,7 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * IP操作工具类
+ */
 public class IpUtil {
+    /**
+     *
+     * @param request 请求，用于获取sesion
+     * @return IP地址字符串
+     */
     public static String getIpAddr(HttpServletRequest request) {
         String ipAddress = null;
         try {

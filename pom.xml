@@ -11,7 +11,7 @@
 
     <groupId>com.sais</groupId>
     <artifactId>sais</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>sais</name>
     <description>Study abroad information management and analysis system</description>
     <packaging>pom</packaging>

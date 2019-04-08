@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 好友信息操作服务
+ */
 @Service
 public class FriendService {
     private FriendMapper friendMapper;

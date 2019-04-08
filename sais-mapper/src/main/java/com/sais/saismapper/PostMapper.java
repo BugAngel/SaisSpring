@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * sais_post表操作接口
+ */
 @Repository
 public interface PostMapper {
     int selectUserIdFromId(int id);

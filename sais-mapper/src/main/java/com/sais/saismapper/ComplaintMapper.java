@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+/**
+ * sais_complaint表操作接口
+ */
 @Repository
 public interface ComplaintMapper {
     ArrayList<Complaint> selectAll();

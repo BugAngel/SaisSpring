@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 学校操作控制器
+ */
 @Controller
 @RequestMapping(value = {"/college/college"})
 public class CollegeController {
@@ -34,6 +36,17 @@ public class CollegeController {
         this.userService=userService;
     }
 
+    /**
+     *
+     * @param country 国家 all表示所有
+     * @param qsLow qs排名下界
+     * @param qsHigh qs排名上界
+     * @param localLow 本地排名下界
+     * @param localHigh 本地排名上界
+     * @param pageNum 当前页数
+     * @param result 返回界面参数
+     * @return 界面
+     */
     @RequestMapping(value = {"/index"})
     public String index(@RequestParam(value = "country",required = false,defaultValue = "all")String country,
                         @RequestParam(value = "qsLow",required = false,defaultValue = "1")int qsLow,
@@ -62,6 +75,13 @@ public class CollegeController {
         return "college/college/index";
     }
 
+    /**
+     *
+     * @param request request请求，用于获取当前用户session
+     * @param id 学校ID
+     * @param result 返回界面参数
+     * @return 界面
+     */
     @RequestMapping(value = {"/detail"})
     public String detail(HttpServletRequest request,int id, Map<String,Object> result){
         User user=(User)request.getSession().getAttribute("user");
@@ -96,6 +116,13 @@ public class CollegeController {
         return "college/college/detail";
     }
 
+    /**
+     *
+     * @param like 搜索学校中文名关键字
+     * @param pageNum 当前页数
+     * @param result 返回界面参数
+     * @return 界面
+     */
     @RequestMapping(value = {"/search"})
     public String search(@RequestParam(value = "like",required = false,defaultValue = "")String like,
                          @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,

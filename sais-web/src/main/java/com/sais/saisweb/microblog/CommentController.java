@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 评论界面与操作控制器
+ */
 @Controller
 @RequestMapping("/microblog/comment")
 public class CommentController {

@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.sais</groupId>
         <artifactId>sais</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>sais-service</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>sais-service</name>
     <description>sais service</description>
 	<packaging>jar</packaging>
@@ -20,7 +20,7 @@
     <properties>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
-        <com.sais.mapper>0.0.1</com.sais.mapper>
+        <com.sais.mapper>0.0.2</com.sais.mapper>
     </properties>
 
     <dependencies>

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 用户列表控制器
+ */
 @Controller
 @RequestMapping({"/admin/user_list","/admin"})
 public class UserListController {

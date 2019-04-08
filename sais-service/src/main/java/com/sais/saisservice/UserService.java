@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.*;
 
+/**
+ * 用户操作服务
+ */
 @Service
 public class UserService {
     private UserMapper userMapper;
@@ -119,6 +122,10 @@ public class UserService {
         return userMapper.subtractFansNum(id);
     }
 
+    /**
+     * 初始化推荐JSON字符串
+     * @return 一个JSON字符串，键为QS排名的字符串，值为权重，前三为33.3，其余为0
+     */
     public String initializeRecommend(){
         Set<Integer> ranks=collegeMapper.selectQsRanks();
         Map<String,Double> recommend=new HashMap<>();

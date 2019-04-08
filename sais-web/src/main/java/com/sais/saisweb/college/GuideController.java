@@ -3,6 +3,9 @@ package com.sais.saisweb.college;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 学校指导控制器
+ */
 @Controller
 @RequestMapping("/college/guide")
 public class GuideController {

@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 论坛主界面控制器
+ */
 @Controller
 @RequestMapping({"/microblog","/microblog/index"})
 public class MicroBlogIndexController {

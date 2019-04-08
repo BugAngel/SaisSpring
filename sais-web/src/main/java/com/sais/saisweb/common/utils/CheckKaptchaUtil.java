@@ -2,6 +2,9 @@ package com.sais.saisweb.common.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 验证码工具类
+ */
 public class CheckKaptchaUtil {
     /**
      * 校对验证码

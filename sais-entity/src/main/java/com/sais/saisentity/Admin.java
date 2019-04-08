@@ -5,7 +5,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 /**
- * 管理员模型类
+ * 管理员实体类
  */
 @Data
 public class Admin {

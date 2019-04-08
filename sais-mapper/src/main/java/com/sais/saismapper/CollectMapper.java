@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * sais_collect表操作接口
+ */
 @Repository
 public interface CollectMapper {
     Collect selectCollect(int user_id, int post_id);

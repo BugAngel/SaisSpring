@@ -8,9 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 论坛拦截器
+ */
 @Component
 public class MicroBlogInterceptor implements HandlerInterceptor {
-    //    在请求处理之前调用,只有返回true才会执行请求
+    /**
+     *
+     * @param httpServletRequest request 用于获取session，判断是否存在user，有没有被禁言
+     * @param httpServletResponse 用于redirect
+     * @param o 重写方法必须
+     * @return 可以访问返回true，繁殖false
+     * @throws Exception 暂无
+     */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession session = httpServletRequest.getSession(true);

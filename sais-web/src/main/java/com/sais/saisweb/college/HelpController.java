@@ -3,6 +3,9 @@ package com.sais.saisweb.college;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 帮助控制器
+ */
 @Controller
 @RequestMapping("/college/help")
 public class HelpController {

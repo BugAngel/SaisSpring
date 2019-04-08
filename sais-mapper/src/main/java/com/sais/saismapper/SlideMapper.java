@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+/**
+ * sais_slide表操作接口
+ */
 @Repository
 public interface SlideMapper {
     Slide selectId(int id);

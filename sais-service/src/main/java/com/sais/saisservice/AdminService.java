@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 
+/**
+ * admin用户管理操作服务
+ */
 @Service
 public class AdminService {
     private AdminMapper adminMapper;
