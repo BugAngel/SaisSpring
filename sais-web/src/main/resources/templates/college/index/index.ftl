@@ -35,7 +35,9 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="/upload/college/images/${img1.picture}" style="width: 960px; height: 402px"/>
+                        <a href="/college/college/detail?id=${img1.id}">
+                            <img alt=""  src="/upload/college/images/${img1.picture}" style="width: 960px; height: 402px"/>
+                        </a>
                         <div class="carousel-caption">
                             <h4>
                                 ${img1.college_name}
@@ -46,7 +48,9 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="/upload/college/images/${img2.picture}" style="width: 960px; height: 402px"/>
+                        <a href="/college/college/detail?id=${img2.id}">
+                            <img alt=""  src="/upload/college/images/${img2.picture}" style="width: 960px; height: 402px"/>
+                        </a>
                         <div class="carousel-caption">
                             <h4>
                                 ${img2.college_name}
@@ -57,7 +61,9 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="/upload/college/images/${img3.picture}" style="width: 960px; height: 402px"/>
+                        <a href="/college/college/detail?id=${img3.id}">
+                            <img alt=""  src="/upload/college/images/${img3.picture}" style="width: 960px; height: 402px"/>
+                        </a>
                         <div class="carousel-caption">
                             <h4>
                                 ${img3.college_name}
@@ -173,5 +179,37 @@
         });
     });
 </script>
+<script>
+    var socket;
+    if(typeof(WebSocket) == "undefined") {
+        console.log("您的浏览器不支持WebSocket");
+    }else{
+        console.log("您的浏览器支持WebSocket");
+        //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+        socket = new WebSocket("ws://localhost:8083/websocket/20");
+        <#--socket = new WebSocket("${basePath}websocket/${cid}".replace("http","ws"));-->
+        //打开事件
+        socket.onopen = function() {
+            console.log("Socket 已打开");
+            //socket.send("这是来自客户端的消息" + location.href + new Date());
+        };
+        //获得消息事件
+        socket.onmessage = function(msg) {
+            console.log(msg.data);
+            //发现消息进入    开始处理前端触发逻辑
+        };
+        //关闭事件
+        socket.onclose = function() {
+            console.log("Socket已关闭");
+        };
+        //发生了错误事件
+        socket.onerror = function() {
+            alert("Socket发生了错误");
+            //此时可以尝试刷新页面
+        }
+
+    }
+</script>
+
 </@override>
 <@extends name="../common/common.ftl"/>

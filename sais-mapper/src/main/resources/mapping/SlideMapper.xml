@@ -24,7 +24,7 @@
     </delete>
 
     <select id="lists" resultType="com.sais.saisentity.Slide">
-        select * from sais_slide order by id asc
+        select * from sais_slide
     </select>
 
     <select id="listsLike" resultType="com.sais.saisentity.Slide">
@@ -40,7 +40,7 @@
     </insert>
 
     <select id="selectQs" resultType="com.sais.saisentity.Slide">
-        select college.college_name,college.introduce,slide.picture
+        select college.id,college.college_name,college.introduce,slide.picture
         FROM sais_college AS college,sais_slide AS slide
         WHERE slide.college_e_name=college.college_e_name and college.qs_rank = #{qs} limit 1
     </select>
