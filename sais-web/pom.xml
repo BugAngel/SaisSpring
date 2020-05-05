@@ -20,15 +20,7 @@
     <properties>
         <java.version>1.8</java.version>
         <com.sais.service>0.0.2</com.sais.service>
-        <org.webjars.bootstrap>3.3.6</org.webjars.bootstrap>
-        <org.webjars.font-awesome>4.7.0</org.webjars.font-awesome>
-        <org.webjars.Semantic-UI>2.1.7</org.webjars.Semantic-UI>
-        <org.webjars.org.webjars.bower.animate.css>3.5.2</org.webjars.org.webjars.bower.animate.css>
-        <org.webjars.jquery>2.1.1</org.webjars.jquery>
-        <org.webjars.npm.jquery.cookie>1.4.1</org.webjars.npm.jquery.cookie>
         <com.github.penggle.kaptcha>2.3.2</com.github.penggle.kaptcha>
-        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
-        <thymeleaf-layout-dialect>2.2.2</thymeleaf-layout-dialect>
         <rapid-framework>4.0.5</rapid-framework>
         <commons-lang>2.6</commons-lang>
         <org.webjars.highslide>4.1.13</org.webjars.highslide>
@@ -44,47 +36,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--引入websocket-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-        <!--引入bootstrap-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${org.webjars.bootstrap}</version>
-        </dependency>
-        <!--引入font-awesome-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>font-awesome</artifactId>
-            <version>${org.webjars.font-awesome}</version>
-        </dependency>
-        <!--引入Semantic-UI-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>Semantic-UI</artifactId>
-            <version>${org.webjars.Semantic-UI}</version>
-        </dependency>
-        <!--引入animate.css-->
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>animate.css</artifactId>
-            <version>${org.webjars.org.webjars.bower.animate.css}</version>
-        </dependency>
-        <!--引入jquery-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>${org.webjars.jquery}</version>
-        </dependency>
-        <!--引入jquery.cookie-->
-        <dependency>
-            <groupId>org.webjars.npm</groupId>
-            <artifactId>jquery.cookie</artifactId>
-            <version>${org.webjars.npm.jquery.cookie}</version>
         </dependency>
         <!--引入freemarker-->
         <dependency>

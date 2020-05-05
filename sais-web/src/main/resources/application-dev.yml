@@ -7,10 +7,10 @@ server:
 ########   windows   ############
 file:
   uploadAccessPath: /upload/**
-  uploadPath: F:/sais/upload/
-  collegeImagesUploadPath: F:/sais/upload/college/images/
-  microblogImagesUploadPath: F:/sais/upload/microblog/images/
-  microblogHeadImagesPath: F:/sais/upload/microblog/images/head_image/
+  uploadPath: E:/sais/upload/
+  collegeImagesUploadPath: E:/sais/upload/college/images/
+  microblogImagesUploadPath: E:/sais/upload/microblog/images/
+  microblogHeadImagesPath: E:/sais/upload/microblog/images/head_image/
 
 ########   linux   ############
 #file:

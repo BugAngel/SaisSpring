@@ -5,17 +5,11 @@ import com.alibaba.fastjson.TypeReference;
 import com.sais.saisentity.Slide;
 import com.sais.saisentity.User;
 import com.sais.saisservice.SlideService;
-import com.sais.saisweb.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -59,32 +53,6 @@ public class IndexController {
         result.put("img2",slide2);
         result.put("img3",slide3);
         return "college/index/index";
-    }
-
-    //页面请求
-    @GetMapping("/socket/{cid}")
-    public ModelAndView socket(@PathVariable String cid) {
-        ModelAndView mav=new ModelAndView("college/index/index");
-        mav.addObject("cid", cid);
-        return mav;
-    }
-
-    //推送数据接口
-    @ResponseBody
-    @RequestMapping("/socket/push/{cid}")
-    public String pushToWeb(@PathVariable String cid, String message) {
-        HashMap<String, Object> res = new HashMap<>();
-        try {
-            WebSocketServer.sendInfo(message,cid);
-        } catch (IOException e) {
-            e.printStackTrace();
-            res.put("status", 0);
-            res.put("message", "验证码错误");
-            return JSON.toJSONString(res);
-        }
-        res.put("status", 1);
-        res.put("message", "ojbk");
-        return JSON.toJSONString(res);
     }
 
 }
