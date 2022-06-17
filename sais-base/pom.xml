@@ -21,7 +21,7 @@
         <skipTests>true</skipTests>
         <java.version>1.8</java.version>
         <guava>29.0-jre</guava>
-        <com.alibaba.fastjson>1.2.35</com.alibaba.fastjson>
+        <com.alibaba.fastjson>1.2.83</com.alibaba.fastjson>
     </properties>
 
     <dependencies>
